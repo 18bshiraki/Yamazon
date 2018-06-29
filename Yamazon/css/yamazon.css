@@ -8,5 +8,9 @@ ul.foo li {
     text-align:center;
 }
 ul.foo li:first-child {
-    border:none;    
+    border:none;
+}
+img.size {
+    width: 50%;
+    height: auto;
 }
