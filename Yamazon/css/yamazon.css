@@ -1,0 +1,12 @@
+ul.foo {
+    display:table;
+    table-layout:fixed;
+}
+ul.foo li {
+    display:table-cell;
+    vertical-align:middle;
+    text-align:center;
+}
+ul.foo li:first-child {
+    border:none;    
+}
