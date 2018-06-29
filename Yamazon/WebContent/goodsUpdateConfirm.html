@@ -20,6 +20,8 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <link href="css/yamazon.css" rel="stylesheet">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/yamazon.js"></script>
 </head>
 <body>
 	<!-- header top section -->
@@ -29,10 +31,7 @@
 				<a class="logo" href="menu.html"><img src="ロゴ.jpg"></a>
 				<nav class="navigation" role="navigation">
 					<ul class="primary-nav">
-						<li><a href="index.html">Mypage</a></li>
-						<li><a href="index.html">Cart</a></li>
-						<li><a href="index.html">Login</a></li>
-						<li><a href="index.html">Logout</a></li>
+						<li><a href="logout.html">Logout</a></li>
 					</ul>
 				</nav>
 				<a href="#" class="nav-toggle">Menu<span></span></a>
@@ -62,8 +61,7 @@
 			<div class="container">
 				<fieldset>
 					<div style="padding: 10px; margin: 10px;">
-						<label>ID</label> <input type="text" name="id" value=""
-							readonly>
+						<label>ID</label> <input type="text" name="id" value="" readonly>
 					</div>
 				</fieldset>
 
@@ -75,27 +73,27 @@
 								<h5>商品名</h5>
 								<div class="form-inline" style="padding: 8px;">
 									<input type="text" class="form-control input-sm" id="name"
-										size="45" value="冷蔵庫" readonly>
+										size="45" value="コーヒーメーカー" readonly>
 								</div>
 							</div>
 							<div class="row">
 								<h5>商品画像</h5>
 								<div class="form-inline" style="padding: 8px;">
-									<img src="images/portfolio/work-1.jpg" class="size">
+									<img src="コーヒーメーカ(修正後).jpg" class="size">
 								</div>
 							</div>
 							<div class="row">
 								<h5>商品説明</h5>
 								<div class="form-inline" style="padding: 8px;">
 									<textarea rows="5" cols="45" class="form-control input-sm"
-										id="description" readonly>冷蔵庫です</textarea>
+										id="description" readonly>コーヒーメーカーです</textarea>
 								</div>
 							</div>
 							<div class="row">
 								<h5>商品カテゴリー</h5>
 								<div class="form-inline" style="padding: 8px;">
 									<input type="text" class="form-control input-sm" id="category"
-										size="15" value="冷蔵庫" readonly>
+										size="15" value="コーヒーメーカー" readonly>
 								</div>
 							</div>
 							<div class="row">
@@ -133,30 +131,35 @@
 								<div class="form-inline" style="padding: 8px;">
 									<input type="file" class="form-control input-sm" id="file" size="45">
 								</div>
+								<div class="preview"></div>
 							</div>
 							<div class="row">
 								<h5>商品説明</h5>
 								<div class="form-inline" style="padding: 8px;">
-									<textarea rows="5" cols="45" class="form-control input-sm" id="description"></textarea>
+									<textarea rows="5" cols="45" class="form-control input-sm"
+										id="description"></textarea>
 								</div>
 							</div>
 							<div class="row">
 								<h5>商品カテゴリー</h5>
 								<div class="form-inline" style="padding: 8px;">
-									<input type="text" class="form-control input-sm" id="category" size="15">
+									<input type="text" class="form-control input-sm" id="category"
+										size="15">
 								</div>
 							</div>
 							<div class="row">
 								<h5>商品数</h5>
 								<div class="form-inline" style="padding: 8px;">
-									<input type="text" class="form-control input-sm" id="stock" size="20">個
+									<input type="text" class="form-control input-sm" id="stock"
+										size="20">個
 								</div>
 							</div>
 							<div class="row">
 								<h5>1個当たり単価(税抜き)</h5>
 								<p>※数字のみで入力してください</p>
 								<div class="form-inline" style="padding: 8px;">
-									<input type="text" class="form-control input-sm" id="unitPrice" size="20">円
+									<input type="text" class="form-control input-sm" id="unitPrice"
+										size="20">円
 								</div>
 							</div>
 						</fieldset>
