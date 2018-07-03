@@ -11,4 +11,9 @@ public class MenuController {
 	public String top(Model model) {
 		return "menu";
 	}
+
+	@RequestMapping(value = "/cart", method = RequestMethod.GET)
+	public String cart(Model model) {
+		return "cart";
+	}
 }
