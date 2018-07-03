@@ -1,0 +1,29 @@
+ul.foo {
+    display:table;
+    table-layout:fixed;
+    width: 100%;
+    height: auto;
+}
+ul.foo li {
+    display:table-cell;
+    vertical-align:top;
+    text-align:center;
+}
+ul.foo li:first-child {
+    border:none;    
+}
+size {
+    width: 300px;
+    height: auto;
+}
+
+high {
+    width: auto;
+    height: 250px;
+}
+
+td {
+    vertical-align: middle;
+}
+
+
