@@ -1,5 +1,8 @@
 package yamazon.controller;
 
-public class CartControlle {
+import org.springframework.stereotype.Controller;
 
+@Controller
+public class CartControlle {
 }
+
