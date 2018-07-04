@@ -1,5 +1,7 @@
 package yamazon.dao.impl;
 
-public class PurchaseDaoImpl {
+import yamazon.dao.PurchaseDao;
+
+public class PurchaseDaoImpl implements PurchaseDao {
 
 }

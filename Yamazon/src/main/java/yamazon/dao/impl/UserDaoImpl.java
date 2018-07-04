@@ -1,5 +1,7 @@
 package yamazon.dao.impl;
 
-public class UserDaoImpl {
+import yamazon.dao.UserDao;
+
+public class UserDaoImpl implements UserDao {
 
 }

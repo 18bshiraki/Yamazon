@@ -1,5 +1,7 @@
 package yamazon.dao.impl;
 
-public class ManagerDaoImpl {
+import yamazon.dao.ManagerDao;
+
+public class ManagerDaoImpl implements ManagerDao {
 
 }
