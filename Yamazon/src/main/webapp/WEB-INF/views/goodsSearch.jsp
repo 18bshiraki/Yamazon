@@ -56,7 +56,7 @@
 			<div class="container">
 				<div class="input-group">
 				<%-- キーワード検索をします --%>
-					<form:input class="form-control" path="keyWord" placeholder="キーワードを入力してください" style="padding: 6px;" />
+					<form:input class="form-control" path="keyWord" modelAttribute="yamazon" placeholder="キーワードを入力してください" style="padding: 6px;" />
 					<span class="input-group-btn">
 						<button class="btn btn-default" type="submit"
 							style="padding: 8px 15px 3px 15px; margin: 0px 2px 0px 9px; width: 50px;">
