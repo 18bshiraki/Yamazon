@@ -2,13 +2,16 @@ package yamazon.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import yamazon.form.Search;
 
 @Controller
 public class MenuController {
 	@RequestMapping(value = { "/", "/menu" }, method = RequestMethod.GET)
-	public String menu(Model model) {
+	public String menu(@ModelAttribute("yamazon") Search form, Model model) {
 		return "menu";
 	}
 
@@ -31,6 +34,5 @@ public class MenuController {
 	public String logout(Model model) {
 		return "logout";
 	}
-
 
 }

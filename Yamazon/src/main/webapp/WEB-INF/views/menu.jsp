@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,22 +40,27 @@
 	<section id="hero" class="section ">
 		<div class="container">
 			<div class="row">
+			<form:form modelAttribute="yamazon" action="search">
 				<div class=" hero">
 					<div class="hero-content">
+
 						<div class="input-group">
-							<input type="text" class="form-control"
-								placeholder="キーワードを入力してください"> <span
-								class="input-group-btn">
-								<button class="btn btn-default" type="submit"
-									onClick="location.href='searchResult'"
-									style="padding: 8px 15px 3px 15px; margin: 0px 2px 0px 9px; width: 50px;">
-									<i class='glyphicon glyphicon-search'></i>
-								</button>
-							</span>
+
+								<form:input type="text" path="word" class="form-control"
+									placeholder="キーワードを入力してください" />
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="submit"
+										style="padding: 8px 15px 3px 15px; margin: 0px 2px 0px 9px; width: 50px;">
+										<i class='glyphicon glyphicon-search'></i>
+									</button>
+								</span>
+
 						</div>
+
 					</div>
 					<!-- hero -->
 				</div>
+				</form:form>
 			</div>
 		</div>
 	</section>
