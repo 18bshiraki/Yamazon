@@ -1,4 +1,4 @@
-package yamazon.controller.form;
+package yamazon.form;
 
 public class GoodsForm {
 
