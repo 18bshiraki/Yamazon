@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page language="java" contentType="text/html;charset=Windows-31J"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -89,9 +87,9 @@
 					<td><img src="${goods.goodsImage}" width="100" height="120"></td>
 					<td style="width: 120px; height: auto;">${goods.goodsName}</td>
 					<td>${goods.category}</td>
-					<td><fmt:formatNumber value="${goods.price}" type="CURRENCY" groupingUsed="true" /></td>
-					<td>${goods.taxPrice}</td>
-					<td>${goods.stock}</td>
+					<td>${goodsP}</td>
+					<td>${goodsPT}</td>
+					<td>${goods.stock}点</td>
 					<td style="width: 350px; height: auto;">${goods.goodsExplain}</td>
 					<td><button type="submit" value="${goods.goodsNumber}"
 							onclick="location.href='goodsUpdateConfirm'">更新</button></td>
