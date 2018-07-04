@@ -10,12 +10,16 @@ public class Goods {
 	private String category;
 	private int stock;
 
+	public int getGoodsNumber() {
+		return this.goodsNumber;
+	}
+
 	public void setGoodsNumber(int goodsNumber) {
 		this.goodsNumber = goodsNumber;
 	}
 
-	public int getGoodsNumber() {
-		return this.goodsNumber;
+	public String getGoodsName() {
+		return this.goodsName;
 	}
 
 	public void setGoodsName(String goodsName) {
@@ -23,56 +27,52 @@ public class Goods {
 
 	}
 
-	public String getGoodsName() {
-		return this.goodsName;
+	public String getGoodsExplain() {
+		return this.goodsExplain;
 	}
 
 	public void setGoodsExplain(String goodsExplain) {
 		this.goodsExplain = goodsExplain;
 	}
 
-	public String getGoodsExplain() {
-		return this.goodsExplain;
+	public String getGoodsImage() {
+		return this.goodsImage;
 	}
 
 	public void setGoodsImage(String goodsImage) {
 		this.goodsImage = goodsImage;
 	}
 
-	public String getGoodsImage() {
-		return this.goodsImage;
+	public int getPrice() {
+		return this.price;
 	}
 
 	public void setPrice(int price) {
 		this.price = price;
 	}
 
-	public int getPrice() {
-		return this.price;
+	public int getTaxPrice() {
+		return this.taxPrice;
 	}
 
 	public void setTaxPrice(int taxPrice) {
 		this.taxPrice = taxPrice;
 	}
 
-	public int getTaxPrice() {
-		return this.taxPrice;
+	public String getCategory() {
+		return this.category;
 	}
 
 	public void setCategory(String category) {
 		this.category = category;
 	}
 
-	public String getCategory() {
-		return this.category;
+	public int getStock() {
+		return this.stock;
 	}
 
 	public void setStock(int stock) {
 		this.stock = stock;
-	}
-
-	public int getStock() {
-		return this.stock;
 	}
 
 }
