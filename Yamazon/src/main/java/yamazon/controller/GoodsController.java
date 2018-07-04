@@ -32,7 +32,7 @@ public class GoodsController {
 			List<Goods> list = goodsDao.findWord(keyWord);
 			if(list.size() == 0) {
 				model.addAttribute("msg", "該当する商品がありませんでした");
-				return "goodsSearchResult";
+				return "goodsSearch";
 			} else {
 				model.addAttribute("goods", list);
 				return "goodsSearchResult";

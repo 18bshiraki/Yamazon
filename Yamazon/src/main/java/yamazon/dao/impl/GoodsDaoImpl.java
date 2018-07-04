@@ -18,7 +18,7 @@ public class GoodsDaoImpl implements GoodsDao {
 
 	//値がないとき全件検索
 	public List<Goods> findAll() {
-		List<Goods> list = jdbcTemplate.query("SELECT user_id, user_name, telephone FROM user_info",
+		List<Goods> list = jdbcTemplate.query("SELECT goods_number, goods_name, goods_explain, goods_image, price, tax_price, category, stock FROM goods_info",
 				new BeanPropertyRowMapper<Goods>(Goods.class));
 		return list;
 	}
