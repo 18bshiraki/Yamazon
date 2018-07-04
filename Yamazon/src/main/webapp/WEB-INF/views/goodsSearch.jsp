@@ -50,7 +50,7 @@
 		</div>
 	</section>
 
-	<form:form action="goodsSearchResult" modelAttribute="yamazon" method="post"
+	<form:form action="goodsSearchResult" method="post"
 		style="color: black; margin: 40px;">
 		<div class="text-center">
 			<div class="container">

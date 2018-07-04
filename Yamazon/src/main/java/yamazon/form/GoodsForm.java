@@ -12,6 +12,9 @@ public class GoodsForm {
 	private String stock;
 	private String explain;
 
+	//キーワード検索
+	private String keyWord;
+
 	public String getNumber() {
 		return number;
 	}
@@ -82,6 +85,14 @@ public class GoodsForm {
 
 	public void setExplain(String explain) {
 		this.explain = explain;
+	}
+
+	public String getKeyWord() {
+		return keyWord;
+	}
+
+	public void setKeyWord(String keyWord) {
+		this.keyWord = keyWord;
 	}
 
 }
