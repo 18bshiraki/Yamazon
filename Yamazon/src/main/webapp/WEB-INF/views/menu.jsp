@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 <title>Yamazon</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/flexslider.css">
@@ -23,11 +24,15 @@
 				<a class="logo" href="menu"><img src="ロゴ.jpg"></a>
 				<nav class="navigation" role="navigation">
 					<ul class="primary-nav">
-						<li>山田造さん</li>
+					<c:if test="${not empty sessionScope}">
+						<li><c:out value="${sessionScope.user.userName}" />さん</li>
 						<li><a href="account">Mypage</a></li>
+					</c:if>
 						<li><a href="cart">Cart</a></li>
 						<li><a href="login">Login</a></li>
+					<c:if test="${not empty sessionScope}">
 						<li><a href="logout">Logout</a></li>
+					</c:if>
 					</ul>
 				</nav>
 				<a href="#" class="nav-toggle">Menu<span></span></a>
