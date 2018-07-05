@@ -2,13 +2,14 @@ package yamazon.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import yamazon.dao.UserDao;
 import yamazon.entity.User;
 import yamazon.form.UserInsertForm;
 
@@ -27,11 +28,13 @@ public class AccountInsertController {
 		String T = form.getTel();
 		String P = form.getPass();
 		String A = form.getAddress();
-
-
+		if (Un.equals("") || Un.isEmpty()|| T.equals("") || T.isEmpty() || P.equals("") || P.isEmpty() || A.equals("") || A.isEmpty()) {
+			model.addAttribute("text", "未入力の項目があります。");
+			return "userInsert";
+		}
 		User user = new User(Un, T, P, A);
+		u_info.setAttribute("u_info",user);
 
-		u_info.setAttribute("a",user);
 		return "userInsertConfirm";
 	}
 
@@ -40,8 +43,17 @@ public class AccountInsertController {
 		return "userInsert";
 
 	}
+	@Autowired
+	UserDao userdao;
 	@RequestMapping(value = "/userInsertResult", method = RequestMethod.POST)
-	public String userInsertResult(@ModelAttribute("yamazon") UserInsertForm form, Model model, BindingResult bindingResult) {
+	public String userInsertResult(@ModelAttribute("yamazon") UserInsertForm form, Model model) {
+
+		String Un = form.getName();
+		String T = form.getTel();
+		String P = form.getPass();
+		String A = form.getAddress();
+
+		userdao.insert(Un,T,P,A);
 
 		return "userInsertResult";
 	}

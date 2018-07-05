@@ -25,10 +25,10 @@
 <!-- header top section -->
 <section class="banner" role="banner">
  <header id="header">
-    <div class="header-content clearfix"> <a class="logo" href="menu.html"><img src="ロゴ.jpg"></a>
+    <div class="header-content clearfix"> <a class="logo" href="menu"><img src="ロゴ.jpg"></a>
       <nav class="navigation" role="navigation">
         <ul class="primary-nav">
-          <li><a href="login.html">Login</a></li>
+          <li><a href="login">Login</a></li>
         </ul>
       </nav>
       <a href="#" class="nav-toggle">Menu<span></span></a> </div>
@@ -69,9 +69,9 @@
   </div>
 </div>
   <div class="text-center">
-    <button type="button" class="btn btn-success btn-xs" onclick="location.href='userInsertResult.html'; return false;">登録<span class="glyphicon glyphicon-chevron-right"></span></button>
+    <form:button class="btn btn-success btn-xs">登録<span class="glyphicon glyphicon-chevron-right"></span></form:button>
   </div>
-  </div>
+</div>
   </form:form>
 		<div class="text-center">
 			<a href="userback"><button type="button" class="return btn-outline-dark">

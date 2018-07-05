@@ -47,6 +47,9 @@
 <form:form action="userInsertConfirm" method="post" modelAttribute="yamazon">
 <div class="text-center">
 <div class="container">
+<c:if test="${not empty text}">
+  <h4 class="error" style="color:red;">${fn:escapeXml(text)}</h4>
+</c:if>
   <div class="row">
     <h4>ユーザー名</h4>
     <div class="form-inline" style="padding: 5px;">
@@ -74,7 +77,7 @@
   </div>
 </div>
   <div class="text-center">
-    <form:button  class="btn btn-success btn-xs">登録確認<span class="glyphicon glyphicon-chevron-right"></span></form:button>
+    <form:button class="btn btn-success btn-xs">登録確認<span class="glyphicon glyphicon-chevron-right"></span></form:button>
   </div>
 </div>
 </form:form>

@@ -2,8 +2,6 @@ package yamazon.form;
 
 public class UserInsertForm {
 
-	private Integer userId;
-
 	private String name;
 
 	private String tel;
@@ -11,14 +9,6 @@ public class UserInsertForm {
 	private String address;
 
 	private String pass;
-
-	public Integer getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
 
 	public String getName() {
 		return name;
@@ -48,7 +38,7 @@ public class UserInsertForm {
 		return address;
 	}
 
-	public void setAddres(String address) {
+	public void setAddress(String address) {
 		this.address = address;
 	}
 
