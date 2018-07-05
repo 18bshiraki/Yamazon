@@ -59,19 +59,20 @@
 							<td><h5>カテゴリ</h5></td>
 							<td></td>
 						</tr>
+						<form:form modelAttribute="yamazon" action="cartDel">
 						<c:forEach var="goods" items="${goods}">
 							<tr>
 								<td onclick="location.href='goodsDetail.html'; return false;"><h5>${fn:escapeXml(goods.goodsName)}</h5></td>
 								<td onclick="location.href='goodsDetail.html'; return false;"><h5>${fn:escapeXml(goods.taxPrice)}</h5></td>
 								<td onclick="location.href='goodsDetail.html'; return false;"><font
 									color="black"><h5>${fn:escapeXml(goods.category)}</h5></font></td>
-								<td><button type="button" class="return btn-outline-dark"
-										style="width: 120px; padding: 0px 5px; margin: 0px;"
-										onclick="location.href='cart.html'; return false;">
+								<td><button type="submit" name="id" class="return btn-outline-dark" value="${goods.goodsNumber}"
+										style="width: 120px; padding: 0px 5px; margin: 0px;">
 										<h5>カートから出す</h5>
 									</button></td>
 							</tr>
 							</c:forEach>
+							</form:form>
 					</table>
 				</div>
 			</div>

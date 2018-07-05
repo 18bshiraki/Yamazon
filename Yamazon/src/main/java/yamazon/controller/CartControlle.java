@@ -44,8 +44,16 @@ public class CartControlle {
 
 		return "cart";
 	}
-	@PostMapping(value="/cartDel")
+	@SuppressWarnings("unchecked")
+	@PostMapping("/cartDel")
 	public String del(@ModelAttribute("yamazon") Search search, Model model) {
+		List<String> cart=new ArrayList<String>();
+		cart=(List<String>) session.getAttribute("cart");
+		for(int i=0;i<cart.size();i++) {
+			if(cart.get(i).equals(search.getId())) {
+				cart.remove(i);
+			}
+		}
 		return "cart";
 	}
 
