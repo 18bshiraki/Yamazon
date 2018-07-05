@@ -71,11 +71,11 @@
 								color="black"><h5>${fn:escapeXml(goods.category)}</h5></font></td>
 							<td><form:button value="${goods.goodsNumber}" name="id"
 									class="btn btn-success"
-									style="display: inline-block; padding: 0px 5px; margin: 0px 0px 0px 0px;" />
-
+									style="display: inline-block; padding: 0px 5px; margin: 0px 0px 0px 0px;" >
 								<h5>
 									<font color="white">カートに入れる</font>
-								</h5></td>
+								</h5>
+								</form:button></td>
 						</tr>
 					</c:forEach>
 				</form:form>
