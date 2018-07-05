@@ -14,12 +14,17 @@ import yamazon.entity.Goods;
 
 @Repository
 public class GoodsDaoImpl implements GoodsDao {
-
 	@Autowired
-	private JdbcTemplate jt;
+	JdbcTemplate jt;
 
 	@Autowired
 	private NamedParameterJdbcTemplate namedjt;
+
+	public List<Goods> goodsSearch(String word) {
+		String sql = "SELECT * FROM goods_info WHERE goods_name like ? or goods_name like ? or goods_name like ?";
+
+		return jt.query(sql, new BeanPropertyRowMapper<Goods>(Goods.class), word + "%", "%" + word, "%" + word + "%");
+	}
 
 	//値がないとき全件検索
 	public List<Goods> findAll() {
@@ -38,6 +43,17 @@ public class GoodsDaoImpl implements GoodsDao {
 		return list;
 	}
 
+	public List<Goods> cart(int num) {
+		String sql = "SELECT * FROM goods_info WHERE goods_number=?";
+
+		return jt.query(sql, new BeanPropertyRowMapper<Goods>(Goods.class), num);
+	}
+
+	public List<Goods> goodsMenu(){
+		return jt.query("SELECT goods_number, goods_name, goods_explain, goods_image, price, tax_price, category, stock FROM goods_info ORDER BY random() LIMIT 4",
+				new BeanPropertyRowMapper<Goods>(Goods.class));
+	}
+
 	//削除
 	@Override
 	public int delete(Goods goods) {
@@ -54,5 +70,4 @@ public class GoodsDaoImpl implements GoodsDao {
 				"INSERT INTO goods_info (goods_number, goods_name, goods_explain, goods_image, price, tax_price, category, stock) VALUES (:goodsNumber, :goodsName, :goodsExplain, :goodsImage, :price, :taxPrice, :category, :stock)",
 				paramSource);
 	}
-
 }

@@ -20,7 +20,6 @@ public class Goods {
 		this.taxPrice = taxPrice;
 	}
 
-	//商品削除用のコンストラクター
 	public Goods(int goodsNumber) {
 		this.goodsNumber = goodsNumber;
 	}

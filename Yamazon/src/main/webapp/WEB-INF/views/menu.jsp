@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,11 +26,15 @@
 				<a class="logo" href="menu"><img src="ロゴ.jpg"></a>
 				<nav class="navigation" role="navigation">
 					<ul class="primary-nav">
-						<li>山田造さん</li>
+					<c:if test="${not empty sessionScope}">
+						<li><c:out value="${sessionScope.user.userName}" />さん</li>
 						<li><a href="account">Mypage</a></li>
+					</c:if>
 						<li><a href="cart">Cart</a></li>
 						<li><a href="login">Login</a></li>
+					<c:if test="${not empty sessionScope}">
 						<li><a href="logout">Logout</a></li>
+					</c:if>
 					</ul>
 				</nav>
 				<a href="#" class="nav-toggle">Menu<span></span></a>
@@ -37,22 +44,27 @@
 	<section id="hero" class="section ">
 		<div class="container">
 			<div class="row">
+			<form:form modelAttribute="yamazon" action="search">
 				<div class=" hero">
 					<div class="hero-content">
+
 						<div class="input-group">
-							<input type="text" class="form-control"
-								placeholder="キーワードを入力してください"> <span
-								class="input-group-btn">
-								<button class="btn btn-default" type="submit"
-									onClick="location.href='searchResult'"
-									style="padding: 8px 15px 3px 15px; margin: 0px 2px 0px 9px; width: 50px;">
-									<i class='glyphicon glyphicon-search'></i>
-								</button>
-							</span>
+
+								<form:input path="word" class="form-control"
+									placeholder="キーワードを入力してください" />
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="submit"
+										style="padding: 8px 15px 3px 15px; margin: 0px 2px 0px 9px; width: 50px;">
+										<i class='glyphicon glyphicon-search'></i>
+									</button>
+								</span>
+
 						</div>
+
 					</div>
 					<!-- hero -->
 				</div>
+				</form:form>
 			</div>
 		</div>
 	</section>
@@ -70,51 +82,21 @@
 					<hr class="section">
 				</div>
 			</div>
+			<c:forEach var="goods" items="${list}">
 			<div class="row">
 				<div class="col-sm-3 portfolio-item">
-					<a href="goodsDetail.html" class="portfolio-link">
+					<a href="goodsDetail" class="portfolio-link">
 						<div class="caption">
 							<div class="caption-content">
-								<h3>電気ポット</h3>
-								<h4>レッドデザイン</h4>
+								<h3>${fn:escapeXml(goods.goodsName)}</h3>
+								<h4>${fn:escapeXml(goods.taxPrice)}円</h4>
 							</div>
-						</div> <img src="電気ポット(修正後).jpg" class="img-responsive" alt=""
+						</div> <img src=${fn:escapeXml(goods.goodsImage)} class="img-responsive" alt=""
 						width="200" height="200">
 					</a>
 				</div>
-				<div class="col-sm-3 portfolio-item">
-					<a href="goodsDetail.html" class="portfolio-link">
-						<div class="caption">
-							<div class="caption-content">
-								<h3>電気ポット</h3>
-								<h4>ホワイトデザイン</h4>
-							</div>
-						</div> <img src="電気白(修正後).jpg" class="img-responsive" alt="" width="200"
-						height="200">
-					</a>
-				</div>
-				<div class="col-sm-3 portfolio-item">
-					<a href="goodsDetail.html" class="portfolio-link">
-						<div class="caption">
-							<div class="caption-content">
-								<h3>コーヒーメーカ</h3>
-								<h4>レッドデザイン</h4>
-								<p>19800円</p>
-							</div>
-						</div> <img src="コーヒーメーカ(修正後).jpg" class="img-responsive" alt=""
-						width="200" height="200">
-					</a>
-				</div>
-				<div class="col-sm-3 portfolio-item">
-					<a href="goodsDetail.html" class="portfolio-link">
-						<div class="caption">
-							<div class="caption-content">
-								<h3>電気ポット</h3>
-								<h4>ホワイトデザイン</h4>
-							</div>
-						</div> <img src="電気白(修正後).jpg" class="img-responsive" alt="">
-					</a>
-				</div>
+			</c:forEach>
+
 			</div>
 		</div>
 	</section>
