@@ -53,7 +53,7 @@
     <a href="menu.html"><button type="button" class="btn btn-success">ログイン<span class="glyphicon glyphicon-chevron-right"></span></button></a>
  </div>
  <div class="text-center">
-    <a href="userInsert.html"><button type="button" class="btn btn-success">新規登録<span class="glyphicon glyphicon-chevron-right"></span></button></a>
+    <a href="userInsert"><button type="button" class="btn btn-success">新規登録<span class="glyphicon glyphicon-chevron-right"></span></button></a>
  </div>
 </div>
 <footer class="footer">
