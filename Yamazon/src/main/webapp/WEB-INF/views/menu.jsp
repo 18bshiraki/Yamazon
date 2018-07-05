@@ -26,11 +26,15 @@
 				<a class="logo" href="menu"><img src="ロゴ.jpg"></a>
 				<nav class="navigation" role="navigation">
 					<ul class="primary-nav">
-						<li>山田造さん</li>
+					<c:if test="${not empty sessionScope}">
+						<li><c:out value="${sessionScope.user.userName}" />さん</li>
 						<li><a href="account">Mypage</a></li>
+					</c:if>
 						<li><a href="cart">Cart</a></li>
 						<li><a href="login">Login</a></li>
+					<c:if test="${not empty sessionScope}">
 						<li><a href="logout">Logout</a></li>
+					</c:if>
 					</ul>
 				</nav>
 				<a href="#" class="nav-toggle">Menu<span></span></a>
@@ -46,7 +50,7 @@
 
 						<div class="input-group">
 
-								<form:input type="text" path="word" class="form-control"
+								<form:input path="word" class="form-control"
 									placeholder="キーワードを入力してください" />
 								<span class="input-group-btn">
 									<button class="btn btn-default" type="submit"
