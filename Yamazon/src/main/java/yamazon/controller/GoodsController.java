@@ -24,6 +24,12 @@ public class GoodsController {
 
 		//キーワードを取得
 		String keyWord = form.getKeyWord();
+		//検索の残骸
+//		String result[] = keyWord.replaceAll("　", " ").split("\\s+");
+//		System.out.println(keyWord);
+//		for (int i = 0; i < result.length; i++) {//[3]
+//            System.out.println(result[i]);//[4]
+//        }
 
 		if(keyWord == null || "".equals(keyWord)) {
 			List<Goods> list = goodsDao.findAll();
@@ -46,19 +52,19 @@ public class GoodsController {
 		} else {
 			List<Goods> list = goodsDao.findWord(keyWord);
 
-			//値段に円とカンマ表示
-			Goods goods = list.get(0);
-			int goodsPrice = goods.getPrice();
-			int goodsTaxPrice = goods.getTaxPrice();
-			NumberFormat nfCur = NumberFormat.getCurrencyInstance();
-
-			String cGoodsPrice = nfCur.format(goodsPrice);
-			String cGoodsPriceTax = nfCur.format(goodsTaxPrice);
-
 			if(list.size() == 0) {
 				model.addAttribute("msg", "該当する商品がありませんでした");
 				return "goodsSearch";
 			} else {
+				//値段に円とカンマ表示
+				Goods goods = list.get(0);
+				int goodsPrice = goods.getPrice();
+				int goodsTaxPrice = goods.getTaxPrice();
+				NumberFormat nfCur = NumberFormat.getCurrencyInstance();
+
+				String cGoodsPrice = nfCur.format(goodsPrice);
+				String cGoodsPriceTax = nfCur.format(goodsTaxPrice);
+
 				//スコープにセット
 				model.addAttribute("goods", list);
 				model.addAttribute("goodsP", cGoodsPrice);
