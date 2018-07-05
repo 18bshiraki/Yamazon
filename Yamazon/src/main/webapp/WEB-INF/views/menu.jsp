@@ -88,10 +88,10 @@
 					<a href="goodsDetail" class="portfolio-link">
 						<div class="caption">
 							<div class="caption-content">
-								<h3>電気ポット</h3>
-								<h4>レッドデザイン</h4>
+								<h3>${fn:escapeXml(goods.goodsName)}</h3>
+								<h4>${fn:escapeXml(goods.taxPrice)}円</h4>
 							</div>
-						</div> <img src="電気ポット(修正後).jpg" class="img-responsive" alt=""
+						</div> <img src=${fn:escapeXml(goods.goodsImage)} class="img-responsive" alt=""
 						width="200" height="200">
 					</a>
 				</div>

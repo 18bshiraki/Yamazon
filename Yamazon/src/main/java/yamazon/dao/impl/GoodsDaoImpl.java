@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import yamazon.dao.GoodsDao;
 import yamazon.entity.Goods;
+
 @Repository
 public class GoodsDaoImpl implements GoodsDao {
 	@Autowired
@@ -17,15 +18,17 @@ public class GoodsDaoImpl implements GoodsDao {
 	public List<Goods> goodsSearch(String word) {
 		String sql = "SELECT * FROM goods_info WHERE goods_name like ? or goods_name like ? or goods_name like ?";
 
-		return jt.query(sql, new BeanPropertyRowMapper<Goods>(Goods.class),word+"%","%"+word,"%"+word+"%");
+		return jt.query(sql, new BeanPropertyRowMapper<Goods>(Goods.class), word + "%", "%" + word, "%" + word + "%");
 	}
 
 	//値がないとき全件検索
-		public List<Goods> findAll() {
-			List<Goods> list = jt.query("SELECT goods_number, goods_name, goods_explain, goods_image, price, tax_price, category, stock FROM goods_info",
-					new BeanPropertyRowMapper<Goods>(Goods.class));
-			return list;
-		}
+	public List<Goods> findAll() {
+		List<Goods> list = jt.query(
+				"SELECT goods_number, goods_name, goods_explain, goods_image, price, tax_price, category, stock FROM goods_info",
+				new BeanPropertyRowMapper<Goods>(Goods.class));
+		return list;
+	}
+
 
 		//検索用
 		public List<Goods> findWord(String keyWord) {
@@ -35,8 +38,19 @@ public class GoodsDaoImpl implements GoodsDao {
 					keyWord + "%", "%" + keyWord, "%" + keyWord + "%");
 			return list;
 		}
+
+
 		public List<Goods> goodsMenu(){
 			return jt.query("SELECT goods_number, goods_name, goods_explain, goods_image, price, tax_price, category, stock FROM goods_info ORDER BY random() LIMIT 4",
 					new BeanPropertyRowMapper<Goods>(Goods.class));
 		}
+
+
+
+	public List<Goods> cart(int num) {
+		String sql = "SELECT * FROM goods_info WHERE goods_number=?";
+
+		return jt.query(sql, new BeanPropertyRowMapper<Goods>(Goods.class), num);
+	}
+
 }
