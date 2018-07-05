@@ -53,7 +53,7 @@ public class AccountInsertController {
 		String P = form.getPass();
 		String A = form.getAddress();
 
-		userdao.insert(Un,T,P,A);
+		//userdao.insert(Un,T,P,A);
 
 		return "userInsertResult";
 	}

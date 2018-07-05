@@ -1,5 +1,9 @@
 package yamazon.dao;
 
-public interface ManagerDao {
+import java.util.List;
 
+import yamazon.entity.Manager;
+
+public interface ManagerDao {
+	public List<Manager> findByPhoneNumberAndPassword(int managerId, String password);
 }
