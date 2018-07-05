@@ -5,6 +5,7 @@ public class Search {
 	private String goodsName;
 	private String price;
 	private String category;
+	private String id;
 
 
 	public String getWord() {
@@ -37,6 +38,14 @@ public class Search {
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }

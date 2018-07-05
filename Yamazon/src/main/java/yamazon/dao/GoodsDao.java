@@ -6,4 +6,6 @@ import yamazon.entity.Goods;
 
 public interface GoodsDao {
 	public List<Goods> goodsSearch(String word);
+
+	public List<Goods> cart(int num);
 }
