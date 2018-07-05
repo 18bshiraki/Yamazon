@@ -20,6 +20,7 @@ public class MenuController {
 
 	@RequestMapping(value = { "/", "/menu" }, method = RequestMethod.GET)
 	public String menu(@ModelAttribute("yamazon")Search form,Model model) {
+		session.removeAttribute("manager");
 		return "menu";
 	}
 
@@ -40,6 +41,7 @@ public class MenuController {
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(Model model) {
+		session.invalidate();
 		return "logout";
 	}
 
