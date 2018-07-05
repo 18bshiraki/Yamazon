@@ -12,4 +12,6 @@ public interface GoodsDao {
 	public List<Goods> findAll();
 
 	public List<Goods> findWord(String keyWord);
+
+	public List<Goods> detail(String name);
 }

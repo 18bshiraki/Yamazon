@@ -43,4 +43,9 @@ public class GoodsDaoImpl implements GoodsDao {
 
 		return jt.query(sql, new BeanPropertyRowMapper<Goods>(Goods.class), num);
 	}
+	public List<Goods> detail(String name){
+		String sql = "SELECT * FROM goods_info WHERE goods_name=?";
+
+		return jt.query(sql, new BeanPropertyRowMapper<Goods>(Goods.class), name);
+	}
 }
