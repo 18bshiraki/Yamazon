@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import yamazon.dao.impl.GoodsDaoImpl;
 import yamazon.entity.Goods;
@@ -25,7 +26,8 @@ public class GoodsInsertController {
 		String category = form.getCategory();
 		String stock = form.getStock();
 		String price = form.getPrice();
-		String number = form.getNumber();
+
+		MultipartFile file = form.getFile();
 
 		if ((name == null || image == null || explain == null || category == null || stock == null || price == null)
 				|| (("".equals(name) || ("".equals(image)) || ("".equals(explain)) || ("".equals(category)) || ("".equals(stock)) || ("".equals(price))))) {

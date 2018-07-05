@@ -51,7 +51,7 @@
 	</section>
 
 	<form:form action="goodsSearchResult" modelAttribute="yamazon"
-		method="post" style="color: black; margin: 40px;">
+		method="get" style="color: black; margin: 40px;">
 		<div class="text-center">
 			<div class="container">
 				<div class="input-group">

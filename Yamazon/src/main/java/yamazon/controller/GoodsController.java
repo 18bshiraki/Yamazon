@@ -20,7 +20,7 @@ public class GoodsController {
 	@Autowired
 	GoodsDaoImpl goodsDao;
 
-	@PostMapping(value = "/goodsSearchResult")
+	@GetMapping(value = "/goodsSearchResult")
 	public String select(@ModelAttribute("yamazon") GoodsForm form, Model model) {
 
 		//キーワードを取得
@@ -48,6 +48,7 @@ public class GoodsController {
 			model.addAttribute("goods", list);
 			model.addAttribute("goodsP", cGoodsPrice);
 			model.addAttribute("goodsPT", cGoodsPriceTax);
+			model.addAttribute("keyWord", keyWord);
 
 			return "goodsSearchResult";
 		} else {
@@ -70,6 +71,7 @@ public class GoodsController {
 				model.addAttribute("goods", list);
 				model.addAttribute("goodsP", cGoodsPrice);
 				model.addAttribute("goodsPT", cGoodsPriceTax);
+				model.addAttribute("keyWord", keyWord);
 
 				return "goodsSearchResult";
 			}

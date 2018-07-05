@@ -1,5 +1,7 @@
 package yamazon.form;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class GoodsForm {
 
 	private String number;//商品番号
@@ -10,6 +12,8 @@ public class GoodsForm {
 	private String taxPrice;//値段（税込み）
 	private String stock;//在庫
 	private String explain;//商品説明
+
+	private MultipartFile file;//画像取得用
 
 	private String keyWord;//キーワード検索
 
@@ -83,6 +87,14 @@ public class GoodsForm {
 
 	public void setKeyWord(String keyWord) {
 		this.keyWord = keyWord;
+	}
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
 
 }
