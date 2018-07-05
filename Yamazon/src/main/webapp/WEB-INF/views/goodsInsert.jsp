@@ -61,14 +61,13 @@
 		</div>
 	</section>
 	<div class="text-center">
-		<form action="goodsInsertConfirm" enctype="multipart/form-data"
+		<form:form action="goodsInsertConfirm" modelAttribute="yamazon" enctype="multipart/form-data"
 			method="post">
 			<div class="container">
 				<div class="row">
 					<h5>商品名</h5>
 					<div class="form-inline" style="padding: 8px;">
-						<input type="text" class="form-control input-sm" name="name"
-							placeholder="商品名" size="45">
+						<form:input class="form-control input-sm" path="name" size="45" />
 					</div>
 				</div>
 				<div class="row">
@@ -82,8 +81,8 @@
 				<div class="row">
 					<h5>商品説明</h5>
 					<div class="form-inline" style="padding: 8px;">
-						<textarea rows="5" cols="45" class="form-control input-sm"
-							name="explain"></textarea>
+						<form:textarea rows="5" cols="45" class="form-control input-sm"
+							path="explain" />
 					</div>
 				</div>
 				<div class="row">
@@ -99,16 +98,14 @@
 				<div class="row">
 					<h5>商品数</h5>
 					<div class="form-inline" style="padding: 8px;">
-						<input type="text" class="form-control input-sm" name="stock"
-							placeholder="商品数" size="20" value="20">個
+						<form:input class="form-control input-sm" path="stock" size="20" />個
 					</div>
 				</div>
 				<div class="row">
 					<h5>1個当たり単価(税抜き)</h5>
 					<p>※数字のみで入力してください</p>
 					<div class="form-inline" style="padding: 8px;">
-						<input type="text" class="form-control input-sm" name="price"
-							placeholder="単価" size="20">円
+						<form:input class="form-control input-sm" path="price" size="20" />円
 					</div>
 				</div>
 			</div>
@@ -118,12 +115,12 @@
 				</button>
 			</div>
 			<div class="text-center">
-				<a href="managerMenu.html"><button type="button"
+				<a href="managerMenu"><button type="button"
 						class="return btn-outline-dark">
 						<span class="glyphicon glyphicon-chevron-left"></span>管理者メニュー
 					</button></a>
 			</div>
-		</form>
+		</form:form>
 	</div>
 <footer class="footer">
   <div class="container">

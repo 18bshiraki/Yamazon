@@ -17,7 +17,7 @@ public class GoodsInsertController {
 	GoodsDaoImpl goodsDao;
 
 	@PostMapping(value = "/goodsInsertConfirm")
-	public String goodsInsert(@ModelAttribute("yamazon")GoodsForm form, Model model) {
+	public String goodsInsert(@ModelAttribute("yamazon") GoodsForm form, Model model) {
 
 		String name = form.getName();
 		String image = form.getImage();
@@ -25,6 +25,7 @@ public class GoodsInsertController {
 		String category = form.getCategory();
 		String stock = form.getStock();
 		String price = form.getPrice();
+		String number = form.getNumber();
 
 		if ((name == null || image == null || explain == null || category == null || stock == null || price == null)
 				|| (("".equals(name) || ("".equals(image)) || ("".equals(explain)) || ("".equals(category)) || ("".equals(stock)) || ("".equals(price))))) {
