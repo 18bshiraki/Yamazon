@@ -21,4 +21,18 @@ public class UserDaoImpl implements UserDao {
 				new BeanPropertyRowMapper<User>(User.class), phoneNumber, password);
 
 	}
+
+	public int insert(String phoneNumber,String userName,String address, String password) {
+		return JdbcTemplate.update("INSERT INTO user_info (phone_number,user_name,address,password) VALUES(?,?,?,?)",phoneNumber,userName,address, password);
+
+	}
+
+	public int userDelete(String phoneNumber, String password) {
+		return JdbcTemplate.update("DELETE FROM user_info WHERE phone_number=? AND password = ?)",phoneNumber,password);
+	}
+
+	public int userUpdate(String phoneNumber,String userName,String address, String password) {
+		return JdbcTemplate.update("UPDATE product SET phone_number = ?, user_name = ?, address = ?, passwordt = ? WHERE id = ?",phoneNumber,userName,address, password);
+
+	}
 }
