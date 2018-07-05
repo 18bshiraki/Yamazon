@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ManagerMenuController {
 
 	/*
-	 * 〔管理者メニュー画面〕から〔ユーザーの検索画面〕
+	 * 〔管理者メニュー画面〕から〔ユーザーの検索画面〕pppppp
 	 */
 	@GetMapping("/")
 	public String usus(/*@ModelAttribute("yamazon") userSearchtForm form,*/ Model model) {
