@@ -1,6 +1,9 @@
 package yamazon.dao;
 
-public interface UserDao {
+import java.util.List;
 
-	public int insert(String phoneNumber, String userName, String address, String password);
+import yamazon.entity.User;
+
+public interface UserDao {
+	public List<User> findByPhoneNumberAndPassword(String phoneNumber, String password);
 }
