@@ -35,5 +35,8 @@ public class GoodsDaoImpl implements GoodsDao {
 					keyWord + "%", "%" + keyWord, "%" + keyWord + "%");
 			return list;
 		}
-
+		public List<Goods> goodsMenu(){
+			return jt.query("SELECT goods_number, goods_name, goods_explain, goods_image, price, tax_price, category, stock FROM goods_info ORDER BY random() LIMIT 4",
+					new BeanPropertyRowMapper<Goods>(Goods.class));
+		}
 }
