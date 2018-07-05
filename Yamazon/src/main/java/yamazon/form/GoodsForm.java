@@ -2,18 +2,16 @@ package yamazon.form;
 
 public class GoodsForm {
 
-	private String number;
-	private String id;
-	private String image;
-	private String name;
-	private String category;
-	private String price;
-	private String taxPrice;
-	private String stock;
-	private String explain;
+	private String number;//商品番号
+	private String image;//画像ファイルパス
+	private String name;//商品名
+	private String category;//商品カテゴリー
+	private String price;//値段（税抜き）
+	private String taxPrice;//値段（税込み）
+	private String stock;//在庫
+	private String explain;//商品説明
 
-	//キーワード検索
-	private String keyWord;
+	private String keyWord;//キーワード検索
 
 	public String getNumber() {
 		return number;
@@ -21,14 +19,6 @@ public class GoodsForm {
 
 	public void setNumber(String number) {
 		this.number = number;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public String getImage() {

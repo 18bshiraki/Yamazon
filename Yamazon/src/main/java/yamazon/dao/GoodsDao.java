@@ -12,4 +12,10 @@ public interface GoodsDao {
 	public List<Goods> findAll();
 
 	public List<Goods> findWord(String keyWord);
+
+	public List<Goods> goodsMenu();
+
+	int delete(Goods goods);
+
+	int insert(Goods goods);
 }
