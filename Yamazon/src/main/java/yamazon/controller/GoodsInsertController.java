@@ -17,7 +17,7 @@ public class GoodsInsertController {
 	GoodsDaoImpl goodsDao;
 
 	@PostMapping(value = "/goodsInsertConfirm")
-	public String goodsInsert(@ModelAttribute("yamazon")GoodsForm form, Model model) {
+	public String goodsInsert(@ModelAttribute("yamazon") GoodsForm form, Model model) {
 
 		String name = form.getName();
 		String image = form.getImage();
