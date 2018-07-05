@@ -10,6 +10,9 @@ public class Goods {
 	private String category;
 	private int stock;
 
+	public Goods() {
+	}
+
 	public Goods(String goodsName, String goodsImage, String goodsExplain, String category, int stock, int price, int taxPrice) {
 		this.goodsName = goodsName;
 		this.goodsImage = goodsImage;
