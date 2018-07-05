@@ -96,39 +96,7 @@
 					</a>
 				</div>
 			</c:forEach>
-				<!-- <div class="col-sm-3 portfolio-item">
-					<a href="goodsDetail.html" class="portfolio-link">
-						<div class="caption">
-							<div class="caption-content">
-								<h3>電気ポット</h3>
-								<h4>ホワイトデザイン</h4>
-							</div>
-						</div> <img src="電気白(修正後).jpg" class="img-responsive" alt="" width="200"
-						height="200">
-					</a>
-				</div> -->
-				<!-- <div class="col-sm-3 portfolio-item">
-					<a href="goodsDetail.html" class="portfolio-link">
-						<div class="caption">
-							<div class="caption-content">
-								<h3>コーヒーメーカ</h3>
-								<h4>レッドデザイン</h4>
-								<p>19800円</p>
-							</div>
-						</div> <img src="コーヒーメーカ(修正後).jpg" class="img-responsive" alt=""
-						width="200" height="200">
-					</a>
-				</div> -->
-				<!-- <div class="col-sm-3 portfolio-item">
-					<a href="goodsDetail.html" class="portfolio-link">
-						<div class="caption">
-							<div class="caption-content">
-								<h3>電気ポット</h3>
-								<h4>ホワイトデザイン</h4>
-							</div>
-						</div> <img src="電気白(修正後).jpg" class="img-responsive" alt="">
-					</a>
-				</div> -->
+
 			</div>
 		</div>
 	</section>
