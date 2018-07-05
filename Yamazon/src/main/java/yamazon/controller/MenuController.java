@@ -16,7 +16,7 @@ public class MenuController {
 	}
 
 	@RequestMapping(value = "/goodsInsert", method = RequestMethod.GET)
-	public String goodsInsert(Model model) {
+	public String goodsInsert(@ModelAttribute("yamazon")GoodsForm form, Model model) {
 		return "goodsInsert";
 	}
 

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -24,8 +25,14 @@ public class GoodsController {
 
 		//キーワードを取得
 		String keyWord = form.getKeyWord();
+		//検索の残骸
+		//String result[] = keyWord.replaceAll("　", " ").split("\\s+");
+		//System.out.println(keyWord);
+		//for (int i = 0; i < result.length; i++) {
+		//    System.out.println(result[i]);
+		//}
 
-		if(keyWord == null || "".equals(keyWord)) {
+		if (keyWord == null || "".equals(keyWord)) {
 			List<Goods> list = goodsDao.findAll();
 
 			//値段に円とカンマ表示
@@ -55,7 +62,7 @@ public class GoodsController {
 			String cGoodsPrice = nfCur.format(goodsPrice);
 			String cGoodsPriceTax = nfCur.format(goodsTaxPrice);
 
-			if(list.size() == 0) {
+			if (list.size() == 0) {
 				model.addAttribute("msg", "該当する商品がありませんでした");
 				return "goodsSearch";
 			} else {
@@ -69,5 +76,29 @@ public class GoodsController {
 		}
 
 	}
+
+	@GetMapping(value = "/goodsDeleteResult")
+	public String delete(@ModelAttribute("yamazon") GoodsForm form, Model model) {
+		String number = form.getNumber();
+		Goods goods = new Goods(Integer.parseInt(number));
+		goodsDao.delete(goods);
+		return "goodsDeleteResult";
+
+	}
+
+	@GetMapping(value = "/goodsUpdateConfirm")
+	public String update(@ModelAttribute("yamazon") GoodsForm form, Model model) {//未実装
+		String number = form.getNumber();
+		return "goodsUpdateConfirm";
+
+	}
+
+	@PostMapping(value = "/goodsUpdateResult")
+	public String updateResult(@ModelAttribute("yamazon") GoodsForm form, Model model) {//未実装
+		String number = form.getNumber();
+		return "goodsUpdateResult";
+
+	}
+
 
 }

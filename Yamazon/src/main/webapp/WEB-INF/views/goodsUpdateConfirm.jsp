@@ -61,7 +61,7 @@
 			<h4>更新内容を右側の欄に入力・確認してください</h4>
 		</div>
 	</section>
-	<form action="goodsUpdateResult.html" enctype="multipart/form-data"
+	<form action="goodsUpdateResult" enctype="multipart/form-data"
 		method="post" style="color: black">
 		<div class="text-center">
 			<div class="container">
