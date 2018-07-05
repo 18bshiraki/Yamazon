@@ -21,6 +21,7 @@ public class MenuController {
 
 	@Autowired
 	HttpSession session;
+
 	@Autowired
 	GoodsDao goodsDao;
 
@@ -28,7 +29,7 @@ public class MenuController {
 	public String menu(@ModelAttribute("yamazon")Search form,Model model) {
 		session.removeAttribute("manager");
 		List<Goods> goods = goodsDao.goodsMenu();
-		model.addAttribute("list",goods);
+		model.addAttribute("list", goods);
 		return "menu";
 	}
 

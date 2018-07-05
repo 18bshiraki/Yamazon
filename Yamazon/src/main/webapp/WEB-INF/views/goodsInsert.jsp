@@ -33,10 +33,10 @@
 	<section class="banner" role="banner">
 		<header id="header">
 			<div class="header-content clearfix">
-				<a class="logo" href="menu.html"><img src="ロゴ.jpg"></a>
+				<a class="logo" href="menu"><img src="ロゴ.jpg"></a>
 				<nav class="navigation" role="navigation">
 					<ul class="primary-nav">
-						<li><a href="logout.html">Logout</a></li>
+						<li><a href="logout">Logout</a></li>
 					</ul>
 				</nav>
 				<a href="#" class="nav-toggle">Menu<span></span></a>
@@ -61,20 +61,20 @@
 		</div>
 	</section>
 	<div class="text-center">
-		<form action="goodsInsertConfirm.html" enctype="multipart/form-data"
+		<form action="goodsInsertConfirm" enctype="multipart/form-data"
 			method="post">
 			<div class="container">
 				<div class="row">
 					<h5>商品名</h5>
 					<div class="form-inline" style="padding: 8px;">
-						<input type="text" class="form-control input-sm" id="name"
-							placeholder="商品名" size="45" value="コーヒーメーカー">
+						<input type="text" class="form-control input-sm" name="name"
+							placeholder="商品名" size="45">
 					</div>
 				</div>
 				<div class="row">
 					<h5>商品画像アップロード</h5>
 					<div class="form-inline" style="padding: 8px;">
-						<input type="file" class="form-control input-sm" id="file"
+						<input type="file" class="form-control input-sm" name="image"
 							size="45">
 					</div>
 					<div class="preview"></div>
@@ -83,23 +83,23 @@
 					<h5>商品説明</h5>
 					<div class="form-inline" style="padding: 8px;">
 						<textarea rows="5" cols="45" class="form-control input-sm"
-							id="description">コーヒーメーカーです</textarea>
+							name="explain"></textarea>
 					</div>
 				</div>
 				<div class="row">
 					<h5>商品カテゴリー</h5>
 					<div class="form-inline" style="padding: 8px;">
-						<select class="form-control input-sm" id="category">
-							<option value="1">コーヒーメーカ－</option>
-							<option value="2">炊飯器</option>
-							<option value="3">ホットプレート</option>
+						<select class="form-control input-sm" name="category">
+							<option value="コーヒーメーカ－">コーヒーメーカ－</option>
+							<option value="炊飯器">炊飯器</option>
+							<option value="ホットプレート">ホットプレート</option>
 						</select>
 					</div>
 				</div>
 				<div class="row">
 					<h5>商品数</h5>
 					<div class="form-inline" style="padding: 8px;">
-						<input type="text" class="form-control input-sm" id="stock"
+						<input type="text" class="form-control input-sm" name="stock"
 							placeholder="商品数" size="20" value="20">個
 					</div>
 				</div>
@@ -107,8 +107,8 @@
 					<h5>1個当たり単価(税抜き)</h5>
 					<p>※数字のみで入力してください</p>
 					<div class="form-inline" style="padding: 8px;">
-						<input type="text" class="form-control input-sm" id="unitPrice"
-							placeholder="単価" size="20" value="50000">円
+						<input type="text" class="form-control input-sm" name="price"
+							placeholder="単価" size="20">円
 					</div>
 				</div>
 			</div>
