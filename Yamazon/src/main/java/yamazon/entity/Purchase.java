@@ -30,11 +30,11 @@ public class Purchase {
 		this.taxPrice = taxPrice;
 	}
 
-	public String getBuyHistory() {
+	public String getPurchaseHistory() {
 		return purchaseHistory;
 	}
 
-	public void setBuyHistory(String purchaseHistory) {
+	public void setPurchaseHistory(String purchaseHistory) {
 		this.purchaseHistory = purchaseHistory;
 	}
 }

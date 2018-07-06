@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!-->
 <html class="no-js" lang="">
 <!--<![endif]-->
 <head>
@@ -24,65 +24,92 @@
 <body>
 <!-- header top section -->
 <section class="banner" role="banner">
- <header id="header">
-    <div class="header-content clearfix"> <a class="logo" href="menu.html"><img src="ロゴ.jpg"></a>
-      <nav class="navigation" role="navigation">
-        <ul class="primary-nav">
-         <li>山田造さん</li>
-         <li><a href="account">Mypage</a></li>
-          <li><a href="cart">Cart</a></li>
-          <li><a href="login">Login</a></li>
-          <li><a href="logout">Logout</a></li>
-        </ul>
-      </nav>
-      <a href="#" class="nav-toggle">Menu<span></span></a> </div>
-  </header>
+ 		<header id="header">
+			<div class="header-content clearfix">
+				<a class="logo" href="menu"><img src="ロゴ.jpg"></a>
+				<nav class="navigation" role="navigation">
+					<ul class="primary-nav">
+					<c:if test="${not empty sessionScope}">
+						<li><c:out value="${sessionScope.user.userName}" />さん</li>
+						<li><a href="account">Mypage</a></li>
+					</c:if>
+						<li><a href="cart">Cart</a></li>
+						<li><a href="login">Login</a></li>
+					<c:if test="${not empty sessionScope}">
+						<li><a href="logout">Logout</a></li>
+					</c:if>
+					</ul>
+				</nav>
+				<a href="#" class="nav-toggle">Menu<span></span></a>
+			</div>
+		</header>
 </section>
 <section id="hero" class="section ">
 </section>
 <div class="text-center">
-
-          <h2>こちらでよろしいですか？</h2>
+       <h2>こちらでよろしいですか？</h2>
   <section id="hero" class="section ">
 </section>
+<form:form action="accountUpdateConfirm" method="post" modelAttribute="yamazon">
  <div class="row">
     <h5>新しい電話番号</h5>
+   <h6><font color="red">※数字のみ入力してください（ハイフンなし）</font></h6>
     <div class="form-inline" style="padding: 8px;">
-      <input type="text" class="form-control input-sm" id="phoneName" placeholder="新しい電話番号" size="45" value="09055555888" readonly>
+    <c:if test="${tell.isEmpty()}" var="t"/>
+      <c:if test="${!t}" >
+    <form:input type="text" class="form-control input-sm" id="phoneName" placeholder="新しい電話番号" size="45" path="tel" readonly="true"/>
+    </c:if>
+    <c:if test="${t}" >
+      <form:input type="text" class="form-control input-sm" id="phoneName" placeholder="新しい電話番号" size="45" path="tel" value="${sessionScope.user.phoneNumber}" readonly="true"/>
+    </c:if>
     </div>
   </div>
  <div class="row">
     <h5>新しい名前</h5>
     <div class="form-inline" style="padding: 8px;">
-      <input type="text" class="form-control input-sm" id="userName" placeholder="新しい名前" size="45" value="山田正樹" readonly>
+      <c:if test="${name.isEmpty()}" var="n"/>
+      <c:if test="${!n}" >
+      <form:input type="text" class="form-control input-sm" id="userName" placeholder="新しい名前" size="45" path="name" readonly="true"/>
+      </c:if>
+      <c:if test="${n}" >
+      <form:input type="text" class="form-control input-sm" id="userName" placeholder="新しい名前" size="45" path="name" value="${sessionScope.user.userName}" readonly="true"/>
+      </c:if>
     </div>
   </div>
   <div class="row">
     <h5>新しい住所</h5>
     <div class="form-inline" style="padding: 8px;">
-      <input type="text" class="form-control input-sm" id="address" placeholder="ご住所" size="45" readonly value="青森県三戸郡南部町剣吉88-88-88" readonly>
+      <c:if test="${address.isEmpty()}" var="a"/>
+      <c:if test="${!a}" >
+      <form:input type="text" class="form-control input-sm" id="address" placeholder="ご住所" size="45" path="address" readonly="true"/>
+      </c:if>
+      <c:if test="${a}" >
+      <form:input type="text" class="form-control input-sm" id="address" placeholder="ご住所" size="45" path="address" value="${sessionScope.user.address}" readonly="true"/>
+      </c:if>
     </div>
   </div>
   <div class="row">
     <h5>新しいパスワード</h5>
     <div class="form-inline" style="padding: 8px;">
-      <input type="password" class="form-control input-sm" placeholder="Password" size="45" value="1129110" readonly>
+      <c:if test="${newpass.isEmpty()}" var="p"/>
+      <c:if test="${!p}" >
+      <form:input type="password" class="form-control input-sm" placeholder="Password" size="45" path="pass" readonly="true"/>
+      </c:if>
+      <c:if test="${p}" >
+      <form:input type="password" class="form-control input-sm" placeholder="Password" size="45" path="pass" value="${sessionScope.user.password}" readonly="true"/>
+      </c:if>
     </div>
-     <h5>新しいパスワードをもう一度入力</h5>
-    <div class="form-inline" style="padding: 8px;">
-      <input type="password" class="form-control input-sm" placeholder="Password" size="45" value="1129110">
-    </div>
   </div>
-  </div>
+     <div class="text-center">
+        <form:button class="btn btn-success btn-xs">次へ<span class="glyphicon glyphicon-chevron-right"></span></form:button>
+     </div>
+</form:form>
+</div>
 <div class="text-center">
-    <button type="button" class="btn btn-success btn-xs" onclick="location.href='accountUpdateResult.html'; return false;">更新 <span class="glyphicon glyphicon-chevron-right"></span></button>
-  </div>
-<div class="text-center">
-			<a href="accountUpdate.html"><button type="button" class="return btn-outline-dark">
-					<span class="glyphicon glyphicon-chevron-left"></span>戻る
-				</button>
-			</a>
-		</div>
+	<a href="account"><button type="button" class="return btn-outline-dark"><span class="glyphicon glyphicon-chevron-left"></span>戻る</button>
+	</a>
+</div>
+
 <footer class="footer">
   <div class="container">
     <div class="col-md-6 left">

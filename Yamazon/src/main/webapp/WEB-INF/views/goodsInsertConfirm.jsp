@@ -31,10 +31,10 @@
 	<section class="banner" role="banner">
 		<header id="header">
 			<div class="header-content clearfix">
-				<a class="logo" href="menu.html"><img src="ロゴ.jpg"></a>
+				<a class="logo" href="menu"><img src="ロゴ.jpg"></a>
 				<nav class="navigation" role="navigation">
 					<ul class="primary-nav">
-						<li><a href="logout.html">Logout</a></li>
+						<li><a href="logout">Logout</a></li>
 					</ul>
 				</nav>
 				<a href="#" class="nav-toggle">Menu<span></span></a>
@@ -59,57 +59,57 @@
 		</div>
 	</section>
 	<div class="text-center">
-		<form action="goodsInsertResult.html" enctype="multipart/form-data"
+		<form:form action="goodsInsertResult" modelAttribute="yamazon" enctype="multipart/form-data"
 			method="post" style="color: black">
 			<div class="container">
 				<div class="row">
 					<h5>商品名</h5>
 					<div class="form-inline" style="padding: 8px;">
-						<input type="text" class="form-control input-sm" id="name"
-							size="45" value="コーヒーメーカー" readonly>
+						<input type="text" class="form-control input-sm" name="name"
+							size="45" value="${goods.goodsName}" readonly>
 					</div>
 				</div>
 				<div class="row">
 					<h5>商品画像アップロード</h5>
 					<div class="form-inline" style="padding: 8px;">
-						<img src="コーヒーメーカ(修正後).jpg" class="size">
+						<img src="${file}" class="size">
 					</div>
 				</div>
 				<div class="row">
 					<h5>商品説明</h5>
 					<div class="form-inline" style="padding: 8px;">
 						<textarea rows="5" cols="45" class="form-control input-sm"
-							id="description" readonly>コーヒーメーカーです</textarea>
+							name="explain" readonly>${goods.goodsExplain}</textarea>
 					</div>
 				</div>
 				<div class="row">
 					<h5>商品カテゴリー</h5>
 					<div class="form-inline" style="padding: 8px;">
-						<input type="text" class="form-control input-sm" id="category"
-							size="15" value="コーヒーメーカー" readonly>
+						<input type="text" class="form-control input-sm" name="category"
+							size="15" value="${goods.category}" readonly>
 					</div>
 				</div>
 				<div class="row">
 					<h5>商品数</h5>
 					<div class="form-inline" style="padding: 8px;">
-						<input type="text" class="form-control input-sm" id="stock"
-							value="20" size="20" readonly>個
+						<input type="text" class="form-control input-sm" name="stock"
+							value="${goods.stock}" size="20" readonly>個
 					</div>
 				</div>
 				<div class="row">
 					<h5>1個当たり単価(税抜き)</h5>
 					<p>※数字のみで入力してください</p>
 					<div class="form-inline" style="padding: 8px;">
-						<input type="text" class="form-control input-sm" id="unitPrice"
-							value="50000" size="20" readonly>円
+						<input type="text" class="form-control input-sm" name="price"
+							value="${goods.price}" size="20" readonly>円
 					</div>
 				</div>
 				<div class="row">
 						<h5>1個当たり単価(税込み)</h5>
 						<p>※自動算出です</p>
 						<div class="form-inline" style="padding: 8px;">
-							<input type="text" class="form-control input-sm" id="unitPrice"
-								value="54000" size="20" readonly>円
+							<input type="text" class="form-control input-sm" name="taxPrice"
+								value="${goods.taxPrice}" size="20" readonly>円
 						</div>
 				</div>
 			</div>
@@ -119,12 +119,12 @@
 				</button>
 			</div>
 			<div class="text-center">
-				<a href="goodsInsert.html"><button type="button"
+				<a href="goodsInsert"><button type="button"
 						class="return btn-outline-dark">
 						<span class="glyphicon glyphicon-chevron-left"></span>戻る
 					</button></a>
 			</div>
-		</form>
+		</form:form>
 	</div>
 <footer class="footer">
   <div class="container">

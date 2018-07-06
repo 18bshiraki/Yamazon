@@ -25,10 +25,15 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <link href="css/yamazon.css" rel="stylesheet">
+<%-- onclickした時の画面遷移と値の送信 --%>
 <script type="text/javascript">
 	function MoveCheck() {
 		if (confirm("この商品を削除しますか？")) {
-			window.location.href = "goodsDeleteResult.html";
+			document.submitInfo.submit();
+			document.submitInfo.action = "goodsDeleteResult";
+		} else {
+			document.submitInfo.submit();
+			document.submitInfo.action = "goodsSearchResult";
 		}
 	}
 </script>
@@ -39,10 +44,10 @@
 	<section class="banner" role="banner">
 		<header id="header">
 			<div class="header-content clearfix">
-				<a class="logo" href="menu.html"><img src="ロゴ.jpg"></a>
+				<a class="logo" href="menu"><img src="ロゴ.jpg"></a>
 				<nav class="navigation" role="navigation">
 					<ul class="primary-nav">
-						<li><a href="logout.html">Logout</a></li>
+						<li><a href="logout">Logout</a></li>
 					</ul>
 				</nav>
 				<a href="#" class="nav-toggle">Menu<span></span></a>
@@ -64,40 +69,44 @@
 		</div>
 	</section>
 	<div class="text-center" style="margin: 0px 0px 20px 0px">
-		<table class="table table-hover"
-			style="color: black; width: 90%; margin: auto;">
-			<thead>
-				<tr>
-					<th><h5>商品ID</h5></th>
-					<th><h5>商品画像</h5></th>
-					<th><h5>商品名</h5></th>
-					<th><h5>カテゴリ</h5></th>
-					<th><h5>値段(税抜き)</h5></th>
-					<th><h5>値段(税込み)</h5></th>
-					<th><h5>在庫</h5></th>
-					<th><h5>商品説明</h5></th>
-					<th></th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-			<c:forEach var="goods" items="${goods}">
-				<tr>
-					<td>${goods.goodsNumber}</td>
-					<td><img src="${goods.goodsImage}" width="100" height="120"></td>
-					<td style="width: 120px; height: auto;">${goods.goodsName}</td>
-					<td>${goods.category}</td>
-					<td>${goodsP}</td>
-					<td>${goodsPT}</td>
-					<td>${goods.stock}点</td>
-					<td style="width: 350px; height: auto;">${goods.goodsExplain}</td>
-					<td><button type="submit" value="${goods.goodsNumber}"
-							onclick="location.href='goodsUpdateConfirm'">更新</button></td>
-					<td><button type="submit" value="${goods.goodsNumber}" onclick="MoveCheck();">削除</button></td>
-				</tr>
-			</c:forEach>
-			</tbody>
-		</table>
+		<form:form action="goodsUpdateConfirm" name="submitInfo" modelAttribute="yamazon" method="get">
+		<input type="hidden" name="keyWord" value="${keyWord}">
+			<table class="table table-hover"
+				style="color: black; width: 90%; margin: auto;">
+				<thead>
+					<tr>
+						<th><h5>商品ID</h5></th>
+						<th><h5>商品画像</h5></th>
+						<th><h5>商品名</h5></th>
+						<th><h5>カテゴリ</h5></th>
+						<th><h5>値段(税抜き)</h5></th>
+						<th><h5>値段(税込み)</h5></th>
+						<th><h5>在庫</h5></th>
+						<th><h5>商品説明</h5></th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="goods" items="${goods}">
+						<tr>
+							<td>${goods.goodsNumber}</td>
+							<td><img src="${goods.goodsImage}" width="100" height="120"></td>
+							<td style="width: 120px; height: auto;">${goods.goodsName}</td>
+							<td>${goods.category}</td>
+							<td>${goodsP}</td>
+							<td>${goodsPT}</td>
+							<td>${goods.stock}点</td>
+							<td style="width: 350px; height: auto;">${goods.goodsExplain}</td>
+							<td><button type="submit" name="number"
+									value="${goods.goodsNumber}">更新</button></td>
+							<td><button type="submit" name="number"
+									value="${goods.goodsNumber}" onclick="MoveCheck();">削除</button></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</form:form>
 		<div class="text-center">
 			<a href="goodsSearch"><button type="button"
 					class="return btn-outline-dark">

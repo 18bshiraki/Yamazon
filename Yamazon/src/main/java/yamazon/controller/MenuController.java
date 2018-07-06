@@ -1,5 +1,8 @@
 package yamazon.controller;
 
+
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import yamazon.dao.GoodsDao;
+import yamazon.entity.Goods;
 import yamazon.form.LoginForm;
 import yamazon.form.Search;
 
@@ -18,12 +23,17 @@ public class MenuController {
 	@Autowired
 	HttpSession session;
 
+	@Autowired
+	GoodsDao goodsDao;
+
 	@RequestMapping(value = { "/", "/menu" }, method = RequestMethod.GET)
 	public String menu(@ModelAttribute("yamazon")Search form,Model model) {
 		session.removeAttribute("manager");
+		List<Goods> goods = goodsDao.goodsMenu();
+		model.addAttribute("list", goods);
+
 		return "menu";
 	}
-
 	@RequestMapping(value = "/account", method = RequestMethod.GET)
 	public String account(Model model) {
 		return "account";
