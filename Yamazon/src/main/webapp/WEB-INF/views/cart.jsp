@@ -23,13 +23,15 @@
 	<section class="banner" role="banner">
 		<header id="header">
 			<div class="header-content clearfix">
-				<a class="logo" href="menu.html"><img src="ロゴ.jpg"></a>
+				<a class="logo" href="menu"><img src="ロゴ.jpg"></a>
 				<nav class="navigation" role="navigation">
 					<ul class="primary-nav">
-						<li>山田造さん</li>
-						<li><a href="account.html">Mypage</a></li>
-						<li><a href="login.html">Login</a></li>
-						<li><a href="logout.html">Logout</a></li>
+						<c:if test="${not empty sessionScope}">
+							<li><c:out value="${sessionScope.user.userName}" />さん</li>
+						</c:if>
+						<li><a href="account">Mypage</a></li>
+						<li><a href="login">Login</a></li>
+						<li><a href="logout">Logout</a></li>
 					</ul>
 				</nav>
 				<a href="#" class="nav-toggle">Menu<span></span></a>
@@ -60,28 +62,30 @@
 							<td></td>
 						</tr>
 						<form:form modelAttribute="yamazon" action="cartDel">
-						<c:forEach var="goods" items="${goods}">
-							<tr>
-								<td onclick="location.href='goodsDetail.html'; return false;"><h5>${fn:escapeXml(goods.goodsName)}</h5></td>
-								<td onclick="location.href='goodsDetail.html'; return false;"><h5>${fn:escapeXml(goods.taxPrice)}</h5></td>
-								<td onclick="location.href='goodsDetail.html'; return false;"><font
-									color="black"><h5>${fn:escapeXml(goods.category)}</h5></font></td>
-								<td><button type="submit" name="id" class="return btn-outline-dark" value="${goods.goodsNumber}"
-										style="width: 120px; padding: 0px 5px; margin: 0px;">
-										<h5>カートから出す</h5>
-									</button></td>
-							</tr>
+							<c:forEach var="goods" items="${goods}">
+								<tr>
+									<td onclick="location.href='goodsDetail'; return false;"><h5>${fn:escapeXml(goods.goodsName)}</h5></td>
+									<td onclick="location.href='goodsDetail'; return false;"><h5>${fn:escapeXml(goods.taxPrice)}</h5></td>
+									<td onclick="location.href='goodsDetail'; return false;"><font
+										color="black"><h5>${fn:escapeXml(goods.category)}</h5></font></td>
+									<td><button type="submit" name="id"
+											class="return btn-outline-dark" value="${goods.goodsNumber}"
+											style="width: 120px; padding: 0px 5px; margin: 0px;">
+											<h5>カートから出す</h5>
+										</button></td>
+								</tr>
 							</c:forEach>
-							</form:form>
+						</form:form>
 					</table>
 				</div>
 			</div>
-			<div class="text-center">
-				<button type="button" class="btn btn-success btn-xs"
-					onclick="location.href='purchase.html'; return false;">
+			<form:form modelAttribute="yamazon" action="purchase">
+				<div class="text-center">
+					<form:button class="btn btn-success btn-xs">
 					購入へ<span class="glyphicon glyphicon-chevron-right"></span>
-				</button>
-			</div>
+					</form:button>
+				</div>
+			</form:form>
 		</div>
 	</div>
 	<footer class="footer">
