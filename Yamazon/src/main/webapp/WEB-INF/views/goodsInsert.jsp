@@ -85,7 +85,7 @@
 					</c:if>
 					<div class="form-inline" style="padding: 8px;">
 						<input type="file" class="form-control input-sm" name="file"
-							size="45" value="${file}">
+							size="45">
 					</div>
 					<div class="preview size"></div>
 				</div>
@@ -116,7 +116,7 @@
 					<p>※数字のみで入力してください</p>
 					<div class="form-inline" style="padding: 8px;">
 						<input type="text" class="form-control input-sm" name="stock"
-							size="20">個
+							size="20" value="${goods.stock}">個
 					</div>
 				</div>
 				<div class="row">
@@ -124,7 +124,7 @@
 					<p>※数字のみで入力してください</p>
 					<div class="form-inline" style="padding: 8px;">
 						<input type="text" class="form-control input-sm" name="price"
-							size="20">円
+							size="20" value="${goods.price}">円
 					</div>
 				</div>
 			</div>
