@@ -67,7 +67,7 @@ public class GoodsDaoImpl implements GoodsDao {
 	public int insert(Goods goods) {
 		BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(goods);
 		return namedjt.update(
-				"INSERT INTO goods_info (goods_number, goods_name, goods_explain, goods_image, price, tax_price, category, stock) VALUES (:goodsNumber, :goodsName, :goodsExplain, :goodsImage, :price, :taxPrice, :category, :stock)",
+				"INSERT INTO goods_info (goods_name, goods_explain, goods_image, price, tax_price, category, stock) VALUES (:goodsName, :goodsExplain, :goodsImage, :price, :taxPrice, :category, :stock)",
 				paramSource);
 	}
 }

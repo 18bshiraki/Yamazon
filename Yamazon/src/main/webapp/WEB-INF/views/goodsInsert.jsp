@@ -58,6 +58,11 @@
 		</div>
 		<div class="text-center" style="padding: 10px;">
 			<h4>登録内容を入力してください</h4>
+			<c:if test="${not empty msg}">
+				<h5>
+					<span style="color: red;">${msg}</span>
+				</h5>
+			</c:if>
 		</div>
 	</section>
 	<div class="text-center">
@@ -68,14 +73,19 @@
 					<h5>商品名</h5>
 					<div class="form-inline" style="padding: 8px;">
 						<input type="text" class="form-control input-sm" name="name"
-							size="45">
+							size="45" value="${goods.goodsName}">
 					</div>
 				</div>
 				<div class="row">
 					<h5>商品画像アップロード</h5>
+					<c:if test="${not empty select}">
+						<h6>
+							<span style="color: red;">${select}</span>
+						</h6>
+					</c:if>
 					<div class="form-inline" style="padding: 8px;">
 						<input type="file" class="form-control input-sm" name="file"
-							size="45">
+							size="45" value="${file}">
 					</div>
 					<div class="preview size"></div>
 				</div>
@@ -83,18 +93,27 @@
 					<h5>商品説明</h5>
 					<div class="form-inline" style="padding: 8px;">
 						<textarea rows="5" cols="45" class="form-control input-sm"
-							name="description"></textarea>
+							name="explain">${goods.goodsExplain}</textarea>
 					</div>
 				</div>
 				<div class="row">
 					<h5>商品カテゴリー</h5>
+					<c:if test="${not empty select}">
+						<h6>
+							<span style="color: red;">${select}</span>
+						</h6>
+					</c:if>
 					<div class="form-inline" style="padding: 8px;">
-						<input type="text" class="form-control input-sm" name="category"
-							size="15">
+						<select class="form-control input-sm" name="category">
+							<option value="コーヒーメーカー">コーヒーメーカ－</option>
+							<option value="ポット">ポット</option>
+							<option value="ホットプレート">ホットプレート</option>
+						</select>
 					</div>
 				</div>
 				<div class="row">
 					<h5>商品数</h5>
+					<p>※数字のみで入力してください</p>
 					<div class="form-inline" style="padding: 8px;">
 						<input type="text" class="form-control input-sm" name="stock"
 							size="20">個
