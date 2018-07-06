@@ -19,11 +19,6 @@ public class AccountInfoController {
 		return "accountDelete";
 	}
 
-	@RequestMapping(value = "/accountPurchase", method = RequestMethod.GET)
-	public String accountPurchase(@ModelAttribute("yamazon")UserInsertForm form, Model model) {
-		return "accountPurchase";
-	}
-
 	@RequestMapping(value = "/accountUpdate", method = RequestMethod.GET)
 	public String accountUpdate(@ModelAttribute("yamazon")UserInsertForm form, Model model) {
 		return "accountUpdate";

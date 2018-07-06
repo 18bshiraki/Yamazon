@@ -50,8 +50,11 @@
 <div class="text-center">
 <h4><a href="accountUpdate">アカウント情報更新</a></h4>
 <section id="hero" class="section ">
+<form:form method="post" modelAttribute="yamazon">
 <h4><a href="accountPurchase">購入履歴</a></h4>
+</form:form>
 </section>
+
 <h4><a href="accountDelete">退会</a></h4>
 </div>
 <section id="hero" class="section ">
