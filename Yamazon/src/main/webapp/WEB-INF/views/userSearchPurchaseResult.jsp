@@ -74,7 +74,7 @@ margin: 20px
 				</tr>
 			</thead>
 			<tbody>
-			<c:forEach var="" items="${}">
+
 					<tr>
 					<td>2018/1/1/00:00</td>
 					<td>電気ポット(白)</td>
