@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
 <!doctype html>
 <html class="no-js" lang="">
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <head>
 <meta charset="utf-8">
 <meta name="description" content="">
@@ -20,39 +22,43 @@
 </head>
 
 <body>
+
 	<!-- header top section -->
 	<section class="banner" role="banner">
-		<header id="header">
+ 		<header id="header">
 			<div class="header-content clearfix">
 				<a class="logo" href="menu"><img src="ロゴ.jpg"></a>
 				<nav class="navigation" role="navigation">
 					<ul class="primary-nav">
-					 <li>山田造さん</li>
+					<c:if test="${not empty sessionScope}">
+						<li><c:out value="${sessionScope.user.userName}" />さん</li>
 						<li><a href="account">Mypage</a></li>
+					</c:if>
 						<li><a href="cart">Cart</a></li>
 						<li><a href="login">Login</a></li>
+					<c:if test="${not empty sessionScope}">
 						<li><a href="logout">Logout</a></li>
+					</c:if>
 					</ul>
 				</nav>
 				<a href="#" class="nav-toggle">Menu<span></span></a>
 			</div>
 		</header>
 	</section>
+	<form:form action="accountDeleteResult" method="post" modelAttribute="yamazon">
 	<section id="hero" class="section "></section>
 	<div class="text-center" style="margin: 50px;">
 		<h2>本当に退会しますか？</h2>
 		<div class="text-center">
-    <button type="button" class="btn btn-success btn-xs" onclick="location.href='accountDeleteResult'; return false;">退会 <span class="glyphicon glyphicon-chevron-right"></span></button>
-  </div>
-		<div class="text-center">
-			<a href="account">
-				<button type="button" class="return btn-outline-dark">
-					<span class="glyphicon glyphicon-chevron-left"></span>戻る
-				</button>
-			</a>
+    		<form:button class="btn btn-success btn-xs">退会 <span class="glyphicon glyphicon-chevron-right"></span></form:button>
 		</div>
 	</div>
-
+	</form:form>
+		<div class="text-center">
+			<a href="account">
+				<button type="button" class="return btn-outline-dark"><span class="glyphicon glyphicon-chevron-left"></span>戻る</button>
+			</a>
+		</div>
 <footer class="footer">
   <div class="container">
     <div class="col-md-6 left">

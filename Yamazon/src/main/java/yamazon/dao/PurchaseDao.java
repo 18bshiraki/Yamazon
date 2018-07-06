@@ -6,5 +6,9 @@ import yamazon.entity.Purchase;
 
 public interface PurchaseDao {
 
+
 	public List<Purchase> purchaseHistory(int userId);
+
+	public List<Purchase> userid(int userid) ;
+
 }

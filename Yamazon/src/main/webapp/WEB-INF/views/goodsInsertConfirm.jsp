@@ -60,7 +60,7 @@
 	</section>
 	<div class="text-center">
 		<form:form action="goodsInsertResult" modelAttribute="yamazon" enctype="multipart/form-data"
-			method="get" style="color: black">
+			method="post" style="color: black">
 			<div class="container">
 				<div class="row">
 					<h5>商品名</h5>
@@ -72,28 +72,28 @@
 				<div class="row">
 					<h5>商品画像アップロード</h5>
 					<div class="form-inline" style="padding: 8px;">
-						<img src="コーヒーメーカ(修正後).jpg" class="size">
+						<img src="${file}" class="size">
 					</div>
 				</div>
 				<div class="row">
 					<h5>商品説明</h5>
 					<div class="form-inline" style="padding: 8px;">
 						<textarea rows="5" cols="45" class="form-control input-sm"
-							name="explain" readonly>コーヒーメーカーです</textarea>
+							name="explain" readonly>${goods.goodsExplain}</textarea>
 					</div>
 				</div>
 				<div class="row">
 					<h5>商品カテゴリー</h5>
 					<div class="form-inline" style="padding: 8px;">
 						<input type="text" class="form-control input-sm" name="category"
-							size="15" value="コーヒーメーカー" readonly>
+							size="15" value="${goods.category}" readonly>
 					</div>
 				</div>
 				<div class="row">
 					<h5>商品数</h5>
 					<div class="form-inline" style="padding: 8px;">
 						<input type="text" class="form-control input-sm" name="stock"
-							value="20" size="20" readonly>個
+							value="${goods.stock}" size="20" readonly>個
 					</div>
 				</div>
 				<div class="row">
@@ -101,7 +101,7 @@
 					<p>※数字のみで入力してください</p>
 					<div class="form-inline" style="padding: 8px;">
 						<input type="text" class="form-control input-sm" name="price"
-							value="50000" size="20" readonly>円
+							value="${goods.price}" size="20" readonly>円
 					</div>
 				</div>
 				<div class="row">
@@ -109,7 +109,7 @@
 						<p>※自動算出です</p>
 						<div class="form-inline" style="padding: 8px;">
 							<input type="text" class="form-control input-sm" name="taxPrice"
-								value="54000" size="20" readonly>円
+								value="${goods.taxPrice}" size="20" readonly>円
 						</div>
 				</div>
 			</div>

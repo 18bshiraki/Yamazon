@@ -34,7 +34,6 @@ public class MenuController {
 
 		return "menu";
 	}
-
 	@RequestMapping(value = "/account", method = RequestMethod.GET)
 	public String account(Model model) {
 		return "account";

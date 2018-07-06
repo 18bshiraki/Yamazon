@@ -10,6 +10,8 @@ public class UserInsertForm {
 
 	private String pass;
 
+	private String newpass;
+
 	public String getName() {
 		return name;
 	}
@@ -40,6 +42,14 @@ public class UserInsertForm {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public String getNewpass() {
+		return newpass;
+	}
+
+	public void setNewpass(String newpass) {
+		this.newpass = newpass;
 	}
 
 }

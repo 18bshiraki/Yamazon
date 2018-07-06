@@ -26,15 +26,15 @@
 				<a class="logo" href="menu"><img src="ロゴ.jpg"></a>
 				<nav class="navigation" role="navigation">
 					<ul class="primary-nav">
-					<c:if test="${not empty sessionScope}">
-						<li><c:out value="${sessionScope.user.userName}" />さん</li>
-						<li><a href="account">Mypage</a></li>
-					</c:if>
+						<c:if test="${not empty sessionScope}">
+							<li><c:out value="${sessionScope.user.userName}" />さん</li>
+							<li><a href="account">Mypage</a></li>
+						</c:if>
 						<li><a href="cart">Cart</a></li>
 						<li><a href="login">Login</a></li>
-					<c:if test="${not empty sessionScope}">
-						<li><a href="logout">Logout</a></li>
-					</c:if>
+						<c:if test="${not empty sessionScope}">
+							<li><a href="logout">Logout</a></li>
+						</c:if>
 					</ul>
 				</nav>
 				<a href="#" class="nav-toggle">Menu<span></span></a>
@@ -44,11 +44,11 @@
 	<section id="hero" class="section ">
 		<div class="container">
 			<div class="row">
-			<form:form modelAttribute="yamazon" action="search">
-				<div class=" hero">
-					<div class="hero-content">
+				<form:form modelAttribute="yamazon" action="search">
+					<div class=" hero">
+						<div class="hero-content">
 
-						<div class="input-group">
+							<div class="input-group">
 
 								<form:input path="word" class="form-control"
 									placeholder="キーワードを入力してください" />
@@ -59,22 +59,16 @@
 									</button>
 								</span>
 
-						</div>
+							</div>
 
+						</div>
+						<!-- hero -->
 					</div>
-					<!-- hero -->
-				</div>
 				</form:form>
 			</div>
 		</div>
 	</section>
 
-	<!-- header top section -->
-	<!-- header content section -->
-
-	<!-- footer section -->
-
-	<!-- JS FILES -->
 	<section id="portfolio">
 		<div class="container">
 			<div class="row">
@@ -83,21 +77,21 @@
 				</div>
 			</div>
 			<c:forEach var="goods" items="${list}">
-			<div class="row">
-				<div class="col-sm-3 portfolio-item">
-					<a href="goodsDetail" class="portfolio-link">
-						<div class="caption">
-							<div class="caption-content">
-								<h3>${fn:escapeXml(goods.goodsName)}</h3>
-								<h4>${fn:escapeXml(goods.taxPrice)}円</h4>
-							</div>
-						</div> <img src=${fn:escapeXml(goods.goodsImage)} class="img-responsive" alt=""
-						width="200" height="200">
-					</a>
-				</div>
+				<div class="row">
+					<div class="col-sm-3 portfolio-item">
+						<a href="goodsDetail" class="portfolio-link">
+							<div class="caption">
+								<div class="caption-content">
+									<h3>${fn:escapeXml(goods.goodsName)}</h3>
+									<h4>${fn:escapeXml(goods.taxPrice)}円</h4>
+								</div>
+							</div> <img src=${fn:escapeXml(goods.goodsImage)
+							} class="img-responsive" alt="" width="200" height="200">
+						</a>
+					</div>
 			</c:forEach>
 
-			</div>
+		</div>
 		</div>
 	</section>
 	<footer class="footer">
