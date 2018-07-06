@@ -31,8 +31,11 @@ p {
 </style>
 <script type="text/javascript">
 	function MoveCheck() {
-		if (confirm("この商品を削除しますか？")) {
+		if (confirm("この情報を削除しますか？")) {
 			document.submitInfo.submit();
+		} else {
+
+			document.submitInfo.action = "managerSelect"
 		}
 	}
 </script>
@@ -62,6 +65,11 @@ p {
 		<div class="text-center">
 			<div class="container">
 				<div class="col-md-6 col-md-offset-3">
+					<c:if test="${not empty msg}">
+						<h4>
+							<span class="text-danger">${msg}</span>
+						</h4>
+					</c:if>
 					<form:form action="managerDeleteResult" name="submitInfo"
 						modelAttribute="yamazon" method="get">
 						<table class="table" style="color: black">
@@ -76,7 +84,9 @@ p {
 									<td>${fn:escapeXml(manager.managerId)}</td>
 									<td>${fn:escapeXml(manager.managerName)}</td>
 									<td>${fn:escapeXml(manager.managerPassword)}</td>
-									<td><button type="submit" value="${fn:escapeXml(manager.managerId)}" onclick="MoveCheck();">削除</button></td>
+									<td><button type="submit" name="managerId"
+											value="${fn:escapeXml(manager.managerId)}"
+											onclick="MoveCheck();">削除</button></td>
 								</tr>
 							</c:forEach>
 						</table>

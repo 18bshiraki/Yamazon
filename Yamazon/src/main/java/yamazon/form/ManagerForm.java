@@ -1,15 +1,16 @@
 package yamazon.form;
 
 public class ManagerForm {
-private int managerId;
+private String managerId;
 private String managerName;
 private String managerPassword;
+private String rePassword;
 
-public int getManagerId() {
+public String getManagerId() {
 	return managerId;
 }
 
-public void setManagerId(int managerId) {
+public void setManagerId(String managerId) {
 	this.managerId = managerId;
 }
 
@@ -17,7 +18,7 @@ public String getManagerName() {
 	return managerName;
 }
 
-public void setGoodsName(String managerName) {
+public void setManagerName(String managerName) {
 	this.managerName = managerName;
 }
 
@@ -25,7 +26,14 @@ public String getManagerPassword() {
 	return managerPassword;
 }
 
-public void setPrice(String managerPassword) {
+public void setManagerPassword(String managerPassword) {
 	this.managerPassword = managerPassword;
+}
+public String getRePassword() {
+	return rePassword;
+}
+
+public void setRePassword(String rePassword) {
+	this.rePassword = rePassword;
 }
 }

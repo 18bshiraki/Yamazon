@@ -49,8 +49,9 @@ public class GoodsDaoImpl implements GoodsDao {
 		return jt.query(sql, new BeanPropertyRowMapper<Goods>(Goods.class), num);
 	}
 
-	public List<Goods> goodsMenu(){
-		return jt.query("SELECT goods_number, goods_name, goods_explain, goods_image, price, tax_price, category, stock FROM goods_info ORDER BY random() LIMIT 4",
+	public List<Goods> goodsMenu() {
+		return jt.query(
+				"SELECT goods_number, goods_name, goods_explain, goods_image, price, tax_price, category, stock FROM goods_info ORDER BY random() LIMIT 4",
 				new BeanPropertyRowMapper<Goods>(Goods.class));
 	}
 
@@ -67,7 +68,7 @@ public class GoodsDaoImpl implements GoodsDao {
 	public int insert(Goods goods) {
 		BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(goods);
 		return namedjt.update(
-				"INSERT INTO goods_info (goods_number, goods_name, goods_explain, goods_image, price, tax_price, category, stock) VALUES (:goodsNumber, :goodsName, :goodsExplain, :goodsImage, :price, :taxPrice, :category, :stock)",
+				"INSERT INTO goods_info (goods_name, goods_explain, goods_image, price, tax_price, category, stock) VALUES (:goodsName, :goodsExplain, :goodsImage, :price, :taxPrice, :category, :stock)",
 				paramSource);
 	}
 }

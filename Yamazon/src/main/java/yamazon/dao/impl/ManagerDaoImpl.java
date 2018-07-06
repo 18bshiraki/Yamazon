@@ -27,4 +27,14 @@ public class ManagerDaoImpl implements ManagerDao {
 
 	}
 
+	public int update(String managerName, String managerPassword, int managerId) {
+		return JdbcTemplate.update(
+				"UPDATE manager_info SET manager_name = ?,manager_password = ? WHERE manager_id = ?",managerName,managerPassword,managerId);
+	}
+
+	public int delete(int managerId) {
+		return JdbcTemplate.update(
+				"DELETE FROM manager_info WHERE manager_id = ?",managerId);
+	}
+
 }
