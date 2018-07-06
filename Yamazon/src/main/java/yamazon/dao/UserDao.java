@@ -14,4 +14,6 @@ public interface UserDao {
 
 	public int userUpdate(String newPhoneNumber, String newName, String newAddress, String newPassword, int userId);
 
+	public List<User> findByPhoneNumberAndPassword(String phoneNumber, String password);
+
 }

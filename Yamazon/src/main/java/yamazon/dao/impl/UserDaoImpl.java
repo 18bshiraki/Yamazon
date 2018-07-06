@@ -10,8 +10,13 @@ import org.springframework.stereotype.Repository;
 import yamazon.dao.UserDao;
 import yamazon.entity.User;
 
+
+
 @Repository
 public class UserDaoImpl implements UserDao {
+	@Autowired
+	private JdbcTemplate JdbcTemplate;
+
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -47,5 +52,12 @@ public class UserDaoImpl implements UserDao {
 				+ "WHERE user_id = ?";
 
 		return jdbcTemplate.update(sql, newPhoneNumber, newName, newAddress, newPassword, userId);
+	}
+	public List<User> findByPhoneNumberAndPassword(String phoneNumber, String password) {
+		return JdbcTemplate.query(
+				"SELECT user_id, phone_number,user_name,address,password FROM user_info WHERE phone_number = ? AND password= ?",
+				new BeanPropertyRowMapper<User>(User.class), phoneNumber, password);
+
+
 	}
 }

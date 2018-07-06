@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,42 +59,20 @@
 							<td><h5>カテゴリ</h5></td>
 							<td></td>
 						</tr>
-						<tr>
-							<td onclick="location.href='goodsDetail.html'; return false;"><h5>電気ポッド(白)</h5></td>
-							<td onclick="location.href='goodsDetail.html'; return false;"><h5>￥10,000</h5></td>
-							<td onclick="location.href='goodsDetail.html'; return false;"><font
-								color="black"><h5>電気ポッド</h5></font></td>
-							<td><button type="button" class="return btn-outline-dark"
-									style="width: 120px; padding: 0px 5px; margin: 0px;"
-									onclick="location.href='cart.html'; return false;">
-									<h5>カートから出す</h5>
-								</button></td>
-						</tr>
-						<tr>
-							<td onclick="location.href='goodsDetail.html'; return false;"><h5>電気ポッド(赤)</h5></td>
-							<td onclick="location.href='goodsDetail.html'; return false;"><h5>￥20,000</h5></td>
-							<td onclick="location.href='goodsDetail.html'; return false;"><font
-								color="black"><h5>電気ポッド</h5></font></td>
-							<td>
-								<button type="button" class="return btn-outline-dark"
-									style="width: 120px; padding: 0px 5px; margin: 0px;"
-									onclick="location.href='cart.html'; return false;">
-									<h5>カートから出す</h5>
-								</button>
-							</td>
-						</tr>
-						<tr>
-							<td onclick="location.href='goodsDetail.html'; return false;"><h5>コーヒーメーカー</h5></td>
-							<td onclick="location.href='goodsDetail.html'; return false;"><h5>￥98,000</h5></td>
-							<td onclick="location.href='goodsDetail.html'; return false;"><font
-								color="black"><h5>コーヒーメーカー</h5></font></td>
-							<td><button type="button" class="return btn-outline-dark"
-									style="width: 120px; padding: 0px 5px; margin: 0px;"
-									onclick="location.href='cart.html'; return false;">
-									<h5>カートから出す</h5>
-								</button></td>
-						</tr>
-
+						<form:form modelAttribute="yamazon" action="cartDel">
+						<c:forEach var="goods" items="${goods}">
+							<tr>
+								<td onclick="location.href='goodsDetail.html'; return false;"><h5>${fn:escapeXml(goods.goodsName)}</h5></td>
+								<td onclick="location.href='goodsDetail.html'; return false;"><h5>${fn:escapeXml(goods.taxPrice)}</h5></td>
+								<td onclick="location.href='goodsDetail.html'; return false;"><font
+									color="black"><h5>${fn:escapeXml(goods.category)}</h5></font></td>
+								<td><button type="submit" name="id" class="return btn-outline-dark" value="${goods.goodsNumber}"
+										style="width: 120px; padding: 0px 5px; margin: 0px;">
+										<h5>カートから出す</h5>
+									</button></td>
+							</tr>
+							</c:forEach>
+							</form:form>
 					</table>
 				</div>
 			</div>

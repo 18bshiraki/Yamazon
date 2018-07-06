@@ -10,6 +10,23 @@ public class Goods {
 	private String category;
 	private int stock;
 
+	public Goods() {
+	}
+
+	public Goods(String goodsName, String goodsImage, String goodsExplain, String category, int stock, int price, int taxPrice) {
+		this.goodsName = goodsName;
+		this.goodsImage = goodsImage;
+		this.goodsExplain = goodsExplain;
+		this.category = category;
+		this.stock = stock;
+		this.price = price;
+		this.taxPrice = taxPrice;
+	}
+
+	public Goods(int goodsNumber) {
+		this.goodsNumber = goodsNumber;
+	}
+
 	public int getGoodsNumber() {
 		return this.goodsNumber;
 	}

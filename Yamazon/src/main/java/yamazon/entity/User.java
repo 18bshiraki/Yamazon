@@ -7,6 +7,14 @@ public class User {
 	private String address;
 	private String password;
 
+	public User() {
+
+	}
+
+	public User(String phoneNumber, String userName, String address, String password) {
+
+	}
+
 	public int getUserId() {
 		return userId;
 	}
