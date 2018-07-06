@@ -92,7 +92,7 @@ public class GoodsInsertController {
 					}
 					Path sourcePath = Paths.get(file.getOriginalFilename());
 					Path targetPath = Paths.get(context.getRealPath("/") + "/images", image.getName());
-					Files.move(sourcePath, targetPath);
+					Files.copy(sourcePath, targetPath);
 				}
 				String filePath = (context.getRealPath("/") + "images/" + image.getName());
 

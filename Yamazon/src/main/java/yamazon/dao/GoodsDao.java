@@ -20,4 +20,8 @@ public interface GoodsDao {
 	int delete(Goods goods);
 
 	int insert(Goods goods);
+
+	List<Goods> findIdGetPass(int goodsNumber);
+
+	int update(Goods goods);
 }

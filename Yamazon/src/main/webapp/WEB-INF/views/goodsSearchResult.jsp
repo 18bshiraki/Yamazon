@@ -31,9 +31,9 @@
 		if (confirm("この商品を削除しますか？")) {
 			document.submitInfo.submit();
 			document.submitInfo.action = "goodsDeleteResult";
+			return true;
 		} else {
-			document.submitInfo.submit();
-			document.submitInfo.action = "selectBack";
+			return false;
 		}
 	}
 </script>
@@ -101,7 +101,7 @@
 							<td><button type="submit" name="number"
 									value="${goods.goodsNumber}">更新</button></td>
 							<td><button type="submit" name="number"
-									value="${goods.goodsNumber}" onclick="MoveCheck();">削除</button></td>
+									value="${goods.goodsNumber}" onclick="return MoveCheck();">削除</button></td>
 						</tr>
 					</c:forEach>
 				</tbody>
