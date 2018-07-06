@@ -69,12 +69,6 @@
 		</div>
 	</section>
 
-	<!-- header top section -->
-	<!-- header content section -->
-
-	<!-- footer section -->
-
-	<!-- JS FILES -->
 	<section id="portfolio">
 		<div class="container">
 			<div class="row">

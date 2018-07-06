@@ -19,7 +19,6 @@ public class UserDaoImpl implements UserDao {
 		return JdbcTemplate.query(
 				"SELECT user_id, phone_number,user_name,address,password FROM user_info WHERE phone_number = ? AND password= ?",
 				new BeanPropertyRowMapper<User>(User.class), phoneNumber, password);
-
 	}
 
 	public int insert(String phoneNumber,String userName,String address, String password) {
@@ -28,11 +27,16 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public int userDelete(String phoneNumber, String password) {
-		return JdbcTemplate.update("DELETE FROM user_info WHERE phone_number=? AND password = ?)",phoneNumber,password);
+		return JdbcTemplate.update("DELETE FROM user_info WHERE phone_number = ? AND password = ?",phoneNumber,password);
 	}
 
-	public int userUpdate(String phoneNumber,String userName,String address, String password) {
-		return JdbcTemplate.update("UPDATE product SET phone_number = ?, user_name = ?, address = ?, passwordt = ? WHERE id = ?",phoneNumber,userName,address, password);
+	public int userUpdate(String phoneNumber,String userName,String address, String password, String tell) {
+		return JdbcTemplate.update("UPDATE user_info SET phone_number = ?, user_name = ?, address = ?, password = ? WHERE phone_number = ?",phoneNumber,userName,address,password,tell);
 
+	}
+
+	public List<User> Password(String password) {
+		return JdbcTemplate.query("SELECT user_id, phone_number,user_name,address,password FROM user_info WHERE password= ?",
+				new BeanPropertyRowMapper<User>(User.class),password);
 	}
 }

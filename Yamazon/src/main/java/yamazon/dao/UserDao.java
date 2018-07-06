@@ -11,6 +11,6 @@ public interface UserDao {
 
     public int userDelete(String phoneNumber, String password);
 
-	public int userUpdate(String phoneNumber,String userName,String address, String password);
+	public int userUpdate(String phoneNumber,String userName,String address, String password, String tell);
 
 }
