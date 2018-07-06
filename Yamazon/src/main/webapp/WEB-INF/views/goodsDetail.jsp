@@ -62,7 +62,7 @@
 								</h2>
 								<h3>Coffee maker/Red</h3>
 							</div>
-						</div> <img src="コーヒーメーカ.jpg" class="img-responsive" alt="">
+						</div> <img src="${image}" class="img-responsive" alt="">
 					</a>
 				</div>
 				<div class="text-center">
@@ -78,9 +78,9 @@
 											<th>在庫</th>
 										</tr>
 										<tr>
-											<td><h5>コーヒーメーカー</h5></td>
-											<td><h5>￥98,000</h5></td>
-											<td><h5>20点</h5></td>
+											<td><h5>${name}</h5></td>
+											<td><h5>${price}</h5></td>
+											<td><h5>${stock}</h5></td>
 										</tr>
 										<tr>
 											<th>商品説明</th>
@@ -88,18 +88,22 @@
 											<th></th>
 										</tr>
 									</table>
-									<h4 class="text-left">コーヒーメーカーです。コーヒーを淹れるための機械です。エスプレッソも入れることができます。</h4>
+									<h4 class="text-left">${explain}</h4>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="text-center">
-					<button type="button" class="btn btn-success btn-xs"
-						onclick="location.href='Incart'; return false;">
-						カートへ入れる<span class="glyphicon glyphicon-chevron-right"></span>
-					</button>
-				</div>
+				<form:form modelAttribute="yamazon" action="Incart">
+					<div class="text-center">
+
+						<form:button class="btn btn-success btn-xs"
+							value="${id}" name="id">
+							カートへ入れる<span class="glyphicon glyphicon-chevron-right"></span>
+						</form:button>
+
+					</div>
+				</form:form>
 			</div>
 		</div>
 	</section>

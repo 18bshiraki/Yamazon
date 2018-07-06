@@ -1,5 +1,6 @@
 package yamazon.controller;
 
+
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -30,9 +31,9 @@ public class MenuController {
 		session.removeAttribute("manager");
 		List<Goods> goods = goodsDao.goodsMenu();
 		model.addAttribute("list", goods);
+
 		return "menu";
 	}
-
 	@RequestMapping(value = "/account", method = RequestMethod.GET)
 	public String account(Model model) {
 		return "account";
