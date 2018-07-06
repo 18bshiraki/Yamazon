@@ -60,7 +60,7 @@
 	</section>
 	<div class="text-center">
 		<form:form action="goodsInsertResult" modelAttribute="yamazon" enctype="multipart/form-data"
-			method="post" style="color: black">
+			method="get" style="color: black">
 			<div class="container">
 				<div class="row">
 					<h5>商品名</h5>

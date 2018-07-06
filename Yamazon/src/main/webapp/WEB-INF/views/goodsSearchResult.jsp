@@ -31,6 +31,9 @@
 		if (confirm("この商品を削除しますか？")) {
 			document.submitInfo.submit();
 			document.submitInfo.action = "goodsDeleteResult";
+		} else {
+			document.submitInfo.submit();
+			document.submitInfo.action = "goodsSearchResult";
 		}
 	}
 </script>
@@ -67,6 +70,7 @@
 	</section>
 	<div class="text-center" style="margin: 0px 0px 20px 0px">
 		<form:form action="goodsUpdateConfirm" name="submitInfo" modelAttribute="yamazon" method="get">
+		<input type="hidden" name="keyWord" value="${keyWord}">
 			<table class="table table-hover"
 				style="color: black; width: 90%; margin: auto;">
 				<thead>
