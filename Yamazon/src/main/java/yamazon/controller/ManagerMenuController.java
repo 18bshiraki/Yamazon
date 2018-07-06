@@ -5,16 +5,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-import yamazon.form.ManagerInsertForm;
+import yamazon.form.GoodsForm;
 
 @Controller
 public class ManagerMenuController {
-
 	/*
-	 * 〔管理者メニュー画面〕から〔ユーザーの検索画面〕pppppp
+	 * 〔管理者メニュー画面〕から〔ユーザーの検索画面〕
 	 */
-	@GetMapping("/")
-	public String usus(@ModelAttribute("yamazon") ManagerInsertForm form, Model model) {
+	@GetMapping("/managerMenu")
+	public String usus(/*@ModelAttribute("yamazon") userSearchtForm form,*/ Model model) {
 		return "managerMenu";
 	}
 	@GetMapping("/userSearch")
@@ -25,7 +24,7 @@ public class ManagerMenuController {
 	 * 〔管理者メニュー画面〕から〔管理者の登録画面〕
 	 */
 	@GetMapping("/managerInsert")
-	public String managerInsert(@ModelAttribute("yamazon") ManagerInsertForm form, Model model) {
+	public String managerInsert(/*@ModelAttribute("yamazon") managerInsertForm form,*/ Model model) {
 		return "managerInsert";
 	}
 	/*
@@ -39,14 +38,14 @@ public class ManagerMenuController {
 	 * 〔管理者メニュー画面〕から〔商品の登録画面〕
 	 */
 	@GetMapping("/goodsInsert")
-	public String goodsInsert(/*@ModelAttribute("yamazon") goodsInsertForm form,*/ Model model) {
+	public String goodsInsert(@ModelAttribute("yamazon") GoodsForm form, Model model) {
 		return "goodsInsert";
 	}
 	/*
 	 * 〔管理者メニュー画面〕から〔商品の検索画面〕
 	 */
 	@GetMapping("/goodsSearch")
-	public String goodsSearch(/*@ModelAttribute("yamazon") goodsSearchForm form,*/ Model model) {
+	public String goodsSearch(@ModelAttribute("yamazon") GoodsForm form, Model model) {
 		return "goodsSearch";
 	}
 	/*
@@ -56,5 +55,4 @@ public class ManagerMenuController {
 	public String managerUpdate(/*@ModelAttribute("yamazon") managerUpdateForm form,*/ Model model) {
 		return "managerUpdate";
 	}
-
 }

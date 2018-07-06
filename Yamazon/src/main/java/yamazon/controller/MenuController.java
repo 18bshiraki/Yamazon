@@ -1,14 +1,34 @@
 package yamazon.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import yamazon.dao.GoodsDao;
+import yamazon.entity.Goods;
+import yamazon.form.LoginForm;
+import yamazon.form.Search;
+
 @Controller
 public class MenuController {
-	@RequestMapping(value =  "/menu" , method = RequestMethod.GET)
-	public String menu(Model model) {
+	@Autowired
+	HttpSession session;
+
+	@Autowired
+	GoodsDao goodsDao;
+
+	@RequestMapping(value = { "/menu" }, method = RequestMethod.GET)
+	public String menu(@ModelAttribute("yamazon")Search form,Model model) {
+		session.removeAttribute("manager");
+		List<Goods> goods = goodsDao.goodsMenu();
+		model.addAttribute("list", goods);
 		return "menu";
 	}
 
@@ -23,12 +43,13 @@ public class MenuController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(Model model) {
+	public String login(@ModelAttribute("yamazon")LoginForm form,Model model) {
 		return "login";
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(Model model) {
+		session.invalidate();
 		return "logout";
 	}
 

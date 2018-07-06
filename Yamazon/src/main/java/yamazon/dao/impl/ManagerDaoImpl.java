@@ -1,10 +1,12 @@
 package yamazon.dao.impl;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -16,16 +18,24 @@ import yamazon.entity.Manager;
 
 @Repository
 public class ManagerDaoImpl implements ManagerDao {
+
     @Autowired
     private NamedParameterJdbcTemplate jdbcTemplate;
 
-	@Override
-	public List<Manager> findAll() {
-		String sql = "SELECT * FROM manager_info ORDER BY manager_id";
+	@Autowired
+	private JdbcTemplate JdbcTemplate;
 
-		List<Manager> resultList = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Manager>(Manager.class));
+	public List<Manager> findByPhoneNumberAndPassword(int managerId, String password){
+		return JdbcTemplate.query(
+				"SELECT manager_id,manager_name,manager_password FROM manager_info WHERE manager_id = ? AND manager_password= ?",
+				new BeanPropertyRowMapper<Manager>(Manager.class),managerId,password);
+	}
 
-		return resultList;
+	public List<Manager> findAll(){
+		return JdbcTemplate.query(
+				"SELECT manager_id,manager_name,manager_password FROM manager_info",
+				new BeanPropertyRowMapper<Manager>(Manager.class));
+
 	}
 
 	@Override
