@@ -103,7 +103,7 @@
 			</div>
 		</form:form>
 		<div class="text-center">
-			<a href="cart.html"><button type="button"
+			<a href="cart"><button type="button"
 					class="return btn-outline-dark">
 					<span class="glyphicon glyphicon-chevron-left"></span>戻る
 				</button></a>

@@ -73,6 +73,9 @@ h4 {
 							<li><h4>
 									<a href="goodsInsert">商品の登録</a>
 								</h4></li>
+							<li><h4>
+									<a href="goodsSearch">商品の検索</a>
+								</h4></li>
 						</ul>
 					</div>
 				</div>
