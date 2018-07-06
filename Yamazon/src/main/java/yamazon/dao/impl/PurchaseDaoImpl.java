@@ -1,7 +1,29 @@
 package yamazon.dao.impl;
 
-import yamazon.dao.PurchaseDao;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+import yamazon.dao.PurchaseDao;
+import yamazon.entity.Purchase;
+
+@Repository
 public class PurchaseDaoImpl implements PurchaseDao {
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+	@Override
+	public List<Purchase> purchaseHistory(int userId) {
+		String sql = "SELECT user_id, goods_name, tax_price, purchase_history"
+				+ " FROM purchase_info WHERE user_id = ?";
+
+		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<Purchase>(Purchase.class), userId);
+	}
+
+
 
 }

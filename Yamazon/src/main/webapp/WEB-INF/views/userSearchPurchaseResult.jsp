@@ -53,7 +53,9 @@ margin: 20px
 </section>
 <div class ="text-center">
 <div class="caption-content">
-<h3>山田 造さんの購入履歴</h3>
+
+<h3>${sessionScope.user.userName}さんの購入履歴</h3>
+
 </div>
 </div>
 <div class="col-sm-3">
@@ -74,12 +76,13 @@ margin: 20px
 				</tr>
 			</thead>
 			<tbody>
-
+			<c:forEach var="purchase" items="${purchase}">
 					<tr>
-					<td>2018/1/1/00:00</td>
-					<td>電気ポット(白)</td>
-					<td>￥98,000</td>
+					<td>${purchase.purchaseHistory}</td>
+					<td>${purchase.goodsName}</td>
+					<td>${purchase.taxPrice}</td>
 				</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 		</form:form>
@@ -87,16 +90,16 @@ margin: 20px
 		</div>
 		</div>
 		</div>
-  </div>
+
 			<div class="text-center">
-			<a href="userSearchResult.html"><button type="button" class="return btn-outline-dark">
+			<a href="userSearchResult"><button type="button" class="return btn-outline-dark">
 					<span class="glyphicon glyphicon-chevron-left"></span>戻る
 				</button>
 			</a>
 		</div>
 
 		<div class="text-center">
-			<a href="managerMenu.html"><button type="button" class="return btn-outline-dark">
+			<a href="managerMenu"><button type="button" class="return btn-outline-dark">
 					<span class="glyphicon glyphicon-chevron-left"></span>管理者メニュー
 				</button>
 			</a>

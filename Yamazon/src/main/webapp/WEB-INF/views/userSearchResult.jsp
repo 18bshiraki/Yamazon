@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -24,50 +24,61 @@
 <link rel="stylesheet" href="css/responsive.css">
 <link rel="stylesheet" href="css/animate.min.css">
 <link rel="stylesheet" href="css/font-icon.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <style>
-p{
-margin: 20px
+p {
+	margin: 20px
 }
 </style>
 <script type="text/javascript">
-	function MoveCheck() {
-		if (confirm("この情報を削除しますか？")) {
-			document.userOp.submit();
-			document.userOp.action = "userDeleteResult";
-		}else{
-			document.userOp.submit();
-			document.userOp.action = "userSearchResult";
-		}
+function MoveChecks() {
+	document.userOp.submit();
+	document.userOp.action = "purchaseHistory";
+}
+
+function MoveCheck() {
+	if (confirm("この情報を削除しますか？")) {
+		document.userOp.submit();
+		document.userOp.action = "userDeleteResult";
+	}else{
+		document.userOp.submit();
+		document.userOp.action = "userSearchResult";
 	}
+</script>
+<script type="text/javascript">
+
+
+
 </script>
 </head>
 <body>
-<!-- header top section -->
-<section class="banner" role="banner">
- <header id="header">
-    <div class="header-content clearfix"> <a class="logo" href="menu"><img src="ロゴ.jpg"></a>
-      <nav class="navigation" role="navigation">
-        <ul class="primary-nav">
-          <li><a href="logout.html">Logout</a></li>
-        </ul>
-      </nav>
-      <a href="#" class="nav-toggle">Menu<span></span></a> </div>
-  </header>
-</section>
-<section id="hero" class="section ">
-<div class ="hero text-center">
-<h2>
-ユーザー情報検索結果
-</h2>
-</div>
-</section>
-<form:form action = "userUpdateConfirm" name="userOp" modelAttribute = "yamazon" method = "POST">
-	<table class="table" style="color:black">
+	<!-- header top section -->
+	<section class="banner" role="banner">
+		<header id="header">
+			<div class="header-content clearfix">
+				<a class="logo" href="menu"><img src="ロゴ.jpg"></a>
+				<nav class="navigation" role="navigation">
+					<ul class="primary-nav">
+						<li><a href="logout.html">Logout</a></li>
+					</ul>
+				</nav>
+				<a href="#" class="nav-toggle">Menu<span></span></a>
+			</div>
+		</header>
+	</section>
+	<section id="hero" class="section ">
+		<div class="hero text-center">
+			<h2>ユーザー情報検索結果</h2>
+		</div>
+	</section>
+	<form:form action="userUpdateConfirm" name="userOp"
+		modelAttribute="yamazon" method="POST">
+		<table class="table" style="color: black">
 			<thead>
 				<tr>
-					<th>ユーザー番号</font></th>
-					<th>電話番号</font></th>
+					<th>ユーザー番号</th>
+					<th>電話番号</th>
 					<th>ユーザー名</th>
 					<th>住所</th>
 					<th>パスワード</th>
@@ -77,45 +88,48 @@ margin: 20px
 				</tr>
 			</thead>
 			<tbody>
-			<c:forEach var="user" items="${user}">
-				<tr>
-					<td>${user.userId}</td>
-					<td>${user.phoneNumber}</td>
-					<td>${user.userName}</td>
-					<td>${user.address}</td>
-					<td>${user.password}</td>
-					<td><button type="submit" value= "${user.userId}">購入履歴</button></td>
-					<td><button type="submit" value= "${user.userId}" name = "id">更新</button></td>
-					<td><button type="submit" value= "${user.userId}" name = "id" onclick="MoveCheck();">削除</button></td>
-				</tr>
+				<c:forEach var="user" items="${user}">
+					<tr>
+						<td>${user.userId}</td>
+						<td>${user.phoneNumber}</td>
+						<td>${user.userName}</td>
+						<td>${user.address}</td>
+						<td>${user.password}</td>
+						<td><button type="submit" value="${user.userId}" name="id"
+								onclick="MoveChecks();">購入履歴</button></td>
+						<td><button type="submit" value="${user.userId}" name="id">更新</button></td>
+						<td><button type="submit" value="${user.userId}" name="id"
+								onclick="MoveCheck();">削除</button></td>
+					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		</form:form>
+	</form:form>
 	<section id="hero" class="section"></section>
 
-		<div class="text-center">
-			<a href="managerMenu"><button type="button" class="return btn-outline-dark">
-					<span class="glyphicon glyphicon-chevron-left"></span>管理者メニュー
-				</button>
-			</a>
+	<div class="text-center">
+		<a href="managerMenu"><button type="button"
+				class="return btn-outline-dark">
+				<span class="glyphicon glyphicon-chevron-left"></span>管理者メニュー
+			</button> </a>
+	</div>
+	<section id="hero" class="section"></section>
+	<footer class="footer">
+		<div class="container">
+			<div class="col-md-6 left">
+				<p>Yamazon運営チーム</p>
+				<p>TEL:0120-117-117-828828</p>
+			</div>
 		</div>
-	<section id="hero" class="section"></section>
-<footer class="footer">
-  <div class="container">
-    <div class="col-md-6 left">
-      <p>Yamazon運営チーム</p>
-      <p>TEL:0120-117-117-828828</p>
-    </div>
-  </div>
-</footer>
+	</footer>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.fancybox.pack.js"></script>
-<script src="js/retina.min.js"></script>
-<script src="js/modernizr.js"></script>
-<script src="js/main.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.fancybox.pack.js"></script>
+	<script src="js/retina.min.js"></script>
+	<script src="js/modernizr.js"></script>
+	<script src="js/main.js"></script>
 </body>
 </html>
