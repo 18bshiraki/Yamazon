@@ -20,5 +20,11 @@ public class ManagerDaoImpl implements ManagerDao {
 				new BeanPropertyRowMapper<Manager>(Manager.class),managerId,password);
 	}
 
+	public List<Manager> findAll(){
+		return JdbcTemplate.query(
+				"SELECT manager_id,manager_name,manager_password FROM manager_info",
+				new BeanPropertyRowMapper<Manager>(Manager.class));
+
+	}
 
 }
