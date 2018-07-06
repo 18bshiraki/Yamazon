@@ -1,15 +1,17 @@
 package yamazon.entity;
 
-public class Manager {
-	private int managerId;
+import java.io.Serializable;
+
+public class Manager implements Serializable{
+	private Integer managerId;
 	private String managerName;
 	private String managerPassword;
 
-	public int getManagerId() {
+	public Integer getManagerId() {
 		return managerId;
 	}
 
-	public void setManagerId(int managerId) {
+	public void setManagerId(Integer managerId) {
 		this.managerId = managerId;
 	}
 
@@ -28,4 +30,8 @@ public class Manager {
 	public void setManagerPassword(String managerPassword) {
 		this.managerPassword = managerPassword;
 	}
+	public boolean isConditionsEmpty() {
+		return managerId == null
+				&& (managerName == null || managerName.isEmpty());
+}
 }

@@ -3,6 +3,9 @@ package yamazon.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import yamazon.form.ManagerInsertForm;
 
 @Controller
 public class ManagerMenuController {
@@ -11,7 +14,7 @@ public class ManagerMenuController {
 	 * 〔管理者メニュー画面〕から〔ユーザーの検索画面〕pppppp
 	 */
 	@GetMapping("/")
-	public String usus(/*@ModelAttribute("yamazon") userSearchtForm form,*/ Model model) {
+	public String usus(@ModelAttribute("yamazon") ManagerInsertForm form, Model model) {
 		return "managerMenu";
 	}
 	@GetMapping("/userSearch")
@@ -22,7 +25,7 @@ public class ManagerMenuController {
 	 * 〔管理者メニュー画面〕から〔管理者の登録画面〕
 	 */
 	@GetMapping("/managerInsert")
-	public String managerInsert(/*@ModelAttribute("yamazon") managerInsertForm form,*/ Model model) {
+	public String managerInsert(@ModelAttribute("yamazon") ManagerInsertForm form, Model model) {
 		return "managerInsert";
 	}
 	/*
