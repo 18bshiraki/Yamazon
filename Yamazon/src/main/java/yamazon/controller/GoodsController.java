@@ -77,6 +77,12 @@ public class GoodsController {
 
 	}
 
+	@GetMapping(value = "/selectBack")
+	public String selectBack(@ModelAttribute("yamazon") GoodsForm form, Model model) {
+
+		return "goodsSearchResult";
+	}
+
 	@GetMapping(value = "/goodsDeleteResult")
 	public String delete(@ModelAttribute("yamazon") GoodsForm form, Model model) {
 		String number = form.getNumber();

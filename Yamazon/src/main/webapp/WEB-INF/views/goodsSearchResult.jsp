@@ -33,7 +33,7 @@
 			document.submitInfo.action = "goodsDeleteResult";
 		} else {
 			document.submitInfo.submit();
-			document.submitInfo.action = "goodsSearchResult";
+			document.submitInfo.action = "selectBack";
 		}
 	}
 </script>

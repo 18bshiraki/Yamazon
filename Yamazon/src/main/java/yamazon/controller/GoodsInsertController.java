@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
@@ -132,7 +133,7 @@ public class GoodsInsertController {
 		return "goodsInsertResult";
 	}
 
-	@PostMapping(value = "/goodsBack") //戻るボタン押したらファイル破棄
+	@GetMapping(value = "/goodsBack") //戻るボタン押したらファイル破棄
 	public String goodsBack(HttpSession session, @ModelAttribute("yamazon") GoodsForm form, Model model) {
 
 		String filePath = (String) session.getAttribute("filePath");
@@ -141,18 +142,7 @@ public class GoodsInsertController {
 		File file = new File(filePath);
 		file.delete();
 
-		//フォームから各Stringデータ
-		String name = form.getName();
-		String explain = form.getExplain();
-		String category = form.getCategory();
-		String stock = form.getStock();
-		String price = form.getPrice();
-		String taxPrice = form.getTaxPrice();
-
-		Goods goods = new Goods(name, filePath, explain, category, Integer.parseInt(stock), Integer.parseInt(price),
-				Integer.parseInt(taxPrice));
-		model.addAttribute("goods", goods);
-		model.addAttribute("select", "再選択してください");
+		model.addAttribute("msg", "再入力してください");
 
 		return "goodsInsert";
 	}
