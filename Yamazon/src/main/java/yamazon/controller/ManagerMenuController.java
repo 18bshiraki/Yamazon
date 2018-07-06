@@ -3,6 +3,9 @@ package yamazon.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import yamazon.form.GoodsForm;
 
 @Controller
 public class ManagerMenuController {
@@ -35,14 +38,14 @@ public class ManagerMenuController {
 	 * 〔管理者メニュー画面〕から〔商品の登録画面〕
 	 */
 	@GetMapping("/goodsInsert")
-	public String goodsInsert(/*@ModelAttribute("yamazon") goodsInsertForm form,*/ Model model) {
+	public String goodsInsert(@ModelAttribute("yamazon") GoodsForm form, Model model) {
 		return "goodsInsert";
 	}
 	/*
 	 * 〔管理者メニュー画面〕から〔商品の検索画面〕
 	 */
 	@GetMapping("/goodsSearch")
-	public String goodsSearch(/*@ModelAttribute("yamazon") goodsSearchForm form,*/ Model model) {
+	public String goodsSearch(@ModelAttribute("yamazon") GoodsForm form, Model model) {
 		return "goodsSearch";
 	}
 	/*

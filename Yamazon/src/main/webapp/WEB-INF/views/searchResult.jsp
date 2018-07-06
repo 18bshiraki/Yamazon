@@ -52,6 +52,7 @@
 	</section>
 	<div class="text-center">
 		<div class="container">
+
 			<table class="table table-hover" style="color: black">
 				<tr>
 					<td>商品名</td>
@@ -59,24 +60,27 @@
 					<td>カテゴリ</td>
 					<td></td>
 				</tr>
-				<c:forEach var="goods" items="${search}">
-					<tr>
-						<td onclick="location.href='goodsDetail'; return false;"><font
-							color="black"><h5>${fn:escapeXml(goods.goodsName)}</h5></font></td>
-						<td onclick="location.href='goodsDetail'; return false;"><font
-							color="black"><h5>${fn:escapeXml(goods.taxPrice)}</h5></font></td>
-						<td onclick="location.href='goodsDetail'; return false;"><font
-							color="black"><h5>${fn:escapeXml(goods.category)}</h5></font></td>
-						<td><button type="button" class="btn btn-success"
-								style="display: inline-block; padding: 0px 5px; margin: 0px 0px 0px 0px;"
-								onclick="location.href='cart'; return false;">
+				<form:form modelAttribute="yamazon" action="Incart">
+					<c:forEach var="goods" items="${search}">
+						<tr>
+							<td onclick="location.href='goodsDetail'; return false;"><font
+								color="black"><h5>${fn:escapeXml(goods.goodsName)}</h5></font></td>
+							<td onclick="location.href='goodsDetail'; return false;"><font
+								color="black"><h5>${fn:escapeXml(goods.taxPrice)}</h5></font></td>
+							<td onclick="location.href='goodsDetail'; return false;"><font
+								color="black"><h5>${fn:escapeXml(goods.category)}</h5></font></td>
+							<td><form:button value="${goods.goodsNumber}" name="id"
+									class="btn btn-success"
+									style="display: inline-block; padding: 0px 5px; margin: 0px 0px 0px 0px;" >
 								<h5>
 									<font color="white">カートに入れる</font>
 								</h5>
-							</button></td>
-					</tr>
-				</c:forEach>
+								</form:button></td>
+						</tr>
+					</c:forEach>
+				</form:form>
 			</table>
+
 		</div>
 	</div>
 	<footer class="footer">

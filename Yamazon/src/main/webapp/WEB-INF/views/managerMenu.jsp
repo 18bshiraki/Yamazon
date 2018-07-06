@@ -54,7 +54,7 @@ h4 {
 									</h4>
 								</li>
 								<li><h4>
-										<a href="managerSearch">管理者情報</a>
+										<a href="aaaaaaaaa">管理者情報</a>
 									</h4></li>
 							</c:if>
 							<c:if test="${manager==2}">
