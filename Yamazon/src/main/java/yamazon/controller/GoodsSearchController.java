@@ -1,5 +1,7 @@
 package yamazon.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import yamazon.dao.GoodsDao;
+import yamazon.entity.Goods;
 import yamazon.form.Search;
 
 @Controller
@@ -22,11 +25,13 @@ public class GoodsSearchController {
 
 	@PostMapping("/search")
 	public String menu(@ModelAttribute("yamazon") Search form, Model model) {
-		if (goods.goodsSearch(form.getWord()).isEmpty()) {
+		List<Goods> good = goods.goodsSearch(form.getWord());
+		if (good.isEmpty()) {
+			//model.addAttribute("search", good);
 			model.addAttribute("msg", "一致する商品がありませんでした");
 			return "searchResult";
 		}
-		model.addAttribute("search", goods.goodsSearch(form.getWord()));
+		model.addAttribute("search", good);
 
 		return "searchResult";
 

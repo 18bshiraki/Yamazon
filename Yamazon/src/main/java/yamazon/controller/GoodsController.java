@@ -57,6 +57,7 @@ public class GoodsController {
 			model.addAttribute("goods", list);
 			model.addAttribute("goodsP", cGoodsPrice);
 			model.addAttribute("goodsPT", cGoodsPriceTax);
+			model.addAttribute("keyWord", keyWord);
 
 			return "goodsSearchResult";
 		} else {
@@ -79,6 +80,7 @@ public class GoodsController {
 				model.addAttribute("goods", list);
 				model.addAttribute("goodsP", cGoodsPrice);
 				model.addAttribute("goodsPT", cGoodsPriceTax);
+				model.addAttribute("keyWord", keyWord);
 
 				return "goodsSearchResult";
 			}
@@ -98,10 +100,12 @@ public class GoodsController {
 	@GetMapping(value = "/goodsUpdateConfirm")
 	public String update(HttpSession session, @ModelAttribute("yamazon") GoodsForm form, Model model) {//未実装
 		String number = form.getNumber();
+		String keyWord = form.getKeyWord();
 		List<Goods> list = goodsDao.findIdGetPass(Integer.parseInt(number));
 		Goods goods = list.get(0);
 		session.setAttribute("goodsFile", goods.getGoodsImage());
 		model.addAttribute("goods", list.get(0));
+		model.addAttribute("keyWord", keyWord);
 		return "goodsUpdateConfirm";
 
 	}
