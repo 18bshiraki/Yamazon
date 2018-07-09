@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import yamazon.entity.Manager;
 import yamazon.form.GoodsForm;
 import yamazon.form.LoginForm;
+import yamazon.form.ManagerInsertForm;
+
 
 
 @Controller
 public class ManagerMenuController {
-
-
 
 	@Autowired
 	HttpSession session;
@@ -38,15 +38,8 @@ public class ManagerMenuController {
 	 * 〔管理者メニュー画面〕から〔管理者の登録画面〕
 	 */
 	@GetMapping("/managerInsert")
-	public String managerInsert(/*@ModelAttribute("yamazon") managerInsertForm form,*/ Model model) {
+	public String managerInsert(@ModelAttribute("yamazon") ManagerInsertForm form, Model model) {
 		return "managerInsert";
-	}
-	/*
-	 * 〔管理者メニュー画面〕から〔管理者情報画面〕
-	 */
-	@GetMapping("/managerSearch")
-	public String managerSearch(/*@ModelAttribute("yamazon") managerSearchForm form,*/ Model model) {
-		return "managerSearch";
 	}
 	/*
 	 * 〔管理者メニュー画面〕から〔商品の登録画面〕
