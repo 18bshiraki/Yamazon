@@ -47,7 +47,12 @@
 
 	<section id="hero" class="section ">
 		<div class="hero text-center">
-			<h2>商品検索結果</h2>
+			<c:if test="${null ne msg}">
+				<h2>${msg}</h2>
+			</c:if>
+			<c:if test="${null eq msg}">
+				<h2>商品検索結果</h2>
+			</c:if>
 		</div>
 	</section>
 	<div class="text-center">
@@ -63,9 +68,15 @@
 				<form:form modelAttribute="yamazon" action="Incart">
 					<c:forEach var="goods" items="${search}">
 						<tr>
-							<td onclick="location.href='detail?goodsName=${fn:escapeXml(goods.goodsName)}'"><font color="black"><h5>${fn:escapeXml(goods.goodsName)}</h5></font></td>
-							<td onclick="location.href='detail?goodsName=${fn:escapeXml(goods.goodsName)}'"><font color="black"><h5>${fn:escapeXml(goods.taxPrice)}</h5></font></td>
-							<td onclick="location.href='detail?goodsName=${fn:escapeXml(goods.goodsName)}'"><font color="black"><h5>${fn:escapeXml(goods.category)}</h5></font></td>
+							<td
+								onclick="location.href='detail?goodsName=${fn:escapeXml(goods.goodsName)}'"><font
+								color="black"><h5>${fn:escapeXml(goods.goodsName)}</h5></font></td>
+							<td
+								onclick="location.href='detail?goodsName=${fn:escapeXml(goods.goodsName)}'"><font
+								color="black"><h5>${fn:escapeXml(goods.taxPrice)}</h5></font></td>
+							<td
+								onclick="location.href='detail?goodsName=${fn:escapeXml(goods.goodsName)}'"><font
+								color="black"><h5>${fn:escapeXml(goods.category)}</h5></font></td>
 							<td><form:button value="${goods.goodsNumber}" name="id"
 									class="btn btn-success"
 									style="display: inline-block; padding: 0px 5px; margin: 0px 0px 0px 0px;">
