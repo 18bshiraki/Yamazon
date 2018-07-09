@@ -33,7 +33,7 @@ public class UserDeleteController {
 
 		//削除するメソッドにIDを渡す
 		userDao.userDelete(userId);
-
+		session.removeAttribute("userList");
 		return "userDeleteResult";
 
 	}

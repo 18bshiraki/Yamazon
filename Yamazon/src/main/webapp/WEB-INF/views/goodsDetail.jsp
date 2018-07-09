@@ -23,13 +23,13 @@
 	<section class="banner" role="banner">
 		<header id="header">
 			<div class="header-content clearfix">
-				<a class="logo" href="menu.html"><img src="ロゴ.jpg"></a>
+				<a class="logo" href="menu"><img src="ロゴ.jpg"></a>
 				<nav class="navigation" role="navigation">
 					<ul class="primary-nav">
-						<li><a href="account.html">Mypage</a></li>
-						<li><a href="cart.html">Cart</a></li>
-						<li><a href="login.html">Login</a></li>
-						<li><a href="logout.html">Logout</a></li>
+						<li><a href="account">Mypage</a></li>
+						<li><a href="cart">Cart</a></li>
+						<li><a href="login">Login</a></li>
+						<li><a href="logout">Logout</a></li>
 					</ul>
 				</nav>
 				<a href="#" class="nav-toggle">Menu<span></span></a>
@@ -54,7 +54,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-4 portfolio-item">
-					<a href="cart.html" class="portfolio-link">
+					<a href="cart" class="portfolio-link">
 						<div class="caption">
 							<div class="caption-content">
 								<h2>

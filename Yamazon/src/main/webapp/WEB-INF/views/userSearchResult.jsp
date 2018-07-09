@@ -93,17 +93,17 @@ function MoveCheck() {
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach var="user" items="${user}">
+				<c:forEach var="userList" items="${userList}">
 					<tr>
-						<td>${user.userId}</td>
-						<td>${user.phoneNumber}</td>
-						<td>${user.userName}</td>
-						<td>${user.address}</td>
-						<td>${user.password}</td>
-						<td><button type="submit" value="${user.userId}" name="id"
+						<td>${userList.userId}</td>
+						<td>${userList.phoneNumber}</td>
+						<td>${userList.userName}</td>
+						<td>${userList.address}</td>
+						<td>${userList.password}</td>
+						<td><button type="submit" value="${userList.userId}" name="id"
 								onclick="MoveChecks();">購入履歴</button></td>
-						<td><button type="submit" value="${user.userId}" name="id"onclick="MoveChecked();">更新</button></td>
-						<td><button type="submit"value="${user.userId}" name="id"onclick="MoveCheck();">削除</button></td>
+						<td><button type="submit" value="${userList.userId}" name="id"onclick="MoveChecked();">更新</button></td>
+						<td><button type="submit"value="${userList.userId}" name="id"onclick="MoveCheck();">削除</button></td>
 					</tr>
 				</c:forEach>
 			</tbody>
