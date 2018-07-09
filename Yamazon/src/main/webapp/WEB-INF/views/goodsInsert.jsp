@@ -85,7 +85,7 @@
 					</c:if>
 					<div class="form-inline" style="padding: 8px;">
 						<input type="file" class="form-control input-sm" name="file"
-							size="45" value="${file}">
+							size="45">
 					</div>
 					<div class="preview size"></div>
 				</div>

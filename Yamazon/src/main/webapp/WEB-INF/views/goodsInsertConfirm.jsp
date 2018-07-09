@@ -72,7 +72,7 @@
 				<div class="row">
 					<h5>商品画像アップロード</h5>
 					<div class="form-inline" style="padding: 8px;">
-						<img src="${file}" class="size">
+						<img src="${sessionScope.filePath}" class="size">
 					</div>
 				</div>
 				<div class="row">
@@ -119,7 +119,8 @@
 				</button>
 			</div>
 			<div class="text-center">
-				<a href="goodsInsert"><button type="button"
+			<%-- goodsInsert.jspへ戻る --%>
+				<a href="goodsBack"><button type="button"
 						class="return btn-outline-dark">
 						<span class="glyphicon glyphicon-chevron-left"></span>戻る
 					</button></a>

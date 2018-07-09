@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!doctype html>
 <html class="no-js" lang="">
 <!--<![endif]-->
@@ -19,72 +19,70 @@
 <link rel="stylesheet" href="css/responsive.css">
 <link rel="stylesheet" href="css/animate.min.css">
 <link rel="stylesheet" href="css/font-icon.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 <body>
-<!-- header top section -->
-<section class="banner" role="banner">
- 		<header id="header">
+	<!-- header top section -->
+	<section class="banner" role="banner">
+		<header id="header">
 			<div class="header-content clearfix">
 				<a class="logo" href="menu"><img src="ロゴ.jpg"></a>
 				<nav class="navigation" role="navigation">
 					<ul class="primary-nav">
-					<li><c:out value="${sessionScope.users.userName}" />さん</li>
-					<li><a href="account">Mypage</a></li>
-					<li><a href="cart">Cart</a></li>
-					<c:if test="${not empty sessionScope}">
-					<li><a href="login">Login</a></li>
-					</c:if>
-					<li><a href="logout">Logout</a></li>
+						<li><c:out value="${sessionScope.user.userName}" />さん</li>
+						<li><a href="account">Mypage</a></li>
+						<li><a href="cart">Cart</a></li>
+						<c:if test="${null ne sessionScope.user.userName}">
+							<li><a href="login">Login</a></li>
+						</c:if>
+						<li><a href="logout">Logout</a></li>
 					</ul>
 				</nav>
 				<a href="#" class="nav-toggle">Menu<span></span></a>
 			</div>
 		</header>
-</section>
-<section id="hero" class="section ">
-</section>
-<section id="hero" class="section ">
-</section>
-<div class="text-center">
+	</section>
+	<section id="hero" class="section "></section>
+	<section id="hero" class="section "></section>
+	<div class="text-center">
 
-          <h2>更新しました</h2>
-  <section id="hero" class="section ">
-</section>
- <div class="text-center">
-			<a href="account"><button type="button" class="return btn-outline-dark">
+		<h2>更新しました</h2>
+		<section id="hero" class="section "></section>
+		<div class="text-center">
+			<a href="account"><button type="button"
+					class="return btn-outline-dark">
 					<span class="glyphicon glyphicon-chevron-left"></span>マイページ
-				</button>
-			</a>
+				</button> </a>
 		</div>
 
-  <section id="hero" class="section ">
-</section>
-</div>
-<footer class="footer">
-  <div class="container">
-    <div class="col-md-6 left">
-      <p>Yamazon運営チーム</p>
-      <p>TEL:0120-117-117-828828</p>
-    </div>
-  </div>
-</footer>
+		<section id="hero" class="section "></section>
+	</div>
+	<footer class="footer">
+		<div class="container">
+			<div class="col-md-6 left">
+				<p>Yamazon運営チーム</p>
+				<p>TEL:0120-117-117-828828</p>
+			</div>
+		</div>
+	</footer>
 
 
-<!-- header top section -->
-<!-- header content section -->
+	<!-- header top section -->
+	<!-- header content section -->
 
-<!-- footer section -->
+	<!-- footer section -->
 
-<!-- JS FILES -->
+	<!-- JS FILES -->
 
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.fancybox.pack.js"></script>
-<script src="js/retina.min.js"></script>
-<script src="js/modernizr.js"></script>
-<script src="js/main.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.fancybox.pack.js"></script>
+	<script src="js/retina.min.js"></script>
+	<script src="js/modernizr.js"></script>
+	<script src="js/main.js"></script>
 </body>
 </html>

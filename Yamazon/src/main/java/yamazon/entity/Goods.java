@@ -26,6 +26,7 @@ public class Goods {
 	public Goods(int goodsNumber) {
 		this.goodsNumber = goodsNumber;
 	}
+
 	//商品登録画面に戻るとき使用
 	public Goods(String goodsName, String goodsExplain, String category) {
 		this.goodsName = goodsName;
@@ -37,6 +38,26 @@ public class Goods {
 			int taxPrice) {
 		this.goodsName = goodsName;
 		this.goodsImage = goodsImage;
+		this.goodsExplain = goodsExplain;
+		this.category = category;
+		this.stock = stock;
+		this.price = price;
+		this.taxPrice = taxPrice;
+	}
+
+	public Goods(String goodsName, String goodsImage, String goodsExplain, String category, int stock) {
+		this.goodsName = goodsName;
+		this.goodsImage = goodsImage;
+		this.goodsExplain = goodsExplain;
+		this.category = category;
+		this.stock = stock;
+	}
+
+	public Goods(int goodsNumber, String goodsName, String goodsImage, String goodsExplain, String category, int stock,
+			int price,
+			int taxPrice) {
+		this.goodsNumber = goodsNumber;
+		this.goodsName = goodsName;
 		this.goodsExplain = goodsExplain;
 		this.category = category;
 		this.stock = stock;

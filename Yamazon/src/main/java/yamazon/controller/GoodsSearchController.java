@@ -1,8 +1,5 @@
 package yamazon.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,16 +22,14 @@ public class GoodsSearchController {
 
 	@PostMapping("/search")
 	public String menu(@ModelAttribute("yamazon") Search form, Model model) {
-		List<String> kk = new ArrayList<String>();
-		for (int i = 0; i < goods.goodsSearch(form.getWord()).size(); i++) {
-			String id = String.valueOf(goods.goodsSearch(form.getWord()).get(i).getGoodsNumber());
-
-			kk.add(id);
+		if (goods.goodsSearch(form.getWord()).isEmpty()) {
+			model.addAttribute("msg", "一致する商品がありませんでした");
+			return "searchResult";
 		}
 		model.addAttribute("search", goods.goodsSearch(form.getWord()));
-		//model.addAttribute("id", kk);
-		//model.addAttribute("num",goods.goodsSearch(form.getWord()).)
+
 		return "searchResult";
+
 	}
 
 	@GetMapping("/detail")

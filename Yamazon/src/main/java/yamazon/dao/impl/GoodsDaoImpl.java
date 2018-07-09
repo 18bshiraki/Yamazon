@@ -78,4 +78,23 @@ public class GoodsDaoImpl implements GoodsDao {
 				paramSource);
 
 	}
+
+	//idを探す
+	@Override
+	public List<Goods> findIdGetPass(int goodsNumber) {
+		List<Goods> list = jt.query(
+				"SELECT goods_number, goods_name, goods_explain, goods_image, price, tax_price, category, stock FROM goods_info WHERE goods_number = ?",
+				new BeanPropertyRowMapper<Goods>(Goods.class),
+				goodsNumber);
+		return list;
+	}
+
+	//更新
+	@Override
+	public int update(Goods goods) {
+		BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(goods);
+		return namedjt.update(
+				"UPDATE goods_info SET goods_name = :goodsName, goods_explain = :goodsExplain, goods_image = :goodsImage, price = :price, tax_price = :tax_price, category = :category, stock = :stock WHERE goods_number = :goodsNumber",
+				paramSource);
+	}
 }
