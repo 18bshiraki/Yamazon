@@ -60,6 +60,7 @@ public class UserUpdateController {
 
 
 		//
+//		int userId = (int)session.getAttribute("userId");
 
 		if (newName == null || newPhoneNumber == null || newAddress == null || newPassword == null || rePassword == null ||
 				newName.equals("") || newPhoneNumber.equals("") || newAddress.equals("") || newPassword.equals("") || rePassword.equals("")) {
@@ -78,7 +79,7 @@ public class UserUpdateController {
 			return "userUpdateConfirm";
 		}
 
-		userDao.userUpdate(newPhoneNumber, newName, newAddress, newPassword, userId);
+//		userDao.userUpdate(newPhoneNumber, newName, newAddress, newPassword, userId);
 		return "userUpdateResult";
 		}
 	}
