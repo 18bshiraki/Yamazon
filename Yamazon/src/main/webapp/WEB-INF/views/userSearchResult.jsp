@@ -37,19 +37,24 @@ function MoveChecks() {
 	document.userOp.action = "purchaseHistory";
 }
 
-function MoveCheck() {
-	if (confirm("この情報を削除しますか？")) {
-		document.userOp.submit();
-		document.userOp.action = "userDeleteResult";
-	}else{
-		document.userOp.submit();
-		document.userOp.action = "userSearchResult";
-	}
 </script>
 <script type="text/javascript">
+function MoveChecked() {
+	document.userOp.submit();
+	document.userOp.action = "userUpdateConfirm";
+}
 
-
-
+</script>
+<script type="text/javascript">
+function MoveCheck() {
+	if (confirm("この情報を削除しますか？")) {
+		document.userOp.ids.submit();
+		document.userOp.ids.action = "userDeleteResult";
+	}else{
+		document.userOp.ids.submit();
+		document.userOp.ids.action = "userSearchResult";
+	}
+}
 </script>
 </head>
 <body>
@@ -60,7 +65,7 @@ function MoveCheck() {
 				<a class="logo" href="menu"><img src="ロゴ.jpg"></a>
 				<nav class="navigation" role="navigation">
 					<ul class="primary-nav">
-						<li><a href="logout.html">Logout</a></li>
+						<li><a href="logout">Logout</a></li>
 					</ul>
 				</nav>
 				<a href="#" class="nav-toggle">Menu<span></span></a>
@@ -72,7 +77,7 @@ function MoveCheck() {
 			<h2>ユーザー情報検索結果</h2>
 		</div>
 	</section>
-	<form:form action="userUpdateConfirm" name="userOp"
+	<form:form action="userDeleteResult" name="userOp"
 		modelAttribute="yamazon" method="POST">
 		<table class="table" style="color: black">
 			<thead>
@@ -97,9 +102,8 @@ function MoveCheck() {
 						<td>${user.password}</td>
 						<td><button type="submit" value="${user.userId}" name="id"
 								onclick="MoveChecks();">購入履歴</button></td>
-						<td><button type="submit" value="${user.userId}" name="id">更新</button></td>
-						<td><button type="submit" value="${user.userId}" name="id"
-								onclick="MoveCheck();">削除</button></td>
+						<td><button type="submit" value="${user.userId}" name="id"onclick="MoveChecked();">更新</button></td>
+						<td><button type="submit"value="${user.userId}" name="id"onclick="MoveCheck();">削除</button></td>
 					</tr>
 				</c:forEach>
 			</tbody>

@@ -26,7 +26,7 @@
 				<a class="logo" href="menu"><img src="ロゴ.jpg"></a>
 				<nav class="navigation" role="navigation">
 					<ul class="primary-nav">
-						<c:if test="${not empty sessionScope}">
+						<c:if test="${null ne sessionScope.user.userName}">
 							<li><c:out value="${sessionScope.user.userName}" />さん</li>
 							<li><a href="account">Mypage</a></li>
 						</c:if>
@@ -79,14 +79,16 @@
 			<c:forEach var="goods" items="${list}">
 				<div class="row">
 					<div class="col-sm-3 portfolio-item">
-						<a href="goodsDetail" class="portfolio-link">
+						<a href="detail?goodsName=${fn:escapeXml(goods.goodsName)}"
+							class="portfolio-link">
 							<div class="caption">
 								<div class="caption-content">
 									<h3>${fn:escapeXml(goods.goodsName)}</h3>
 									<h4>${fn:escapeXml(goods.taxPrice)}円</h4>
 								</div>
 							</div> <img src=${fn:escapeXml(goods.goodsImage)
-							} class="img-responsive" alt="" width="200" height="200">
+							}
+							class="img-responsive" alt="" width="200" height="200">
 						</a>
 					</div>
 			</c:forEach>

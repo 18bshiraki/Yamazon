@@ -32,10 +32,8 @@ public class UserUpdateController {
 			Model model) {
 
 		//テーブル(form）からIDの値を取得して型変換
-		String updateId = userSearchForm.getId();
-		int userId = Integer.parseInt(updateId);
-
-		session.setAttribute("userId", userId);
+		String id = userSearchForm.getId();
+		int userId = Integer.parseInt(id);
 
 		//userIdから検索した情報を取得
 		List<User> userList = userDao.findByUserId(userId);

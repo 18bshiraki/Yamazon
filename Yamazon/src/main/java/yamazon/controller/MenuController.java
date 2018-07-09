@@ -40,7 +40,7 @@ public class MenuController {
 	}
 
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
-	public String cart(Model model) {
+	public String cart(@ModelAttribute("yamazon") Search search, Model model) {
 		return "cart";
 	}
 

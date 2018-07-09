@@ -160,7 +160,7 @@
 
 			<div class="text-center">
 				<a href="userSearchResult"><button type="button"
-						class="return btn-outline-dark">
+						class="return btn-outline-dark" name="id">
 						<span class="glyphicon glyphicon-chevron-left"></span>戻る
 					</button></a>
 			</div>

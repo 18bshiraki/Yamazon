@@ -1,5 +1,6 @@
 package yamazon.dao.impl;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,11 @@ import org.springframework.stereotype.Repository;
 
 import yamazon.dao.ManagerDao;
 import yamazon.entity.Manager;
+
 @Repository
 public class ManagerDaoImpl implements ManagerDao {
+
+
 	@Autowired
 	private JdbcTemplate JdbcTemplate;
 
@@ -26,6 +30,17 @@ public class ManagerDaoImpl implements ManagerDao {
 				new BeanPropertyRowMapper<Manager>(Manager.class));
 
 	}
+
+
+	@Override
+	public int insert(String managerId,String password) {
+		String sql = "INSERT INTO manager_info (manager_name, manager_password) VALUES (?,?)";
+
+		return JdbcTemplate.update(sql, managerId,password);
+
+
+	}
+
 
 	public int update(String managerName, String managerPassword, int managerId) {
 		return JdbcTemplate.update(
