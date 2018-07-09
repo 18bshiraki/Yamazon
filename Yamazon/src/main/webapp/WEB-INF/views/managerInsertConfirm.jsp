@@ -61,7 +61,7 @@ margin: 40px
     </div>
      <h5>パスワード</h5>
     <div class="form-inline" style="padding: 3px;">
-      <form:input type="text" class="form-control input-sm" placeholder="パスワード" size="45" path="managerPassword" />
+      <form:input class="form-control input-sm" placeholder="パスワード" size="45" path="confirmPassword" />
     </div>
     <form:button class="btn btn-success btn-xs">登録<span class="glyphicon glyphicon-chevron-right"></span></form:button>
     </form:form>

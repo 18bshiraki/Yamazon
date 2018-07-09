@@ -9,8 +9,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import yamazon.dao.ManagerDao;
@@ -80,18 +78,12 @@ public class ManagerDaoImpl implements ManagerDao {
 	}
 
 	@Override
-	public int insert(Manager manager) {
-		String sql = "INSERT INTO manager_info (manager_name, manager_password) VALUES (:managerName, :managerPassword)";
+	public int insert(String magerId,String password) {
+		String sql = "INSERT INTO manager_info (manager_name, manager_password) VALUES (?,?)";
 
-		MapSqlParameterSource param = new MapSqlParameterSource();
-		param.addValue("managerName", manager.getManagerName());
-		param.addValue("managerPassword", manager.getManagerPassword());
+		return JdbcTemplate.update(sql, magerId,password);
 
-		KeyHolder keyHolder = new GeneratedKeyHolder();
 
-		jdbcTemplate.update(sql, param, keyHolder, new String[] {"manager_id"});
-
-		return keyHolder.getKey().intValue();
 	}
 
 

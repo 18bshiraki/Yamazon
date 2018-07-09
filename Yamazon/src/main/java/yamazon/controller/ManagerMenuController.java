@@ -6,16 +6,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import yamazon.form.GoodsForm;
+import yamazon.form.ManagerInsertForm;
 
 @Controller
 public class ManagerMenuController {
 	/*
 	 * 〔管理者メニュー画面〕から〔ユーザーの検索画面〕
 	 */
-	@GetMapping("/managerMenu")
-	public String usus(/*@ModelAttribute("yamazon") userSearchtForm form,*/ Model model) {
-		return "managerMenu";
-	}
+
 	@GetMapping("/userSearch")
 	public String userSearch(/*@ModelAttribute("yamazon") userSearchtForm form,*/ Model model) {
 		return "userSearch";
@@ -24,7 +22,7 @@ public class ManagerMenuController {
 	 * 〔管理者メニュー画面〕から〔管理者の登録画面〕
 	 */
 	@GetMapping("/managerInsert")
-	public String managerInsert(/*@ModelAttribute("yamazon") managerInsertForm form,*/ Model model) {
+	public String managerInsert(@ModelAttribute("yamazon") ManagerInsertForm form, Model model) {
 		return "managerInsert";
 	}
 	/*
@@ -49,10 +47,17 @@ public class ManagerMenuController {
 		return "goodsSearch";
 	}
 	/*
+	 * 〔それぞれの画面〕から〔管理者メニュー画面〕
+	 */
+	@GetMapping("/managerMenu")
+	public String managerMenu(@ModelAttribute("yamazon") GoodsForm form, Model model) {
+		return "managerMenu";
+	}
+	/*
 	 * 〔管理者メニュー2画面〕から〔管理者情報の更新画面〕
 	 */
 	@GetMapping("/managerUpdate")
-	public String managerUpdate(/*@ModelAttribute("yamazon") managerUpdateForm form,*/ Model model) {
+	public String managerUpdate(@ModelAttribute("yamazon") GoodsForm form, Model model) {
 		return "managerUpdate";
 	}
 }

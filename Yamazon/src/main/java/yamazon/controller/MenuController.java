@@ -24,7 +24,7 @@ public class MenuController {
 	@Autowired
 	GoodsDao goodsDao;
 
-	@RequestMapping(value = { "/menu" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "/menu" }, method = RequestMethod.GET)
 	public String menu(@ModelAttribute("yamazon")Search form,Model model) {
 		session.removeAttribute("manager");
 		List<Goods> goods = goodsDao.goodsMenu();

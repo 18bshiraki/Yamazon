@@ -27,7 +27,7 @@ public class ManagerInsertForm {
 			return managerName;
 		}
 
-		public void setName(String managerName) {
+		public void setManagerName(String managerName) {
 			this.managerName = managerName;
 		}
 
@@ -35,7 +35,7 @@ public class ManagerInsertForm {
 			return managerPassword;
 		}
 
-		public void setPassword(String managerPassword) {
+		public void setManagerPassword(String managerPassword) {
 			this.managerPassword = managerPassword;
 		}
 
