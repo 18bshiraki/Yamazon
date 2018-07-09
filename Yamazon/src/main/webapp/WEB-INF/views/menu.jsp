@@ -32,7 +32,7 @@
 						</c:if>
 						<li><a href="cart">Cart</a></li>
 						<li><a href="login">Login</a></li>
-						<c:if test="${not empty sessionScope}">
+						<c:if test="${not empty sessionScope.user.userName}">
 							<li><a href="logout">Logout</a></li>
 						</c:if>
 					</ul>

@@ -38,6 +38,12 @@ public class ManagerInsertController {
 
 	@RequestMapping(value = "/managerInsertConfirm", method = RequestMethod.POST)
 	public String managerInsertConfirm(@ModelAttribute("yamazon") ManagerInsertForm form, Model model) {
+		String name = form.getManagerName();
+		String pass = form.getManagerPassword();
+		if (name == null || name == "" || pass == null || pass == "") {
+			model.addAttribute("msg", "名前またはパスワードに空欄があります。");
+			return "managerInsert";
+		}
 		session.setAttribute("managerPass", form.getManagerPassword());
 		return "managerInsertConfirm";
 	}
@@ -57,7 +63,7 @@ public class ManagerInsertController {
 
 		if (!form.getConfirmPassword().equals(pass)) {
 			//String errorMsg = messageSource.getMessage("password.not.match.error", null, Locale.getDefault());
-			model.addAttribute("errmsg", "passwordが一致しません");
+			model.addAttribute("errmsg", "パスワードが一致しません");
 
 			form.setConfirmPassword("");
 
