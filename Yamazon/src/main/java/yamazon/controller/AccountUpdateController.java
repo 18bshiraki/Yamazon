@@ -17,49 +17,59 @@ import yamazon.form.UserInsertForm;
 public class AccountUpdateController {
 	@Autowired
 	UserDao upd;
-    @Autowired
-    HttpSession session;
+	@Autowired
+	HttpSession session;
 
 	@RequestMapping(value = "/accountUpdate", method = RequestMethod.POST)
-	public String accountUpdate(@ModelAttribute("yamazon")UserInsertForm form,HttpSession u_info, Model model) {
+	public String accountUpdate(@ModelAttribute("yamazon") UserInsertForm form, HttpSession u_info, Model model) {
 
 		String name = form.getName();
 		String tel = form.getTel();
 		String pass = form.getPass();
 		String address = form.getAddress();
+		String newPass = form.getNewpass();
+		User user = (User) session.getAttribute("user");
+		if (11 < form.getTel().length() || form.getTel().length() < 10) {
+			return "accountUpdate";
+		}
 
-		u_info.setAttribute("tell",tel);
-		u_info.setAttribute("name",name);
-		u_info.setAttribute("pass",pass);
-		u_info.setAttribute("address",address);
+		if (pass.equals(upd.findByUserId(user.getUserId()).get(0).getPassword())) {
+			if (!newPass.equals("")) {
+				form.setPass(newPass);
+			}
 
-		return "accountUpdateConfirm";
+			model.addAttribute("tell", tel);
+			model.addAttribute("name", name);
+			model.addAttribute("address", address);
+			return "accountUpdateConfirm";
+		}
+		model.addAttribute("msg", "※パスワードが一致しません");
+		return "accountUpdate";
 	}
 
 	@RequestMapping(value = "/account", method = RequestMethod.POST)
-	public String account(@ModelAttribute("yamazon")UserInsertForm form,HttpSession u_info, Model model) {
+	public String account(@ModelAttribute("yamazon") UserInsertForm form, HttpSession u_info, Model model) {
 		return "account";
 
 	}
 
 	@RequestMapping(value = "/accountUpdateConfirm", method = RequestMethod.POST)
-	public String accountUpdateConfirm(@ModelAttribute("yamazon")UserInsertForm form,HttpSession u_info, Model model) {
+	public String accountUpdateConfirm(@ModelAttribute("yamazon") UserInsertForm form, HttpSession u_info,
+			Model model) {
 
 		User user = (User) session.getAttribute("user");
 
-		String Un = form.getName();
-		String T = form.getTel();
-		String P = form.getPass();
-		String A = form.getAddress();
-		String N = user.getPhoneNumber();
+		String name = form.getName();
+		String tel = form.getTel();
+		String pass = form.getPass();
+		String address = form.getAddress();
+		int id = user.getUserId();
 
-		User users = new User(T,Un,A,P);
+		//User users = new User(T,Un,A,P);
 
-		session.setAttribute("users", users);
-
-		upd.userUpdate(T,Un,A,P,N);
+		upd.userUpdateId(tel, name, address, pass, id);
+		session.setAttribute("user", upd.findByUserId(id).get(0));
 
 		return "accountUpdateResult";
 	}
 }
-

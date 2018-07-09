@@ -41,26 +41,26 @@ public class LoginController {
 						for (Manager managers : manager) {
 							session.setAttribute("manager", managers);
 						}
-						model.addAttribute("manager",1);
+						model.addAttribute("manager", 1);
 						return "managerMenu";
 					}
 					model.addAttribute("msg", "電話番号またはパスワードが間違っています。");
 					return "login";
-				} else if(id>1) {
+				} else if (id > 1) {
 					List<Manager> manager = managerDao.findByPhoneNumberAndPassword(id, form.getPassword());
 					if (!manager.isEmpty()) {
 						for (Manager managers : manager) {
 							session.setAttribute("manager", managers);
 						}
-						model.addAttribute("manager",2);
+						model.addAttribute("manager", 2);
 						return "managerMenu";
 					}
 					model.addAttribute("msg", "電話番号またはパスワードが間違っています。");
 					return "login";
 				}
 			} catch (NumberFormatException e) {
-				model.addAttribute("msg","電話番号またはパスワードが間違っています。");
-				return"login";
+				model.addAttribute("msg", "電話番号またはパスワードが間違っています。");
+				return "login";
 			}
 		}
 		List<User> user = userdao.findByPhoneNumberAndPassword(form.getPhoneNumber(), form.getPassword());

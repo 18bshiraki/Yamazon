@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <!doctype html>
@@ -51,6 +52,9 @@ margin: 40px
 <div class="text-center">
 <div class="container">
   <div class="row">
+  <c:if test="${not empty errmsg}">
+		<h4><span class="text-danger">${errmsg}</span></h4>
+	</c:if>
     <h4>登録情報を確認し、再度パスワードを入力してください</h4>
     <p></p>
     <div>
