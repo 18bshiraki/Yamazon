@@ -44,13 +44,13 @@ public class UserSearchController {
 		if (id == 0) {
 			//全検索
 			List<User> userList = userDao.findAll();
-			session.setAttribute("user", userList);
+			session.setAttribute("userList", userList);
 			return "userSearchResult";
 		}
 
 		List<User> userList2 = userDao.findByUserId(id);
 
-		session.setAttribute("user", userList2);
+		session.setAttribute("userList", userList2);
 		return "userSearchResult";
 	}
 
@@ -67,7 +67,7 @@ public class UserSearchController {
 		if (id == null || id.equals("")) {
 			//全検索
 			List<User> userList = userDao.findAll();
-			session.setAttribute("user", userList);
+			session.setAttribute("userList", userList);
 			int ids = 0;
 			session.setAttribute("userId", ids);
 			return "userSearchResult";
@@ -87,7 +87,7 @@ public class UserSearchController {
 
 				//IDに該当する管理者がいる＝リストの中身がある場合
 			} else {
-				session.setAttribute("user", userList2);
+				session.setAttribute("userList", userList2);
 				model.addAttribute(id);
 				session.setAttribute("userId", userId);
 				return "userSearchResult";

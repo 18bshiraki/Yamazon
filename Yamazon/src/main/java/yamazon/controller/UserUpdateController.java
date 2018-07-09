@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import yamazon.dao.UserDao;
 import yamazon.entity.User;
@@ -45,7 +44,7 @@ public class UserUpdateController {
 			}
 
 	//ユーザ情報の更新
-	@RequestMapping("/userUpdateResult")
+	@PostMapping("/userUpdateResult")
 	public String userUpdate (
 			@ModelAttribute("yamazon")
 			UserSearchForm userSearchForm,
@@ -57,10 +56,8 @@ public class UserUpdateController {
 		String newPassword = userSearchForm.getNewPassword();
 		String rePassword = userSearchForm.getRePassword();
 
-
-
-		//
-//		int userId = (int)session.getAttribute("userId");
+		User user = (User)session.getAttribute("user");
+		int userId = user.getUserId();
 
 		if (newName == null || newPhoneNumber == null || newAddress == null || newPassword == null || rePassword == null ||
 				newName.equals("") || newPhoneNumber.equals("") || newAddress.equals("") || newPassword.equals("") || rePassword.equals("")) {
@@ -72,14 +69,22 @@ public class UserUpdateController {
 
 		if(newPhoneNumber.length() >11 ||newPhoneNumber.length() <10) {
 			model.addAttribute("msg", "入力は電話番号にしてください");
+			return"userUpdateConfirm";
 		}
 
 		if (!newPassword.equals(rePassword)) {
 			model.addAttribute("msg", "入力したパスワードと再入力したパスワードが一致しません。");
 			return "userUpdateConfirm";
 		}
+		try {
+			long phoneNumber=Long.parseLong(newPhoneNumber);
+		}catch(NumberFormatException e){
+			model.addAttribute("msg", "電話番号通りませんよ、岩田君");
+			return"userUpdateConfirm";
+		}
 
-//		userDao.userUpdate(newPhoneNumber, newName, newAddress, newPassword, userId);
+		userDao.userUpdate(newPhoneNumber, newName, newAddress, newPassword, userId);
+		session.removeAttribute("userList");
 		return "userUpdateResult";
 		}
 	}

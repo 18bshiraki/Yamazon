@@ -32,7 +32,9 @@ public class AccountUpdateController {
 		if (11 < form.getTel().length() || form.getTel().length() < 10) {
 			return "accountUpdate";
 		}
-
+		if(newPass==null||newPass.equals("")) {
+			return "accountUpdate";
+		}
 		if (pass.equals(upd.findByUserId(user.getUserId()).get(0).getPassword())) {
 			if (!newPass.equals("")) {
 				form.setPass(newPass);
@@ -69,7 +71,6 @@ public class AccountUpdateController {
 
 		upd.userUpdateId(tel, name, address, pass, id);
 		session.setAttribute("user", upd.findByUserId(id).get(0));
-		System.out.println(upd.findByUserId(id).get(0));
 		return "accountUpdateResult";
 	}
 }
