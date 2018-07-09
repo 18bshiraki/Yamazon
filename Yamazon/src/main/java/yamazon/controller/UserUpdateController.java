@@ -25,9 +25,8 @@ public class UserUpdateController {
 
 	//該当するユーザを検索
 	@PostMapping("/userUpdateConfirm")
-	public String userUpdateSearch (
-			@ModelAttribute("yamazon")
-			UserSearchForm userSearchForm,
+	public String userUpdateSearch(
+			@ModelAttribute("yamazon") UserSearchForm userSearchForm,
 			Model model) {
 
 		//テーブル(form）からIDの値を取得して型変換
@@ -36,18 +35,17 @@ public class UserUpdateController {
 
 		//userIdから検索した情報を取得
 		List<User> userList = userDao.findByUserId(userId);
-		for(User users:userList)
+		for (User users : userList)
 
-		session.setAttribute("userList", users);
+			session.setAttribute("userList", users);
 
 		return "userUpdateConfirm";
-			}
+	}
 
 	//ユーザ情報の更新
 	@PostMapping("/userUpdateResult")
-	public String userUpdate (
-			@ModelAttribute("yamazon")
-			UserSearchForm userSearchForm,
+	public String userUpdate(
+			@ModelAttribute("yamazon") UserSearchForm userSearchForm,
 			Model model) {
 
 		String newName = userSearchForm.getNewName();
@@ -56,20 +54,22 @@ public class UserUpdateController {
 		String newPassword = userSearchForm.getNewPassword();
 		String rePassword = userSearchForm.getRePassword();
 
-		User user = (User)session.getAttribute("userList");
+		User user = (User) session.getAttribute("userList");
 		int userId = user.getUserId();
 
-		if (newName == null || newPhoneNumber == null || newAddress == null || newPassword == null || rePassword == null ||
-				newName.equals("") || newPhoneNumber.equals("") || newAddress.equals("") || newPassword.equals("") || rePassword.equals("")) {
+		if (newName == null || newPhoneNumber == null || newAddress == null || newPassword == null || rePassword == null
+				||
+				newName.equals("") || newPhoneNumber.equals("") || newAddress.equals("") || newPassword.equals("")
+				|| rePassword.equals("")) {
 
 			model.addAttribute("msg", "すべての項目を入力してください。");
 			return "userUpdateConfirm";
 
 		}
 
-		if(newPhoneNumber.length() >11 ||newPhoneNumber.length() <10) {
+		if (newPhoneNumber.length() > 11 || newPhoneNumber.length() < 10) {
 			model.addAttribute("msg", "入力は電話番号にしてください");
-			return"userUpdateConfirm";
+			return "userUpdateConfirm";
 		}
 
 		if (!newPassword.equals(rePassword)) {
@@ -77,16 +77,14 @@ public class UserUpdateController {
 			return "userUpdateConfirm";
 		}
 		try {
-			long phoneNumber=Long.parseLong(newPhoneNumber);
-		}catch(NumberFormatException e){
-			model.addAttribute("msg", "電話番号で入力してください");
-			return"userUpdateConfirm";
+			long phoneNumber = Long.parseLong(newPhoneNumber);
+		} catch (NumberFormatException e) {
+			model.addAttribute("msg", "入力は電話番号にしてください");
+			return "userUpdateConfirm";
 		}
 
 		userDao.userUpdate(newPhoneNumber, newName, newAddress, newPassword, userId);
 		session.removeAttribute("userList");
 		return "userUpdateResult";
-		}
 	}
-
-
+}
