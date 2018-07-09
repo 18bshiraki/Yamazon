@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
-<html>
+<html class="no-js" lang="">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
 <head>
 <meta charset="UTF-8">
 <meta name="description" content="">
@@ -20,6 +26,7 @@
 h4 {
 	margin: 20px
 }
+
 </style>
 <title>管理者メニュー</title>
 </head>
@@ -54,7 +61,7 @@ h4 {
 									</h4>
 								</li>
 								<li><h4>
-										<a href="aaaaaaaaa">管理者情報</a>
+										<a href="managerSelect">管理者情報</a>
 									</h4></li>
 							</c:if>
 							<c:if test="${manager==2}">

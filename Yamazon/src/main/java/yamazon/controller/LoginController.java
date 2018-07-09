@@ -10,8 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import yamazon.dao.GoodsDao;
 import yamazon.dao.ManagerDao;
 import yamazon.dao.UserDao;
+import yamazon.entity.Goods;
 import yamazon.entity.Manager;
 import yamazon.entity.User;
 import yamazon.form.LoginForm;
@@ -22,6 +24,8 @@ public class LoginController {
 	UserDao userdao;
 	@Autowired
 	ManagerDao managerDao;
+	@Autowired
+	GoodsDao goodsDao;
 	@Autowired
 	HttpSession session;
 
@@ -64,6 +68,8 @@ public class LoginController {
 			for (User users : user) {
 				session.setAttribute("user", users);
 			}
+			List<Goods> goods = goodsDao.goodsMenu();
+			model.addAttribute("list", goods);
 			return "menu";
 		}
 		model.addAttribute("msg", "電話番号またはパスワードが間違っています。");

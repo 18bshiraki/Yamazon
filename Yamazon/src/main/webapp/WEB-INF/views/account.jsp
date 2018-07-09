@@ -2,7 +2,10 @@
     pageEncoding="UTF-8"%>
 <!doctype html>
 <html class="no-js" lang="">
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <head>
 <meta charset="utf-8">
 <meta name="description" content="">
@@ -20,18 +23,25 @@
 
 <body>
 <section class="banner" role="banner">
- <header id="header">
-    <div class="header-content clearfix"> <a class="logo" href="menu"><img src="ロゴ.jpg"></a>
-      <nav class="navigation" role="navigation">
-        <ul class="primary-nav">
-         <li>山田造さん</li>
-          <li><a href="cart">Cart</a></li>
-          <li><a href="login">Login</a></li>
-          <li><a href="logout">Logout</a></li>
-        </ul>
-      </nav>
-      <a href="#" class="nav-toggle">Menu<span></span></a> </div>
-  </header>
+ 		<header id="header">
+			<div class="header-content clearfix">
+				<a class="logo" href="menu"><img src="ロゴ.jpg"></a>
+				<nav class="navigation" role="navigation">
+					<ul class="primary-nav">
+					<c:if test="${not empty sessionScope}">
+						<li><c:out value="${sessionScope.user.userName}" />さん</li>
+						<li><a href="account">Mypage</a></li>
+					</c:if>
+						<li><a href="cart">Cart</a></li>
+						<li><a href="login">Login</a></li>
+					<c:if test="${not empty sessionScope}">
+						<li><a href="logout">Logout</a></li>
+					</c:if>
+					</ul>
+				</nav>
+				<a href="#" class="nav-toggle">Menu<span></span></a>
+			</div>
+		</header>
 </section>
 <section id="hero" class="section ">
 </section>
@@ -40,8 +50,11 @@
 <div class="text-center">
 <h4><a href="accountUpdate">アカウント情報更新</a></h4>
 <section id="hero" class="section ">
+<form:form method="post" modelAttribute="yamazon">
 <h4><a href="accountPurchase">購入履歴</a></h4>
+</form:form>
 </section>
+
 <h4><a href="accountDelete">退会</a></h4>
 </div>
 <section id="hero" class="section ">

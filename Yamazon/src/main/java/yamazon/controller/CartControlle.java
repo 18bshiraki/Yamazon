@@ -22,7 +22,6 @@ public class CartControlle {
 	@Autowired
 	HttpSession session;
 
-
 	@Autowired
 	GoodsDao goods;
 
@@ -30,12 +29,15 @@ public class CartControlle {
 	@RequestMapping(value = "/Incart", method = RequestMethod.POST)
 	public String Incart(@ModelAttribute("yamazon") Search search, Model model) {
 		List<String> cart = new ArrayList<String>();
-		List<Goods> good=new ArrayList<Goods>();
+		if (session.getAttribute("cart") != null) {
+			cart = (List<String>) session.getAttribute("cart");
+		}
+		List<Goods> good = new ArrayList<Goods>();
 		//cart = (List<String>) session.getAttribute("cart");
 		//String id = req.getParameter("getButtonValue");
 		cart.add(search.getId());
 		session.setAttribute("cart", cart);
-		cart=(List<String>) session.getAttribute("cart");
+		cart = (List<String>) session.getAttribute("cart");
 		for (int i = 0; i < cart.size(); i++) {
 			Integer id = Integer.valueOf(cart.get(i));
 			good.addAll(goods.cart(id));
@@ -44,16 +46,25 @@ public class CartControlle {
 
 		return "cart";
 	}
+
 	@SuppressWarnings("unchecked")
 	@PostMapping("/cartDel")
 	public String del(@ModelAttribute("yamazon") Search search, Model model) {
-		List<String> cart=new ArrayList<String>();
-		cart=(List<String>) session.getAttribute("cart");
-		for(int i=0;i<cart.size();i++) {
-			if(cart.get(i).equals(search.getId())) {
+		List<String> cart = new ArrayList<String>();
+		cart = (List<String>) session.getAttribute("cart");
+		for (int i = 0; i < cart.size(); i++) {
+			if (cart.get(i).equals(search.getId())) {
 				cart.remove(i);
 			}
 		}
+		session.setAttribute("cart", cart);
+		cart = (List<String>) session.getAttribute("cart");
+		List<Goods> good = new ArrayList<Goods>();
+		for (int i = 0; i < cart.size(); i++) {
+			Integer id = Integer.valueOf(cart.get(i));
+			good.addAll(goods.cart(id));
+		}
+		model.addAttribute("goods", good);
 		return "cart";
 	}
 

@@ -18,7 +18,7 @@ public class ManagerSearchController {
 	@Autowired
 	ManagerDao managerDao;
 
-	@RequestMapping(value = "/aaaaaaaaa", method = RequestMethod.GET)
+	@RequestMapping(value = "/managerSelect", method = RequestMethod.GET)
 	public String search(@ModelAttribute("yamazon") ManagerForm form,Model model) {
 		List<Manager> manager = managerDao.findAll();
 		model.addAttribute("list", manager);

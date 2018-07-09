@@ -1,5 +1,6 @@
 package yamazon.controller;
 
+
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -18,6 +19,7 @@ import yamazon.form.Search;
 
 @Controller
 public class MenuController {
+
 	@Autowired
 	HttpSession session;
 
@@ -25,13 +27,13 @@ public class MenuController {
 	GoodsDao goodsDao;
 
 	@RequestMapping(value = { "/", "/menu" }, method = RequestMethod.GET)
-	public String menu(@ModelAttribute("yamazon")Search form,Model model) {
+	public String menu(@ModelAttribute("yamazon")Search form, Model model) {
 		session.removeAttribute("manager");
 		List<Goods> goods = goodsDao.goodsMenu();
 		model.addAttribute("list", goods);
+
 		return "menu";
 	}
-
 	@RequestMapping(value = "/account", method = RequestMethod.GET)
 	public String account(Model model) {
 		return "account";

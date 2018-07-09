@@ -6,7 +6,8 @@ public class Search {
 	private String price;
 	private String category;
 	private String id;
-
+	private String sum;
+	private String sum5;
 
 	public String getWord() {
 		return word;
@@ -46,6 +47,22 @@ public class Search {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getSum() {
+		return sum;
+	}
+
+	public void setSum(String sum) {
+		this.sum = sum;
+	}
+
+	public String getSum5() {
+		return sum5;
+	}
+
+	public void setSum5(String sum5) {
+		this.sum5 = sum5;
 	}
 
 }

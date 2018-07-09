@@ -58,7 +58,13 @@
 			<h2>商品更新入力</h2>
 		</div>
 		<div class="text-center" style="padding: 10px;">
-			<h4>更新内容を右側の欄に入力・確認してください</h4>
+			<h4>更新内容を右側の欄に入力・確認してください。</h4>
+			<p>画像を変更しない場合はそのまま何もアップロードせず更新ボタンを押してください。</p>
+			<c:if test="${not empty msg}">
+				<h5>
+					<span style="color: red;">${msg}</span>
+				</h5>
+			</c:if>
 		</div>
 	</section>
 	<form action="goodsUpdateResult" enctype="multipart/form-data"
@@ -67,7 +73,8 @@
 			<div class="container">
 				<fieldset>
 					<div style="padding: 10px; margin: 10px;">
-						<label>商品ID</label> <input type="text" name="id" value="" readonly>
+						<label>商品ID</label> <input type="text" name="number"
+							value="${goods.goodsNumber}" readonly>
 					</div>
 				</fieldset>
 
@@ -78,49 +85,43 @@
 							<div class="row">
 								<h5>商品名</h5>
 								<div class="form-inline" style="padding: 8px;">
-									<input type="text" class="form-control input-sm" id="name"
-										size="45" value="コーヒーメーカー" readonly>
+									<input type="text" class="form-control input-sm" name="name"
+										size="45" value="${goods.goodsName}" disabled>
 								</div>
 							</div>
 							<div class="row">
 								<h5>商品画像</h5>
 								<div class="form-inline" style="padding: 8px;">
-									<img src="コーヒーメーカ(修正後).jpg" style="width: 200px; height: auto;">
+									<img src="${sessionScope.goodsFile}"
+										style="width: 200px; height: auto;">
 								</div>
 							</div>
 							<div class="row">
 								<h5>商品説明</h5>
 								<div class="form-inline" style="padding: 8px;">
 									<textarea rows="5" cols="45" class="form-control input-sm"
-										id="description" readonly>コーヒーメーカーです</textarea>
+										name="explain" disabled>${goods.goodsExplain}</textarea>
 								</div>
 							</div>
 							<div class="row">
 								<h5>商品カテゴリー</h5>
 								<div class="form-inline" style="padding: 8px;">
-									<input type="text" class="form-control input-sm" id="category"
-										size="15" value="コーヒーメーカー" readonly>
+									<input type="text" class="form-control input-sm"
+										name="category" size="15" value="${goods.category}" disabled>
 								</div>
 							</div>
 							<div class="row">
 								<h5>商品数</h5>
 								<div class="form-inline" style="padding: 8px;">
-									<input type="text" class="form-control input-sm" id="stock"
-										value="20" size="20" readonly>個
+									<input type="text" class="form-control input-sm" name="stock"
+										value="${goods.stock}" size="20" disabled>個
 								</div>
 							</div>
 							<div class="row">
 								<h5>1個当たり単価(税抜き)</h5>
 								<div class="form-inline" style="padding: 8px;">
-									<input type="text" class="form-control input-sm" id="unitPrice"
-										value="50000" size="20" readonly>円
-								</div>
-							</div>
-							<div class="row">
-								<h5>1個当たり単価(税込み)</h5>
-								<div class="form-inline" style="padding: 8px;">
-									<input type="text" class="form-control input-sm" id="unitPrice"
-										value="54000" size="20" readonly>円
+									<input type="text" class="form-control input-sm" name="price"
+										value="${goods.price}" size="20" disabled>円
 								</div>
 							</div>
 						</fieldset>
@@ -134,14 +135,14 @@
 							<div class="row">
 								<h5>商品名</h5>
 								<div class="form-inline" style="padding: 8px;">
-									<input type="text" class="form-control input-sm" id="name"
-										size="45">
+									<input type="text" class="form-control input-sm" name="name"
+										size="45" value="${goods.goodsName}">
 								</div>
 							</div>
 							<div class="row">
 								<h5>商品画像アップロード</h5>
 								<div class="form-inline" style="padding: 8px;">
-									<input type="file" class="form-control input-sm" id="file"
+									<input type="file" class="form-control input-sm" name="file"
 										size="45">
 								</div>
 								<div class="preview size"></div>
@@ -150,54 +151,49 @@
 								<h5>商品説明</h5>
 								<div class="form-inline" style="padding: 8px;">
 									<textarea rows="5" cols="45" class="form-control input-sm"
-										id="description"></textarea>
+										name="explain">${goods.goodsExplain}</textarea>
 								</div>
 							</div>
 							<div class="row">
 								<h5>商品カテゴリー</h5>
+								<p>※必ず選択してください</p>
 								<div class="form-inline" style="padding: 8px;">
-									<input type="text" class="form-control input-sm" id="category"
-										size="15">
+									<select class="form-control input-sm" name="category">
+										<option value="コーヒーメーカー">コーヒーメーカ－</option>
+										<option value="ポット">ポット</option>
+										<option value="ホットプレート">ホットプレート</option>
+									</select>
 								</div>
 							</div>
 							<div class="row">
 								<h5>商品数</h5>
 								<div class="form-inline" style="padding: 8px;">
-									<input type="text" class="form-control input-sm" id="stock"
-										size="20">個
+									<input type="text" class="form-control input-sm" name="stock"
+										size="20" value="${goods.stock}">個
 								</div>
 							</div>
 							<div class="row">
 								<h5>1個当たり単価(税抜き)</h5>
 								<p>※数字のみで入力してください</p>
 								<div class="form-inline" style="padding: 8px;">
-									<input type="text" class="form-control input-sm" id="unitPrice"
-										size="20">円
-								</div>
-							</div>
-							<div class="row">
-								<h5>1個当たり単価(税込み)</h5>
-								<p>※自動算出です</p>
-								<div class="form-inline" style="padding: 8px;">
-									<input type="text" class="form-control input-sm" id="unitPrice"
-										size="20" readonly>円
+									<input type="text" class="form-control input-sm" name="price"
+										size="20" value="${goods.price}">円
 								</div>
 							</div>
 						</fieldset>
 					</li>
 				</ul>
-
-			</div>
-			<div class="text-center col-clear">
-				<button type="submit" class="btn btn-success btn-xs">
-					変更 <span class="glyphicon glyphicon-chevron-right"></span>
-				</button>
-			</div>
-			<div class="text-center">
-				<a href="goodsSearchResult.html"><button type="button"
-						class="return btn-outline-dark">
-						<span class="glyphicon glyphicon-chevron-left"></span>戻る
-					</button></a>
+				<div class="text-center col-clear">
+					<button type="submit" class="btn btn-success btn-xs">
+						変更 <span class="glyphicon glyphicon-chevron-right"></span>
+					</button>
+				</div>
+				<div class="text-center">
+					<a href="goodsSearchResult"><button type="button"
+							class="return btn-outline-dark">
+							<span class="glyphicon glyphicon-chevron-left"></span>戻る
+						</button></a>
+				</div>
 			</div>
 		</div>
 	</form>
