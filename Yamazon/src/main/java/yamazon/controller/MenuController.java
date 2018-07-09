@@ -27,7 +27,7 @@ public class MenuController {
 	GoodsDao goodsDao;
 
 	@RequestMapping(value = { "/", "/menu" }, method = RequestMethod.GET)
-	public String menu(@ModelAttribute("yamazon")Search form,Model model) {
+	public String menu(@ModelAttribute("yamazon")Search form, Model model) {
 		session.removeAttribute("manager");
 		List<Goods> goods = goodsDao.goodsMenu();
 		model.addAttribute("list", goods);

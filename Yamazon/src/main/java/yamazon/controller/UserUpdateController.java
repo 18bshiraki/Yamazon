@@ -59,10 +59,7 @@ public class UserUpdateController {
 		String newPassword = userSearchForm.getNewPassword();
 		String rePassword = userSearchForm.getRePassword();
 
-		System.out.println(newName);
-		System.out.println(newAddress);
-		System.out.println(newPassword);
-		System.out.println(rePassword);
+
 
 		//
 		int userId = (int)session.getAttribute("userId");
