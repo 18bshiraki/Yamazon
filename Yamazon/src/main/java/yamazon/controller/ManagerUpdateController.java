@@ -1,5 +1,7 @@
 package yamazon.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,21 +37,29 @@ public class ManagerUpdateController {
 			model.addAttribute("msg", "入力されていない項目があります。");
 			return "managerUpdate";
 		}
-		if(!password.equals(rePassword)) {
+		if (!password.equals(rePassword)) {
 
 			model.addAttribute("msg", "更新するパスワードが一致しません。");
 			return "managerUpdate";
-	}
+		}
 		return "managerUpdateConfirm";
 	}
+
 	@PostMapping("/managerUpdateResult")
 	public String managerUpdateResult(@ModelAttribute("yamazon") ManagerForm form, Model model) {
 		String name = form.getManagerName();
 		String password = form.getManagerPassword();
-		Manager manager = (Manager)session.getAttribute("manager");
+		Manager manager = (Manager) session.getAttribute("manager");
 		int id = manager.getManagerId();
 		managerDao.update(name, password, id);
-		return"managerUpdateResult";
-	}
+		List<Manager> reManager = managerDao.findByPhoneNumberAndPassword(id, password);
+		if (!reManager.isEmpty()) {
+			for (Manager managers : reManager) {
+				session.setAttribute("manager", managers);
+			}
+		}
+		model.addAttribute("manager", 2);
+		return "managerUpdateResult";
 
+	}
 }
