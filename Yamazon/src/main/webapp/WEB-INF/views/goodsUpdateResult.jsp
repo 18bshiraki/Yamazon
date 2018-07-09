@@ -58,7 +58,7 @@
 		/div>
 		<div class="text-center">
 			<div>
-				<a href="managerMenu.html"><button type="button"
+				<a href="managerMenu"><button type="button"
 						class="return btn-outline-dark">
 						<span class="glyphicon glyphicon-chevron-left"></span>管理者メニュー
 					</button></a>

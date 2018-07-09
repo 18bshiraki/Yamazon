@@ -21,8 +21,7 @@ public class UserSearchController {
 	//userSearch画面を表示
 	@GetMapping("/userSearch")
 	public String toUserSearch(
-			@ModelAttribute("yamazon")
-			UserSearchForm userSearchForm,
+			@ModelAttribute("yamazon") UserSearchForm userSearchForm,
 			Model model) {
 		return "userSearch";
 	}
@@ -33,11 +32,32 @@ public class UserSearchController {
 	@Autowired
 	HttpSession session;
 
+	@GetMapping("/userSearchResult")
+	public String userSearched(
+			@ModelAttribute("yamazon") UserSearchForm userSearchForm,
+			Model model) {
+
+		//formの値の取得
+		int id = (int) session.getAttribute("userId");
+
+		//検索窓が空の場合
+		if (id == 0) {
+			//全検索
+			List<User> userList = userDao.findAll();
+			session.setAttribute("user", userList);
+			return "userSearchResult";
+		}
+
+		List<User> userList2 = userDao.findByUserId(id);
+
+		session.setAttribute("user", userList2);
+		return "userSearchResult";
+	}
+
 	//userSearchからの検索
 	@PostMapping("/userSearchResult")
 	public String userSearch(
-			@ModelAttribute("yamazon")
-			UserSearchForm userSearchForm,
+			@ModelAttribute("yamazon") UserSearchForm userSearchForm,
 			Model model) {
 
 		//formの値の取得
@@ -48,6 +68,8 @@ public class UserSearchController {
 			//全検索
 			List<User> userList = userDao.findAll();
 			session.setAttribute("user", userList);
+			int ids = 0;
+			session.setAttribute("userId", ids);
 			return "userSearchResult";
 		}
 
@@ -63,17 +85,18 @@ public class UserSearchController {
 				model.addAttribute("msg", "指定したIDの管理者は登録されていません。");
 				return "userSearch";
 
-			//IDに該当する管理者がいる＝リストの中身がある場合
+				//IDに該当する管理者がいる＝リストの中身がある場合
 			} else {
 				session.setAttribute("user", userList2);
+				model.addAttribute(id);
+				session.setAttribute("userId", userId);
 				return "userSearchResult";
 			}
 
 		} catch (NumberFormatException e) {
-
+			model.addAttribute("msg", "正しく数値を入力してください。");
+			return "userSearch";
 		}
-		model.addAttribute("msg", "正しく数値を入力してください。");
-		return "userSearch";
 
 	}
 

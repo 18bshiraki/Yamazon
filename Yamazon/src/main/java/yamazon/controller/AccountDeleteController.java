@@ -28,6 +28,7 @@ public class AccountDeleteController {
 		String pass = user.getPassword();
 
 		Delete.userDelete(tel,pass);
+		session.removeAttribute("user");
 
 		return "accountDeleteResult";
 	}

@@ -118,17 +118,15 @@ public class GoodsController {
 		String stock = form.getStock();
 		String price = form.getPrice();
 
-		String goodsFile = (String) session.getAttribute("goodsFile");
-
 		String filename;
+
+		List<Goods> list = goodsDao.findIdGetPass(Integer.parseInt(number));
+		Goods goodsOld = list.get(0);
 
 		if ((name == null || explain == null || category == null || stock == null || price == null)
 				|| (("".equals(name) || ("".equals(explain)) || ("".equals(category))
 						|| ("".equals(stock)) || ("".equals(price))))) {
 			model.addAttribute("msg", "画像アップロード以外のすべての項目に入力してください");
-			List<Goods> list = goodsDao.findIdGetPass(Integer.parseInt(number));
-			Goods goods = list.get(0);
-			session.setAttribute("goodsFile", goods.getGoodsImage());
 			model.addAttribute("goods", list.get(0));
 			return "goodsUpdateConfirm";
 		} else {
@@ -143,17 +141,24 @@ public class GoodsController {
 			}
 
 			if (bool == true) {
-
 				//税金計算
 				int unitPrice = Integer.parseInt(price);
 				double tax = 1.08;
 				int postTaxPrice = (int) (unitPrice * tax);
 
-				if (file == null || ("".equals(file.getName()))) {
-					Goods goods = new Goods(Integer.parseInt(number), name, goodsFile, explain, category,
-							Integer.parseInt(stock), unitPrice, postTaxPrice);
-					goodsDao.update(goods);
-					return "goodsUpdateResult";
+				if (file.getOriginalFilename() == null || file.isEmpty() == true) {
+					if (name.equals(goodsOld.getGoodsName()) && explain.equals(goodsOld.getGoodsExplain())
+							&& category.equals(goodsOld.getCategory()) && stock.equals(String.valueOf(goodsOld.getStock()))
+							&& price.equals(String.valueOf(goodsOld.getPrice()))) {
+						model.addAttribute("msg", "一か所以上変更してください");
+						model.addAttribute("goods", list.get(0));
+						return "goodsUpdateConfirm";
+					} else {
+						Goods goods = new Goods(Integer.parseInt(number), name, goodsOld.getGoodsImage(), explain, category,
+								Integer.parseInt(stock), unitPrice, postTaxPrice);
+						goodsDao.update(goods);
+						return "goodsUpdateResult";
+					}
 				} else {
 					//画像移し替え
 					Image image = new Image();
@@ -185,7 +190,7 @@ public class GoodsController {
 					return "goodsUpdateResult";
 				}
 			} else {
-				Goods goods = new Goods(name, goodsFile, explain, category, Integer.parseInt(stock));
+				Goods goods = new Goods(name, goodsOld.getGoodsImage(), explain, category, Integer.parseInt(stock));
 				model.addAttribute("goods", goods);
 				model.addAttribute("msg", "値段と在庫は数字で入力してください");
 				return "goodsUpdateConfirm";
