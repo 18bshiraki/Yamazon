@@ -69,7 +69,7 @@ public class AccountUpdateController {
 
 		upd.userUpdateId(tel, name, address, pass, id);
 		session.setAttribute("user", upd.findByUserId(id).get(0));
-
+		System.out.println(upd.findByUserId(id).get(0));
 		return "accountUpdateResult";
 	}
 }
