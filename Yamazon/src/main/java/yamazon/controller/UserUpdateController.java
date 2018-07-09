@@ -38,7 +38,7 @@ public class UserUpdateController {
 		List<User> userList = userDao.findByUserId(userId);
 		for(User users:userList)
 
-		session.setAttribute("user", users);
+		session.setAttribute("userList", users);
 
 		return "userUpdateConfirm";
 			}
@@ -56,7 +56,7 @@ public class UserUpdateController {
 		String newPassword = userSearchForm.getNewPassword();
 		String rePassword = userSearchForm.getRePassword();
 
-		User user = (User)session.getAttribute("user");
+		User user = (User)session.getAttribute("userList");
 		int userId = user.getUserId();
 
 		if (newName == null || newPhoneNumber == null || newAddress == null || newPassword == null || rePassword == null ||
@@ -79,7 +79,7 @@ public class UserUpdateController {
 		try {
 			long phoneNumber=Long.parseLong(newPhoneNumber);
 		}catch(NumberFormatException e){
-			model.addAttribute("msg", "電話番号通りませんよ、岩田君");
+			model.addAttribute("msg", "電話番号で入力してください");
 			return"userUpdateConfirm";
 		}
 

@@ -68,7 +68,7 @@
 					<div class="form-inline" style="padding: 8px;">
 						<input type="text" class="form-control input-sm"
 							placeholder="ユーザー名" size="45"
-							value="${sessionScope.user.userName}" readonly>
+							value="${sessionScope.userList.userName}" readonly>
 					</div>
 				</div>
 
@@ -77,7 +77,7 @@
 					<div class="form-inline" style="padding: 8px;">
 						<input type="text" class="form-control input-sm"
 							placeholder="電話番号" size="45"
-							value="${sessionScope.user.phoneNumber}" readonly>
+							value="${sessionScope.userList.phoneNumber}" readonly>
 					</div>
 				</div>
 
@@ -85,7 +85,7 @@
 					<h5>住所</h5>
 					<div class="form-inline" style="padding: 8px;">
 						<input type="text" class="form-control input-sm"
-							placeholder="ご住所" size="45" value="${sessionScope.user.address}"
+							placeholder="ご住所" size="45" value="${sessionScope.userList.address}"
 							readonly>
 					</div>
 				</div>
@@ -95,7 +95,7 @@
 					<div class="form-inline" style="padding: 8px;">
 						<input type="text" class="form-control input-sm"
 							placeholder="パスワード" size="45"
-							value="${sessionScope.user.password}" readonly>
+							value="${sessionScope.userList.password}" readonly>
 					</div>
 				</div>
 			</div>
