@@ -25,7 +25,7 @@
 <!-- header top section -->
 <section class="banner" role="banner">
  <header id="header">
-    <div class="header-content clearfix"> <a class="logo" href="menu.html"><img src="ロゴ.jpg"></a>
+    <div class="header-content clearfix"> <a class="logo" href="menu"><img src="ロゴ.jpg"></a>
       <nav class="navigation" role="navigation">
         <ul class="primary-nav">
           <li><a href="logout">Logout</a></li>
