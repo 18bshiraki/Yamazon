@@ -60,7 +60,7 @@ public class UserUpdateController {
 
 
 		//
-		int userId = (int)session.getAttribute("userId");
+//		int userId = (int)session.getAttribute("userId");
 
 		if (newName == null || newPhoneNumber == null || newAddress == null || newPassword == null || rePassword == null ||
 				newName.equals("") || newPhoneNumber.equals("") || newAddress.equals("") || newPassword.equals("") || rePassword.equals("")) {
@@ -70,15 +70,18 @@ public class UserUpdateController {
 
 		}
 
+		if(newPhoneNumber.length() >11 ||newPhoneNumber.length() <10) {
+			model.addAttribute("msg", "入力は電話番号にしてください");
+		}
+
 		if (!newPassword.equals(rePassword)) {
 			model.addAttribute("msg", "入力したパスワードと再入力したパスワードが一致しません。");
 			return "userUpdateConfirm";
-		} else {
+		}
 
-		userDao.userUpdate(newPhoneNumber, newName, newAddress, newPassword, userId);
-
+//		userDao.userUpdate(newPhoneNumber, newName, newAddress, newPassword, userId);
 		return "userUpdateResult";
 		}
 	}
-}
+
 
