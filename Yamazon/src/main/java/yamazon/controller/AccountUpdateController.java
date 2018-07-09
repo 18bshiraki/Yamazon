@@ -61,7 +61,7 @@ public class AccountUpdateController {
 
 		String name = form.getName();
 		String tel = form.getTel();
-		String pass = form.getNewpass();
+		String pass = form.getPass();
 		String address = form.getAddress();
 		int id = user.getUserId();
 
