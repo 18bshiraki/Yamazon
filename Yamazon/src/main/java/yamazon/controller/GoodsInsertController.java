@@ -51,7 +51,6 @@ public class GoodsInsertController {
 				|| (("".equals(name) || ("".equals(file.getName())) || ("".equals(explain)) || ("".equals(category))
 						|| ("".equals(stock)) || ("".equals(price))))) {
 			model.addAttribute("msg", "すべての項目に入力してください");
-
 			return "goodsInsert";
 		} else {
 			//値段と在庫数が数字で入力されているか確認
@@ -144,6 +143,7 @@ public class GoodsInsertController {
 
 		model.addAttribute("msg", "再入力してください");
 
+		session.removeAttribute("filePath");
 		return "goodsInsert";
 	}
 }

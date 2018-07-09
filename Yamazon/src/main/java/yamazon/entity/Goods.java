@@ -58,6 +58,7 @@ public class Goods {
 			int taxPrice) {
 		this.goodsNumber = goodsNumber;
 		this.goodsName = goodsName;
+		this.goodsImage = goodsImage;
 		this.goodsExplain = goodsExplain;
 		this.category = category;
 		this.stock = stock;

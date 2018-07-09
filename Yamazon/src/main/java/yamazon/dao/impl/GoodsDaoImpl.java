@@ -29,7 +29,7 @@ public class GoodsDaoImpl implements GoodsDao {
 	//値がないとき全件検索
 	public List<Goods> findAll() {
 		List<Goods> list = jt.query(
-				"SELECT goods_number, goods_name, goods_explain, goods_image, price, tax_price, category, stock FROM goods_info",
+				"SELECT goods_number, goods_name, goods_explain, goods_image, price, tax_price, category, stock FROM goods_info ORDER BY goods_number ASC ",
 				new BeanPropertyRowMapper<Goods>(Goods.class));
 		return list;
 	}
@@ -37,7 +37,7 @@ public class GoodsDaoImpl implements GoodsDao {
 	//検索用
 	public List<Goods> findWord(String keyWord) {
 		List<Goods> list = jt.query(
-				"SELECT goods_number, goods_name, goods_explain, goods_image, price, tax_price, category, stock FROM goods_info WHERE goods_explain LIKE ? OR goods_explain LIKE ? OR goods_explain LIKE ?",
+				"SELECT goods_number, goods_name, goods_explain, goods_image, price, tax_price, category, stock FROM goods_info WHERE goods_explain LIKE ? OR goods_explain LIKE ? OR goods_explain LIKE ? ORDER BY goods_number ASC ",
 				new BeanPropertyRowMapper<Goods>(Goods.class),
 				keyWord + "%", "%" + keyWord, "%" + keyWord + "%");
 		return list;
@@ -94,7 +94,7 @@ public class GoodsDaoImpl implements GoodsDao {
 	public int update(Goods goods) {
 		BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(goods);
 		return namedjt.update(
-				"UPDATE goods_info SET goods_name = :goodsName, goods_explain = :goodsExplain, goods_image = :goodsImage, price = :price, tax_price = :tax_price, category = :category, stock = :stock WHERE goods_number = :goodsNumber",
+				"UPDATE goods_info SET goods_name = :goodsName, goods_explain = :goodsExplain, goods_image = :goodsImage, price = :price, tax_price = :taxPrice, category = :category, stock = :stock WHERE goods_number = :goodsNumber",
 				paramSource);
 	}
 }
