@@ -32,6 +32,20 @@ public class AccountInsertController {
 			model.addAttribute("text", "未入力の項目があります。");
 			return "userInsert";
 		}
+		if(T.length() >11 ||T.length() <10) {
+			model.addAttribute("text", "入力は電話番号にしてください");
+			return"userInsert";
+		}
+
+			try {
+				long phoneNumber=Long.parseLong(T);
+			}catch(NumberFormatException e){
+				model.addAttribute("text", "入力は電話番号にしてください");
+				return"userInsert";
+			}
+
+
+
 		User user = new User(Un, T, P, A);
 		u_info.setAttribute("u_info",user);
 
