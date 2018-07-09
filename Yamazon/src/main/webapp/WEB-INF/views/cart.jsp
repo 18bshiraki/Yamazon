@@ -67,9 +67,12 @@
 						<form:form modelAttribute="yamazon" action="cartDel">
 							<c:forEach var="goods" items="${goods}">
 								<tr>
-									<td onclick="location.href='goodsDetail'; return false;"><h5>${fn:escapeXml(goods.goodsName)}</h5></td>
-									<td onclick="location.href='goodsDetail'; return false;"><h5>${fn:escapeXml(goods.taxPrice)}</h5></td>
-									<td onclick="location.href='goodsDetail'; return false;"><font
+									<td
+										onclick="location.href='detail?goodsName=${fn:escapeXml(goods.goodsName)}'"><h5>${fn:escapeXml(goods.goodsName)}</h5></td>
+									<td
+										onclick="location.href='detail?goodsName=${fn:escapeXml(goods.goodsName)}'"><h5>${fn:escapeXml(goods.taxPrice)}</h5></td>
+									<td
+										onclick="location.href='detail?goodsName=${fn:escapeXml(goods.goodsName)}'"><font
 										color="black"><h5>${fn:escapeXml(goods.category)}</h5></font></td>
 									<td><button type="submit" name="id"
 											class="return btn-outline-dark" value="${goods.goodsNumber}"

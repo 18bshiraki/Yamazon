@@ -60,9 +60,26 @@ public class PurchaseController {
 		List<String> cart = new ArrayList<String>();
 		cart = (List<String>) session.getAttribute("cart");
 		List<Goods> good = new ArrayList<Goods>();
+		List<String> errMsg = new ArrayList<String>();
 		for (int i = 0; i < cart.size(); i++) {
 			Integer id = Integer.valueOf(cart.get(i));
 			good.addAll(goods.cart(id));
+		}
+		for (int i = 0; i < good.size(); i++) {
+			if (good.get(i).getStock() == 0) {
+				//List<String> errMsg=new ArrayList<String>();
+				errMsg.add("ごめんなさい！" + good.get(i).getGoodsName() + "は売り切れです!");
+				//good.remove(i);
+				good.get(i).setGoodsName("ごめんなさい！" + good.get(i).getGoodsName() + "は売り切れです!");
+				cart.remove(i);
+			}
+
+		}
+		if (!errMsg.isEmpty()) {
+			//model.addAttribute("errMsg", errMsg);
+			session.setAttribute("cart",cart);
+			model.addAttribute("goods", good);
+			return "purchase";
 		}
 		LocalDateTime d = LocalDateTime.now();
 		DateTimeFormatter df1 = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss　E");
@@ -70,7 +87,7 @@ public class PurchaseController {
 		User user = (User) session.getAttribute("user");
 		for (int i = 0; i < good.size(); i++) {
 			pur.history(user.getUserId(), good.get(i).getGoodsName(), good.get(i).getTaxPrice(), day);
-			pur.stock(good.get(i).getStock()-1, good.get(i).getGoodsName());
+			pur.stock(good.get(i).getStock() - 1, good.get(i).getGoodsName());
 		}
 		session.removeAttribute("cart");
 
