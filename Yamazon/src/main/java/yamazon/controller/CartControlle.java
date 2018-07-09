@@ -55,6 +55,7 @@ public class CartControlle {
 		for (int i = 0; i < cart.size(); i++) {
 			if (cart.get(i).equals(search.getId())) {
 				cart.remove(i);
+				break;
 			}
 		}
 		session.setAttribute("cart", cart);
@@ -67,5 +68,6 @@ public class CartControlle {
 		model.addAttribute("goods", good);
 		return "cart";
 	}
+
 
 }
