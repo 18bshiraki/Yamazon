@@ -67,10 +67,11 @@
 			</c:if>
 		</div>
 	</section>
-	<form action="goodsUpdateResult" enctype="multipart/form-data"
-		method="post" style="color: black">
-		<div class="text-center">
-			<div class="container">
+
+	<div class="text-center">
+		<div class="container">
+			<form action="goodsUpdateResult" enctype="multipart/form-data"
+				method="post" style="color: black">
 				<fieldset>
 					<div style="padding: 10px; margin: 10px;">
 						<label>商品ID</label> <input type="text" name="number"
@@ -188,15 +189,18 @@
 						変更 <span class="glyphicon glyphicon-chevron-right"></span>
 					</button>
 				</div>
-				<div class="text-center">
-					<a href="goodsSearchResult"><button type="button"
-							class="return btn-outline-dark">
-							<span class="glyphicon glyphicon-chevron-left"></span>戻る
-						</button></a>
-				</div>
+			</form>
+			<form action="goodsSearchResult" method="post">
+			<div class="text-center">
+				<button type="submit" class="return btn-outline-dark" name="keyWord"
+					value="${keyWord}">
+					<span class="glyphicon glyphicon-chevron-left"></span>戻る
+				</button>
 			</div>
+			</form>
 		</div>
-	</form>
+	</div>
+
 	<footer class="footer">
 		<div class="container">
 			<div class="col-md-6 left">
