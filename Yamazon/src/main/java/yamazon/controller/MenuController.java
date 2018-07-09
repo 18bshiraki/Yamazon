@@ -1,6 +1,5 @@
 package yamazon.controller;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,13 +27,14 @@ public class MenuController {
 	GoodsDao goodsDao;
 
 	@RequestMapping(value = { "/", "/menu" }, method = RequestMethod.GET)
-	public String menu(@ModelAttribute("yamazon")Search form, Model model) {
+	public String menu(@ModelAttribute("yamazon") Search form, Model model) {
 		session.removeAttribute("manager");
 		List<Goods> goods = goodsDao.goodsMenu();
 		model.addAttribute("list", goods);
 
 		return "menu";
 	}
+
 	@RequestMapping(value = "/account", method = RequestMethod.GET)
 	public String account(Model model) {
 		return "account";
@@ -44,18 +44,20 @@ public class MenuController {
 	@RequestMapping(value = "/cart", method = RequestMethod.GET)
 	public String cart(@ModelAttribute("yamazon") Search search, Model model) {
 		List<String> cart = new ArrayList<String>();
-		cart = (List<String>) session.getAttribute("cart");
+		if (session.getAttribute("cart") != null) {
+			cart = (List<String>) session.getAttribute("cart");
+		}
 		List<Goods> good = new ArrayList<Goods>();
 		for (int i = 0; i < cart.size(); i++) {
 			Integer id = Integer.valueOf(cart.get(i));
 			good.addAll(goodsDao.cart(id));
 		}
-		model.addAttribute("goods",good);
+		model.addAttribute("goods", good);
 		return "cart";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(@ModelAttribute("yamazon")LoginForm form,Model model) {
+	public String login(@ModelAttribute("yamazon") LoginForm form, Model model) {
 		return "login";
 	}
 
@@ -64,6 +66,5 @@ public class MenuController {
 		session.invalidate();
 		return "logout";
 	}
-
 
 }

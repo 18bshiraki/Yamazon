@@ -82,7 +82,7 @@ public class PurchaseController {
 			return "purchase";
 		}
 		LocalDateTime d = LocalDateTime.now();
-		DateTimeFormatter df1 = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss　E");
+		DateTimeFormatter df1 = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss　(E)");
 		String day = df1.format(d);
 		User user = (User) session.getAttribute("user");
 		for (int i = 0; i < good.size(); i++) {

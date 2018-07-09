@@ -54,7 +54,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-4 portfolio-item">
-					<a href="cart" class="portfolio-link">
+					<a href="cartImage?goodsId=${id}" class="portfolio-link">
 						<div class="caption">
 							<div class="caption-content">
 								<h2>
