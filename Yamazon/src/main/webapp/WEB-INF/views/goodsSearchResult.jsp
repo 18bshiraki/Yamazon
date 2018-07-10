@@ -94,8 +94,8 @@
 							<td><img src="${goods.goodsImage}" width="100" height="120"></td>
 							<td style="width: 120px; height: auto;">${goods.goodsName}</td>
 							<td>${goods.category}</td>
-							<td>${goods.goodsP}</td>
-							<td>${goods.goodsPT}</td>
+							<td>${goods.CPrice}</td>
+							<td>${goods.CTaxPrice}</td>
 							<td>${goods.stock}点</td>
 							<td style="width: 350px; height: auto;">${goods.goodsExplain}</td>
 							<td><button type="submit" name="number"

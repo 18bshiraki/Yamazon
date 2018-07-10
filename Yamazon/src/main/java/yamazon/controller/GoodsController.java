@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.text.NumberFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -45,25 +44,17 @@ public class GoodsController {
 
 			String cGoodsPrice = null;
 			String cGoodsPriceTax = null;
-
-			List<String> goodsList = new ArrayList<String>();
-
 			//値段に円とカンマ表示
-			for(int i = 0; i < list.size(); i++) {
-				Goods goods = list.get(i);
-
-				int goodsPrice = goods.getPrice();
-				int goodsTaxPrice = goods.getTaxPrice();
+			for (int i = 0; i < list.size(); i++) {
 				NumberFormat nfCur = NumberFormat.getCurrencyInstance();
-
-				cGoodsPrice = nfCur.format(goodsPrice);
-				goodsList.add(String.valueOf((cGoodsPrice)));
-				cGoodsPriceTax = nfCur.format(goodsTaxPrice);
-				goodsList.add(String.valueOf(cGoodsPriceTax));
-
+				cGoodsPrice = nfCur.format(list.get(i).getPrice());
+				cGoodsPriceTax = nfCur.format(list.get(i).getTaxPrice());
+					list.get(i).setCPrice(cGoodsPrice);
+					list.get(i).setCTaxPrice(cGoodsPriceTax);
 			}
+
 			//スコープにセット
-			model.addAttribute("goodsList", goodsList);
+			model.addAttribute("goods", list);
 			model.addAttribute("keyWord", keyWord);
 
 			return "goodsSearchResult";
