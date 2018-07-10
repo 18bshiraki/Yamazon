@@ -42,14 +42,19 @@ public class GoodsController {
 		if (keyWord == null || "".equals(keyWord)) {
 			List<Goods> list = goodsDao.findAll();
 
-			//値段に円とカンマ表示
-			Goods goods = list.get(0);
-			int goodsPrice = goods.getPrice();
-			int goodsTaxPrice = goods.getTaxPrice();
-			NumberFormat nfCur = NumberFormat.getCurrencyInstance();
+			String cGoodsPrice = null;
+			String cGoodsPriceTax = null;
 
-			String cGoodsPrice = nfCur.format(goodsPrice);
-			String cGoodsPriceTax = nfCur.format(goodsTaxPrice);
+			//値段に円とカンマ表示
+			for(int i = 0; i < list.size(); i++) {
+				Goods goods = list.get(i);
+				int goodsPrice = goods.getPrice();
+				int goodsTaxPrice = goods.getTaxPrice();
+				NumberFormat nfCur = NumberFormat.getCurrencyInstance();
+
+				cGoodsPrice = nfCur.format(goodsPrice);
+				cGoodsPriceTax = nfCur.format(goodsTaxPrice);
+			}
 
 			//スコープにセット
 			model.addAttribute("goods", list);

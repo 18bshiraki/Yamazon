@@ -1,5 +1,6 @@
 package yamazon.controller;
 
+import java.text.NumberFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +32,11 @@ public class GoodsSearchController {
 			model.addAttribute("msg", "一致する商品がありませんでした");
 			return "searchResult";
 		}
+		int goodsTaxPrice = good.get(0).getTaxPrice();
+		NumberFormat nfCur = NumberFormat.getCurrencyInstance();
+		String cGoodsPriceTax = nfCur.format(goodsTaxPrice);
 		model.addAttribute("search", good);
+		model.addAttribute("searchs", cGoodsPriceTax);
 
 		return "searchResult";
 
