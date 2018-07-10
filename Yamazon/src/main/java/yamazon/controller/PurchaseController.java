@@ -33,7 +33,9 @@ public class PurchaseController {
 	@PostMapping("/purchase")
 	public String purchase(@ModelAttribute("yamazon") Search form, Model model) {
 		List<String> cart = new ArrayList<String>();
-		cart = (List<String>) session.getAttribute("cart");
+		if (session.getAttribute("cart") != null) {
+			cart = (List<String>) session.getAttribute("cart");
+		}
 		if (cart.isEmpty()) {
 			model.addAttribute("msg", "カートに商品を入れてください");
 			return "cart";
