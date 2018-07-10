@@ -75,7 +75,7 @@
 				<fieldset>
 					<div style="padding: 10px; margin: 10px;">
 						<label>商品ID</label> <input type="text" name="number"
-							value="${goods.goodsNumber}" readonly>
+							value="${oldGoods.goodsNumber}" readonly>
 					</div>
 				</fieldset>
 
@@ -87,7 +87,7 @@
 								<h5>商品名</h5>
 								<div class="form-inline" style="padding: 8px;">
 									<input type="text" class="form-control input-sm" name="name"
-										size="45" value="${goods.goodsName}" disabled>
+										size="45" value="${oldGoods.goodsName}" disabled>
 								</div>
 							</div>
 							<div class="row">
@@ -101,28 +101,28 @@
 								<h5>商品説明</h5>
 								<div class="form-inline" style="padding: 8px;">
 									<textarea rows="5" cols="45" class="form-control input-sm"
-										name="explain" disabled>${goods.goodsExplain}</textarea>
+										name="explain" disabled>${oldGoods.goodsExplain}</textarea>
 								</div>
 							</div>
 							<div class="row">
 								<h5>商品カテゴリー</h5>
 								<div class="form-inline" style="padding: 8px;">
 									<input type="text" class="form-control input-sm"
-										name="category" size="15" value="${goods.category}" disabled>
+										name="category" size="15" value="${oldGoods.category}" disabled>
 								</div>
 							</div>
 							<div class="row">
 								<h5>商品数</h5>
 								<div class="form-inline" style="padding: 8px;">
 									<input type="text" class="form-control input-sm" name="stock"
-										value="${goods.stock}" size="20" disabled>個
+										value="${oldGoods.stock}" size="20" disabled>個
 								</div>
 							</div>
 							<div class="row">
 								<h5>1個当たり単価(税抜き)</h5>
 								<div class="form-inline" style="padding: 8px;">
 									<input type="text" class="form-control input-sm" name="price"
-										value="${goods.price}" size="20" disabled>円
+										value="${oldGoods.price}" size="20" disabled>円
 								</div>
 							</div>
 						</fieldset>
@@ -157,13 +157,9 @@
 							</div>
 							<div class="row">
 								<h5>商品カテゴリー</h5>
-								<p>※必ず選択してください</p>
 								<div class="form-inline" style="padding: 8px;">
-									<select class="form-control input-sm" name="category">
-										<option value="コーヒーメーカー">コーヒーメーカ－</option>
-										<option value="ポット">ポット</option>
-										<option value="ホットプレート">ホットプレート</option>
-									</select>
+									<input type="text" class="form-control input-sm" name="category"
+										size="45" value="${goods.category}">
 								</div>
 							</div>
 							<div class="row">
@@ -191,12 +187,12 @@
 				</div>
 			</form>
 			<form action="goodsSearchResult" method="post">
-			<div class="text-center">
-				<button type="submit" class="return btn-outline-dark" name="keyWord"
-					value="${keyWord}">
-					<span class="glyphicon glyphicon-chevron-left"></span>戻る
-				</button>
-			</div>
+				<div class="text-center">
+					<button type="submit" class="return btn-outline-dark"
+						name="keyWord" value="${keyWord}">
+						<span class="glyphicon glyphicon-chevron-left"></span>戻る
+					</button>
+				</div>
 			</form>
 		</div>
 	</div>

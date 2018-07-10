@@ -102,6 +102,7 @@ public class GoodsController {
 		List<Goods> list = goodsDao.findIdGetPass(Integer.parseInt(number));
 		Goods goods = list.get(0);
 		session.setAttribute("goodsFile", goods.getGoodsImage());
+		model.addAttribute("oldGoods", list.get(0));
 		model.addAttribute("goods", list.get(0));
 		model.addAttribute("keyWord", keyWord);
 		return "goodsUpdateConfirm";
@@ -123,12 +124,12 @@ public class GoodsController {
 		String filename;
 
 		List<Goods> list = goodsDao.findIdGetPass(Integer.parseInt(number));
-		Goods goodsOld = list.get(0);
 
 		if ((name == null || explain == null || category == null || stock == null || price == null)
 				|| (("".equals(name) || ("".equals(explain)) || ("".equals(category))
 						|| ("".equals(stock)) || ("".equals(price))))) {
 			model.addAttribute("msg", "画像アップロード以外のすべての項目に入力してください");
+			model.addAttribute("oldGoods", list.get(0));
 			model.addAttribute("goods", list.get(0));
 			return "goodsUpdateConfirm";
 		} else {
@@ -142,11 +143,13 @@ public class GoodsController {
 				bool = false;
 			}
 
-			if (bool == true) {
+			if (bool == true && Integer.parseInt(stock) > 0 && Integer.parseInt(price) > 0) {
 				//税金計算
 				int unitPrice = Integer.parseInt(price);
 				double tax = 1.08;
 				int postTaxPrice = (int) (unitPrice * tax);
+
+				Goods goodsOld = list.get(0);
 
 				if (file.getOriginalFilename() == null || file.isEmpty() == true) {
 					if (name.equals(goodsOld.getGoodsName()) && explain.equals(goodsOld.getGoodsExplain())
@@ -154,6 +157,7 @@ public class GoodsController {
 							&& stock.equals(String.valueOf(goodsOld.getStock()))
 							&& price.equals(String.valueOf(goodsOld.getPrice()))) {
 						model.addAttribute("msg", "一か所以上変更してください");
+						model.addAttribute("oldGoods", list.get(0));
 						model.addAttribute("goods", list.get(0));
 						return "goodsUpdateConfirm";
 					} else {
@@ -192,9 +196,10 @@ public class GoodsController {
 					return "goodsUpdateResult";
 				}
 			} else {
-				Goods goods = new Goods(name, goodsOld.getGoodsImage(), explain, category, Integer.parseInt(stock));
+				Goods goods = new Goods(name, explain, category, list.get(0).getStock(), list.get(0).getPrice());
 				model.addAttribute("goods", goods);
-				model.addAttribute("msg", "値段と在庫は数字で入力してください");
+				model.addAttribute("oldGoods", list.get(0));
+				model.addAttribute("msg", "値段と在庫は1以上で数字のみを入力してください");
 				return "goodsUpdateConfirm";
 			}
 		}

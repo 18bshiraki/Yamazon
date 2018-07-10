@@ -98,17 +98,9 @@
 				</div>
 				<div class="row">
 					<h5>商品カテゴリー</h5>
-					<c:if test="${not empty select}">
-						<h6>
-							<span style="color: red;">${select}</span>
-						</h6>
-					</c:if>
 					<div class="form-inline" style="padding: 8px;">
-						<select class="form-control input-sm" name="category">
-							<option value="コーヒーメーカー">コーヒーメーカ－</option>
-							<option value="ポット">ポット</option>
-							<option value="ホットプレート">ホットプレート</option>
-						</select>
+						<input type="text" class="form-control input-sm" name="category"
+							size="45" value="${goods.category}">
 					</div>
 				</div>
 				<div class="row">
