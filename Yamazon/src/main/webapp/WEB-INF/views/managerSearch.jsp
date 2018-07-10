@@ -33,9 +33,9 @@ p {
 	function MoveCheck() {
 		if (confirm("この情報を削除しますか？")) {
 			document.submitInfo.submit();
+			return true;
 		} else {
-
-			document.submitInfo.action = "managerSelect"
+			return false;
 		}
 	}
 </script>
@@ -86,7 +86,7 @@ p {
 									<td>${fn:escapeXml(manager.managerPassword)}</td>
 									<td><button type="submit" name="managerId"
 											value="${fn:escapeXml(manager.managerId)}"
-											onclick="MoveCheck();">削除</button></td>
+											onclick="return MoveCheck();">削除</button></td>
 								</tr>
 							</c:forEach>
 						</table>
