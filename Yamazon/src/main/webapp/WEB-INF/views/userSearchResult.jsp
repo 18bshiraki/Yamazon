@@ -50,9 +50,9 @@ function MoveCheck() {
 	if (confirm("この情報を削除しますか？")) {
 		document.userOp.ids.submit();
 		document.userOp.ids.action = "userDeleteResult";
+		return true;
 	}else{
-		document.userOp.ids.submit();
-		document.userOp.ids.action = "userSearchResult";
+		return false;
 	}
 }
 </script>
@@ -103,7 +103,7 @@ function MoveCheck() {
 						<td><button type="submit" value="${userList.userId}" name="id"
 								onclick="MoveChecks();">購入履歴</button></td>
 						<td><button type="submit" value="${userList.userId}" name="id"onclick="MoveChecked();">更新</button></td>
-						<td><button type="submit"value="${userList.userId}" name="id"onclick="MoveCheck();">削除</button></td>
+						<td><button type="submit"value="${userList.userId}" name="id"onclick="return MoveCheck();">削除</button></td>
 					</tr>
 				</c:forEach>
 			</tbody>
