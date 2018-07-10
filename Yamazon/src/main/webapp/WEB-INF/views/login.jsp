@@ -36,9 +36,11 @@
 		</div>
 	</section>
 	<div class="text-center">
-	<c:if test="${not empty msg}">
-		<h4><span class="text-danger">${msg}</span></h4>
-	</c:if>
+		<c:if test="${not empty msg}">
+			<h4>
+				<span class="text-danger">${msg}</span>
+			</h4>
+		</c:if>
 		<form:form action="menu" method="post" modelAttribute="yamazon">
 			<div class="container">
 
@@ -63,12 +65,14 @@
 				</form:button>
 			</div>
 		</form:form>
-		<div class="text-center">
-			<a href="userInsert"><button type="button"
-					class="btn btn-success">
-					新規登録<span class="glyphicon glyphicon-chevron-right"></span>
-				</button></a>
-		</div>
+		<c:if test="${null ne sessionScope.user.userName}">
+			<div class="text-center">
+				<a href="userInsert"><button type="button"
+						class="btn btn-success">
+						新規登録<span class="glyphicon glyphicon-chevron-right"></span>
+					</button></a>
+			</div>
+		</c:if>
 	</div>
 	<footer class="footer">
 		<div class="container">

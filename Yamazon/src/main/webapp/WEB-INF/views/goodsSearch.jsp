@@ -47,6 +47,11 @@
 		</div>
 		<div class="text-center" style="padding: 10px;">
 			<h4>商品のキーワードを入力してください。空欄で検索すると全件表示します。</h4>
+			<c:if test="${not empty msg}">
+				<h4>
+					<span class="text-danger">${msg}</span>
+				</h4>
+			</c:if>
 		</div>
 	</section>
 
@@ -66,9 +71,6 @@
 						</button>
 					</span>
 				</div>
-				<c:if test="${not empty msg}">
-					<h4><span style="color: red;">${msg}</span></h4>
-				</c:if>
 			</div>
 		</div>
 		<section id="hero" class="section "></section>

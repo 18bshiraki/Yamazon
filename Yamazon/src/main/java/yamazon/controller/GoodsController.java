@@ -60,20 +60,20 @@ public class GoodsController {
 			return "goodsSearchResult";
 		} else {
 			List<Goods> list = goodsDao.findWord(keyWord);
-
-			//値段に円とカンマ表示
-			Goods goods = list.get(0);
-			int goodsPrice = goods.getPrice();
-			int goodsTaxPrice = goods.getTaxPrice();
-			NumberFormat nfCur = NumberFormat.getCurrencyInstance();
-
-			String cGoodsPrice = nfCur.format(goodsPrice);
-			String cGoodsPriceTax = nfCur.format(goodsTaxPrice);
-
-			if (list.size() == 0) {
+			if (list.isEmpty()) {
 				model.addAttribute("msg", "該当する商品がありませんでした");
 				return "goodsSearch";
 			} else {
+				String cGoodsPrice = null;
+				String cGoodsPriceTax = null;
+				for (int i = 0; i < list.size(); i++) {
+					NumberFormat nfCur = NumberFormat.getCurrencyInstance();
+					cGoodsPrice = nfCur.format(list.get(i).getPrice());
+					cGoodsPriceTax = nfCur.format(list.get(i).getTaxPrice());
+					list.get(i).setCPrice(cGoodsPrice);
+					list.get(i).setCTaxPrice(cGoodsPriceTax);
+				}
+
 				//スコープにセット
 				model.addAttribute("goods", list);
 				model.addAttribute("goodsP", cGoodsPrice);

@@ -84,9 +84,8 @@
 				<div class="row">
 					<h5>住所</h5>
 					<div class="form-inline" style="padding: 8px;">
-						<input type="text" class="form-control input-sm"
-							placeholder="ご住所" size="45" value="${sessionScope.userList.address}"
-							readonly>
+						<input type="text" class="form-control input-sm" placeholder="ご住所"
+							size="45" value="${sessionScope.userList.address}" readonly>
 					</div>
 				</div>
 
@@ -103,7 +102,9 @@
 			<br>
 			<h3>編集する情報を入力してください</h3>
 
-			<h4>${msg}</h4>
+			<h4>
+				<span class="text-danger">${msg}</span>
+			</h4>
 			<form:form action="userUpdateResult" modelAttribute="yamazon"
 				method="POST">
 
@@ -151,11 +152,11 @@
 
 
 
-			<div class="text-center">
-				<button type="submit" class="btn btn-success btn-xs">
-					変更<span class="glyphicon glyphicon-chevron-right"></span>
-				</button>
-			</div>
+				<div class="text-center">
+					<button type="submit" class="btn btn-success btn-xs">
+						変更<span class="glyphicon glyphicon-chevron-right"></span>
+					</button>
+				</div>
 			</form:form>
 
 			<div class="text-center">

@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -58,15 +58,18 @@ p {
 				<h4>検索したいユーザIDを入力してください。</h4>
 				<h4>空白の場合は全件検索を行います。</h4>
 
-				<h4>${msg}</h4>
+				<h4>
+					<span class="text-danger">${msg}</span>
+				</h4>
 
 				<div>
-					<form:form action="userSearchResult" modelAttribute = "yamazon" method = "POST">
+					<form:form action="userSearchResult" modelAttribute="yamazon"
+						method="POST">
 						<div class="form-inline" style="padding: 3px;">
 
 
-							<form:input type="text" class="form-control input-sm" id="name" path = "userId"
-								placeholder="ユーザID" size="45"></form:input>
+							<form:input type="text" class="form-control input-sm" id="name"
+								path="userId" placeholder="ユーザID" size="45"></form:input>
 						</div>
 						<button type="submit" class="btn btn-success btn-xs">
 							検索<span class="glyphicon glyphicon-chevron-right"></span>
