@@ -49,7 +49,7 @@
 </div>
 
   <div class="text-center">
-    <a href="managerMenu"><button type="button" class="return btn-outline-dark"">
+    <a href="managerMenu"><button type="button" class="return btn-outline-dark">
 						<span class="glyphicon glyphicon-chevron-left"></span>管理者メニュー
 					</button></a>
   </div>
