@@ -41,8 +41,8 @@ function MoveChecked() {
 <script type="text/javascript">
 function MoveCheck() {
 	if (confirm("この情報を削除しますか？")) {
-		document.userOp.ids.submit();
-		document.userOp.ids.action = "userDeleteResult";
+		document.userOp.submit();
+		document.userOp.action = "userDeleteResult";
 		return true;
 	}else{
 		return false;
