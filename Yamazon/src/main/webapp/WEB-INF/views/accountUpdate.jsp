@@ -56,9 +56,14 @@
 		<form:form action="accountUpdate" method="post"
 			modelAttribute="yamazon">
 			<div class="row">
+				<c:if test="${null ne msg}">
+					<h6>
+						<font color="red">${msg}</font>
+					</h6>
+				</c:if>
 				<h5>新しい電話番号</h5>
 				<h6>
-					<font color="red">※電話番号を入力してください  ※数字のみ入力してください（ハイフンなし）</font>
+					<font color="red"> ※数字のみ入力してください（ハイフンなし）</font>
 				</h6>
 				<div class="form-inline" style="padding: 8px;">
 					<form:input type="text" class="form-control input-sm" nmae="tel"
@@ -88,14 +93,9 @@
 			</div>
 			<div class="row">
 				<h5>今までのパスワード</h5>
-				<c:if test="${null ne msg}">
-					<h6>
-						<font color="red">${msg}</font>
-					</h6>
-				</c:if>
 				<div class="form-inline" style="padding: 8px;">
-					<form:password class="form-control input-sm"
-						placeholder="Password" size="45" path="pass" />
+					<form:password class="form-control input-sm" placeholder="Password"
+						size="45" path="pass" />
 				</div>
 			</div>
 			<div class="text-center">
