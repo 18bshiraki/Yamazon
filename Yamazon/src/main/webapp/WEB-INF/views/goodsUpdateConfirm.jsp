@@ -62,7 +62,7 @@
 			<p>画像を変更しない場合はそのまま何もアップロードせず更新ボタンを押してください。</p>
 			<c:if test="${not empty msg}">
 				<h5>
-					<span style="color: red;">${msg}</span>
+					<span style="color: red;">${fn:escapeXml(msg)}</span>
 				</h5>
 			</c:if>
 		</div>
@@ -75,7 +75,7 @@
 				<fieldset>
 					<div style="padding: 10px; margin: 10px;">
 						<label>商品ID</label> <input type="text" name="number"
-							value="${oldGoods.goodsNumber}" readonly>
+							value="${fn:escapeXml(oldGoods.goodsNumber)}" readonly>
 					</div>
 				</fieldset>
 
@@ -87,13 +87,13 @@
 								<h5>商品名</h5>
 								<div class="form-inline" style="padding: 8px;">
 									<input type="text" class="form-control input-sm" name="name"
-										size="45" value="${oldGoods.goodsName}" disabled>
+										size="45" value="${fn:escapeXml(oldGoods.goodsName)}" disabled>
 								</div>
 							</div>
 							<div class="row">
 								<h5>商品画像</h5>
 								<div class="form-inline" style="padding: 8px;">
-									<img src="${sessionScope.goodsFile}"
+									<img src="${fn:escapeXml(sessionScope.goodsFile)}"
 										style="width: 200px; height: auto;">
 								</div>
 							</div>
@@ -101,28 +101,28 @@
 								<h5>商品説明</h5>
 								<div class="form-inline" style="padding: 8px;">
 									<textarea rows="5" cols="45" class="form-control input-sm"
-										name="explain" disabled>${oldGoods.goodsExplain}</textarea>
+										name="explain" disabled>${fn:escapeXml(oldGoods.goodsExplain)}</textarea>
 								</div>
 							</div>
 							<div class="row">
 								<h5>商品カテゴリー</h5>
 								<div class="form-inline" style="padding: 8px;">
 									<input type="text" class="form-control input-sm"
-										name="category" size="15" value="${oldGoods.category}" disabled>
+										name="category" size="15" value="${fn:escapeXml(oldGoods.category)}" disabled>
 								</div>
 							</div>
 							<div class="row">
 								<h5>商品数</h5>
 								<div class="form-inline" style="padding: 8px;">
 									<input type="text" class="form-control input-sm" name="stock"
-										value="${oldGoods.stock}" size="20" disabled>個
+										value="${fn:escapeXml(oldGoods.stock)}" size="20" disabled>個
 								</div>
 							</div>
 							<div class="row">
 								<h5>1個当たり単価(税抜き)</h5>
 								<div class="form-inline" style="padding: 8px;">
 									<input type="text" class="form-control input-sm" name="price"
-										value="${oldGoods.price}" size="20" disabled>円
+										value="${fn:escapeXml(oldGoods.price)}" size="20" disabled>円
 								</div>
 							</div>
 						</fieldset>
@@ -137,7 +137,7 @@
 								<h5>商品名</h5>
 								<div class="form-inline" style="padding: 8px;">
 									<input type="text" class="form-control input-sm" name="name"
-										size="45" value="${goods.goodsName}">
+										size="45" value="${fn:escapeXml(goods.goodsName)}">
 								</div>
 							</div>
 							<div class="row">
@@ -152,21 +152,21 @@
 								<h5>商品説明</h5>
 								<div class="form-inline" style="padding: 8px;">
 									<textarea rows="5" cols="45" class="form-control input-sm"
-										name="explain">${goods.goodsExplain}</textarea>
+										name="explain">${fn:escapeXml(goods.goodsExplain)}</textarea>
 								</div>
 							</div>
 							<div class="row">
 								<h5>商品カテゴリー</h5>
 								<div class="form-inline" style="padding: 8px;">
 									<input type="text" class="form-control input-sm" name="category"
-										size="45" value="${goods.category}">
+										size="45" value="${fn:escapeXml(goods.category)}">
 								</div>
 							</div>
 							<div class="row">
 								<h5>商品数</h5>
 								<div class="form-inline" style="padding: 8px;">
 									<input type="text" class="form-control input-sm" name="stock"
-										size="20" value="${goods.stock}">個
+										size="20" value="${fn:escapeXml(goods.stock)}">個
 								</div>
 							</div>
 							<div class="row">
@@ -174,7 +174,7 @@
 								<p>※数字のみで入力してください</p>
 								<div class="form-inline" style="padding: 8px;">
 									<input type="text" class="form-control input-sm" name="price"
-										size="20" value="${goods.price}">円
+										size="20" value="${fn:escapeXml(goods.price)}">円
 								</div>
 							</div>
 						</fieldset>
@@ -189,7 +189,7 @@
 			<form action="goodsSearchResult" method="post">
 				<div class="text-center">
 					<button type="submit" class="return btn-outline-dark"
-						name="keyWord" value="${keyWord}">
+						name="keyWord" value="${fn:escapeXml(keyWord)}">
 						<span class="glyphicon glyphicon-chevron-left"></span>戻る
 					</button>
 				</div>
