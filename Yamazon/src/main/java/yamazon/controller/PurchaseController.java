@@ -3,6 +3,7 @@ package yamazon.controller;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -92,9 +93,12 @@ public class PurchaseController {
 				errMsg.add("ごめんなさい！" + good.get(i).getGoodsName() + "は売り切れです!");
 				//good.remove(i);
 				good.get(i).setGoodsName("ごめんなさい！" + good.get(i).getGoodsName() + "は売り切れです!");
-				cart.remove(i);
+				List<String> carts = new ArrayList<>();
+				Collections.addAll(carts,String.valueOf(good.get(i).getGoodsNumber()));
+				cart.removeAll(carts);
 			}
 		}
+
 		for (int i = 0; i < good.size(); i++) {
 			int price = good.get(i).getTaxPrice();
 			if (good.get(i).getStock() > 0) {
