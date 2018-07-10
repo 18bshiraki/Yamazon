@@ -67,23 +67,35 @@ public class PurchaseController {
 		cart = (List<String>) session.getAttribute("cart");
 		List<Goods> good = new ArrayList<Goods>();
 		List<String> errMsg = new ArrayList<String>();
+		int sum = 0;
+		int sum5=0;
 		for (int i = 0; i < cart.size(); i++) {
 			Integer id = Integer.valueOf(cart.get(i));
 			good.addAll(goods.cart(id));
 		}
 		for (int i = 0; i < good.size(); i++) {
-			if (good.get(i).getStock() == 0) {
+			if (good.get(i).getStock() <= 0) {
 				//List<String> errMsg=new ArrayList<String>();
 				errMsg.add("ごめんなさい！" + good.get(i).getGoodsName() + "は売り切れです!");
 				//good.remove(i);
 				good.get(i).setGoodsName("ごめんなさい！" + good.get(i).getGoodsName() + "は売り切れです!");
 				cart.remove(i);
 			}
-
+		}
+		for (int i = 0; i < good.size(); i++) {
+			int price = good.get(i).getTaxPrice();
+			if (good.get(i).getStock() > 0) {
+				sum = sum + price;
+			}
+		}
+		if (sum >= 50000) {
+			sum5 = (int) (sum * 0.95);
 		}
 		if (!errMsg.isEmpty()) {
 			//model.addAttribute("errMsg", errMsg);
 			session.setAttribute("cart", cart);
+			model.addAttribute("sum5", sum5);
+			model.addAttribute("sum", sum);
 			model.addAttribute("goods", good);
 			return "purchase";
 		}
