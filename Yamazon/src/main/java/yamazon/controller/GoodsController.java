@@ -94,7 +94,6 @@ public class GoodsController {
 		//ファイルの削除
 		File file = new File(context.getRealPath("/") + list.get(0).getGoodsImage());
 		file.delete();
-		System.out.println(context.getRealPath("/") + list.get(0).getGoodsImage());
 		//データの削除
 		goodsDao.delete(goods);
 

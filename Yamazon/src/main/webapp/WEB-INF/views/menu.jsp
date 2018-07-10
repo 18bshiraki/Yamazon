@@ -41,15 +41,16 @@
 			</div>
 		</header>
 	</section>
+	<!-- hero -->
+	<!-- portfolio grid section -->
+	<!-- service section -->
 	<section id="hero" class="section ">
 		<div class="container">
 			<div class="row">
 				<form:form modelAttribute="yamazon" action="search">
 					<div class=" hero">
 						<div class="hero-content">
-
 							<div class="input-group">
-
 								<form:input path="word" class="form-control"
 									placeholder="キーワードを入力してください" />
 								<span class="input-group-btn">
@@ -58,16 +59,14 @@
 										<i class='glyphicon glyphicon-search'></i>
 									</button>
 								</span>
-
 							</div>
-
 						</div>
-						<!-- hero -->
 					</div>
 				</form:form>
 			</div>
 		</div>
 	</section>
+
 
 	<section id="portfolio">
 		<div class="container">
@@ -91,9 +90,8 @@
 							class="img-responsive" alt="" width="200" height="200">
 						</a>
 					</div>
+				</div>
 			</c:forEach>
-
-		</div>
 		</div>
 	</section>
 	<footer class="footer">
@@ -104,8 +102,7 @@
 			</div>
 		</div>
 	</footer>
-	<!-- portfolio grid section -->
-	<!-- service section -->
+
 
 
 	<script

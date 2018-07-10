@@ -166,27 +166,28 @@
 					</button></a>
 			</div>
 		</div>
+	</div>
 
 
-		<!-- footer section -->
+	<!-- footer section -->
 
-		<!-- JS FILES -->
-		<footer class="footer">
-			<div class="container">
-				<div class="col-md-6 left">
-					<p>Yamazon運営チーム</p>
-					<p>TEL:0120-117-117-828828</p>
-				</div>
+	<!-- JS FILES -->
+	<footer class="footer">
+		<div class="container">
+			<div class="col-md-6 left">
+				<p>Yamazon運営チーム</p>
+				<p>TEL:0120-117-117-828828</p>
 			</div>
-		</footer>
+		</div>
+	</footer>
 
 
-		<script
-			src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/jquery.fancybox.pack.js"></script>
-		<script src="js/retina.min.js"></script>
-		<script src="js/modernizr.js"></script>
-		<script src="js/main.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.fancybox.pack.js"></script>
+	<script src="js/retina.min.js"></script>
+	<script src="js/modernizr.js"></script>
+	<script src="js/main.js"></script>
 </body>
 </html>
