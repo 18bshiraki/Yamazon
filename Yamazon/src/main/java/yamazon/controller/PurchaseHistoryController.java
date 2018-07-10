@@ -46,7 +46,7 @@ public class PurchaseHistoryController {
 		List<User> userList = userDao.findByUserId(userId);
 		for(User users:userList)
 
-		session.setAttribute("user", users);
+		session.setAttribute("userList", users);
 
 		List<Purchase> purchaseList = purchaseDao.purchaseHistory(userId);
 

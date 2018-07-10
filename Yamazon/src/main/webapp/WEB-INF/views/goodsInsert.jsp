@@ -57,12 +57,12 @@
 			<h2>商品登録</h2>
 		</div>
 		<div class="text-center" style="padding: 10px;">
-			<h4>登録内容を入力してください</h4>
 			<c:if test="${not empty msg}">
-				<h5>
-					<span style="color: red;">${msg}</span>
-				</h5>
+				<h4>
+					<span class="text-danger">${msg}</span>
+				</h4>
 			</c:if>
+			<h4>登録内容を入力してください</h4>
 		</div>
 	</section>
 	<div class="text-center">

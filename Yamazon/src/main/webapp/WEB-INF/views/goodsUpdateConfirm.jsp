@@ -61,9 +61,9 @@
 			<h4>更新内容を右側の欄に入力・確認してください。</h4>
 			<p>画像を変更しない場合はそのまま何もアップロードせず更新ボタンを押してください。</p>
 			<c:if test="${not empty msg}">
-				<h5>
-					<span style="color: red;">${fn:escapeXml(msg)}</span>
-				</h5>
+				<h4>
+				<span class="text-danger">${msg}</span>
+			</h4>
 			</c:if>
 		</div>
 	</section>

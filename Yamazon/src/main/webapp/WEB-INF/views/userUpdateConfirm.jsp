@@ -101,10 +101,11 @@
 
 			<br>
 			<h3>編集する情報を入力してください</h3>
-
+			<c:if test="${not empty msg}">
 			<h4>
 				<span class="text-danger">${msg}</span>
 			</h4>
+			</c:if>
 			<form:form action="userUpdateResult" modelAttribute="yamazon"
 				method="POST">
 

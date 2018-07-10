@@ -35,10 +35,10 @@ margin: 20px
 <!-- header top section -->
 <section class="banner" role="banner">
  <header id="header">
-    <div class="header-content clearfix"> <a class="logo" href="menu.html"><img src="ロゴ.jpg"></a>
+    <div class="header-content clearfix"> <a class="logo" href="menu"><img src="ロゴ.jpg"></a>
       <nav class="navigation" role="navigation">
         <ul class="primary-nav">
-          <li><a href="logout.html">Logout</a></li>
+          <li><a href="logout">Logout</a></li>
         </ul>
       </nav>
       <a href="#" class="nav-toggle">Menu<span></span></a> </div>
@@ -54,7 +54,7 @@ margin: 20px
 <div class ="text-center">
 <div class="caption-content">
 
-<h3>${sessionScope.user.userName}さんの購入履歴</h3>
+<h3>${sessionScope.userList.userName}さんの購入履歴</h3>
 
 </div>
 </div>
