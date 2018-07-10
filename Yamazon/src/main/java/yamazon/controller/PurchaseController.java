@@ -33,6 +33,12 @@ public class PurchaseController {
 	public String purchase(@ModelAttribute("yamazon") Search form, Model model) {
 		List<String> cart = new ArrayList<String>();
 		cart = (List<String>) session.getAttribute("cart");
+		if (cart.isEmpty()) {
+			model.addAttribute("msg", "カートに商品を入れてください");
+			return "cart";
+		}
+		//List<String> cart = new ArrayList<String>();
+
 		List<Goods> good = new ArrayList<Goods>();
 		for (int i = 0; i < cart.size(); i++) {
 			Integer id = Integer.valueOf(cart.get(i));
@@ -77,7 +83,7 @@ public class PurchaseController {
 		}
 		if (!errMsg.isEmpty()) {
 			//model.addAttribute("errMsg", errMsg);
-			session.setAttribute("cart",cart);
+			session.setAttribute("cart", cart);
 			model.addAttribute("goods", good);
 			return "purchase";
 		}

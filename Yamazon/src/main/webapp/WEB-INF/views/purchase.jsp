@@ -26,6 +26,9 @@
 				<a class="logo" href="menu"><img src="ロゴ.jpg"></a>
 				<nav class="navigation" role="navigation">
 					<ul class="primary-nav">
+					<c:if test="${null ne sessionScope.user.userName}">
+							<li><c:out value="${sessionScope.user.userName}" />さん</li>
+						</c:if>
 						<li><a href="menu">Mypage</a></li>
 						<li><a href="cart">Cart</a></li>
 						<li><a href="login">Login</a></li>
