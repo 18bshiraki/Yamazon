@@ -75,8 +75,9 @@
 					<hr class="section">
 				</div>
 			</div>
+			<div class="row">
 			<c:forEach var="goods" items="${list}">
-				<div class="row">
+
 					<div class="col-sm-3 portfolio-item">
 						<a href="detail?goodsName=${fn:escapeXml(goods.goodsName)}"
 							class="portfolio-link">
@@ -85,13 +86,13 @@
 									<h3>${fn:escapeXml(goods.goodsName)}</h3>
 									<h4>${fn:escapeXml(goods.taxPrice)}円</h4>
 								</div>
-							</div> <img src=${fn:escapeXml(goods.goodsImage)
-							}
+							</div> <img src=${fn:escapeXml(goods.goodsImage)}
 							class="img-responsive" alt="" width="200" height="200">
 						</a>
 					</div>
-				</div>
+
 			</c:forEach>
+			</div>
 		</div>
 	</section>
 	<footer class="footer">
