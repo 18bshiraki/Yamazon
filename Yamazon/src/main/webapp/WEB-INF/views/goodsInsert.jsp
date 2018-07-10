@@ -60,7 +60,7 @@
 			<h4>登録内容を入力してください</h4>
 			<c:if test="${not empty msg}">
 				<h5>
-					<span style="color: red;">${msg}</span>
+					<span style="color: red;">${fn:escapeXml(msg)}</span>
 				</h5>
 			</c:if>
 		</div>
@@ -73,14 +73,14 @@
 					<h5>商品名</h5>
 					<div class="form-inline" style="padding: 8px;">
 						<input type="text" class="form-control input-sm" name="name"
-							size="45" value="${goods.goodsName}">
+							size="45" value="${fn:escapeXml(goods.goodsName)}">
 					</div>
 				</div>
 				<div class="row">
 					<h5>商品画像アップロード</h5>
 					<c:if test="${not empty select}">
 						<h6>
-							<span style="color: red;">${select}</span>
+							<span style="color: red;">${fn:escapeXml(select)}</span>
 						</h6>
 					</c:if>
 					<div class="form-inline" style="padding: 8px;">
@@ -93,22 +93,14 @@
 					<h5>商品説明</h5>
 					<div class="form-inline" style="padding: 8px;">
 						<textarea rows="5" cols="45" class="form-control input-sm"
-							name="explain">${goods.goodsExplain}</textarea>
+							name="explain">${fn:escapeXml(goods.goodsExplain)}</textarea>
 					</div>
 				</div>
 				<div class="row">
 					<h5>商品カテゴリー</h5>
-					<c:if test="${not empty select}">
-						<h6>
-							<span style="color: red;">${select}</span>
-						</h6>
-					</c:if>
 					<div class="form-inline" style="padding: 8px;">
-						<select class="form-control input-sm" name="category">
-							<option value="コーヒーメーカー">コーヒーメーカ－</option>
-							<option value="ポット">ポット</option>
-							<option value="ホットプレート">ホットプレート</option>
-						</select>
+						<input type="text" class="form-control input-sm" name="category"
+							size="45" value="${fn:escapeXml(goods.category)}">
 					</div>
 				</div>
 				<div class="row">

@@ -3,6 +3,7 @@ package yamazon.controller;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -86,23 +87,22 @@ public class PurchaseController {
 			Integer id = Integer.valueOf(cart.get(i));
 			good.addAll(goods.cart(id));
 		}
-
 		for (int i = 0; i < good.size(); i++) {
 			if (good.get(i).getStock() <= 0) {
 				//List<String> errMsg=new ArrayList<String>();
 				errMsg.add("ごめんなさい！" + good.get(i).getGoodsName() + "は売り切れです!");
 				//good.remove(i);
 				good.get(i).setGoodsName("ごめんなさい！" + good.get(i).getGoodsName() + "は売り切れです!");
-				//cart.remove(i);
-				//i=i-1;
+				List<String> carts = new ArrayList<>();
+				Collections.addAll(carts,String.valueOf(good.get(i).getGoodsNumber()));
+				cart.removeAll(carts);
 			}
-
 		}
+
 		for (int i = 0; i < good.size(); i++) {
 			int price = good.get(i).getTaxPrice();
 			if (good.get(i).getStock() > 0) {
 				sum = sum + price;
-				//cart.remove(i);
 			}
 		}
 		if (sum >= 50000) {
@@ -110,11 +110,6 @@ public class PurchaseController {
 		}
 		if (!errMsg.isEmpty()) {
 			//model.addAttribute("errMsg", errMsg);
-			for (int i = 0; i < cart.size(); i++) {
-				if (good.get(i).getStock() <= 0) {
-					cart.remove(i);
-				}
-			}
 			session.setAttribute("cart", cart);
 			model.addAttribute("word", "word");
 			model.addAttribute("sum5", sum5);

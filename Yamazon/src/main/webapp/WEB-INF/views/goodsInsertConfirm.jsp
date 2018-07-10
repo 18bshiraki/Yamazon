@@ -66,34 +66,34 @@
 					<h5>商品名</h5>
 					<div class="form-inline" style="padding: 8px;">
 						<input type="text" class="form-control input-sm" name="name"
-							size="45" value="${goods.goodsName}" readonly>
+							size="45" value="${fn:escapeXml(goods.goodsName)}" readonly>
 					</div>
 				</div>
 				<div class="row">
 					<h5>商品画像アップロード</h5>
 					<div class="form-inline" style="padding: 8px;">
-						<img src="${sessionScope.filePath}" class="size">
+						<img src="${fn:escapeXml(sessionScope.filePath)}" class="size">
 					</div>
 				</div>
 				<div class="row">
 					<h5>商品説明</h5>
 					<div class="form-inline" style="padding: 8px;">
 						<textarea rows="5" cols="45" class="form-control input-sm"
-							name="explain" readonly>${goods.goodsExplain}</textarea>
+							name="explain" readonly>${fn:escapeXml(goods.goodsExplain)}</textarea>
 					</div>
 				</div>
 				<div class="row">
 					<h5>商品カテゴリー</h5>
 					<div class="form-inline" style="padding: 8px;">
 						<input type="text" class="form-control input-sm" name="category"
-							size="15" value="${goods.category}" readonly>
+							size="15" value="${fn:escapeXml(goods.category)}" readonly>
 					</div>
 				</div>
 				<div class="row">
 					<h5>商品数</h5>
 					<div class="form-inline" style="padding: 8px;">
 						<input type="text" class="form-control input-sm" name="stock"
-							value="${goods.stock}" size="20" readonly>個
+							value="${fn:escapeXml(goods.stock)}" size="20" readonly>個
 					</div>
 				</div>
 				<div class="row">
@@ -101,7 +101,7 @@
 					<p>※数字のみで入力してください</p>
 					<div class="form-inline" style="padding: 8px;">
 						<input type="text" class="form-control input-sm" name="price"
-							value="${goods.price}" size="20" readonly>円
+							value="${fn:escapeXml(goods.price)}" size="20" readonly>円
 					</div>
 				</div>
 				<div class="row">
@@ -109,7 +109,7 @@
 						<p>※自動算出です</p>
 						<div class="form-inline" style="padding: 8px;">
 							<input type="text" class="form-control input-sm" name="taxPrice"
-								value="${goods.taxPrice}" size="20" readonly>円
+								value="${fn:escapeXml(goods.taxPrice)}" size="20" readonly>円
 						</div>
 				</div>
 			</div>

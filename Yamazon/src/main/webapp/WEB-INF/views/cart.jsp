@@ -49,7 +49,9 @@
 	<section id="hero" class="section ">
 		<div class="hero text-center">
 			<c:if test="${null ne msg}">
-				<h4><span class="text-danger">${msg}</span></h4>
+				<h4>
+					<span class="text-danger">${msg}</span>
+				</h4>
 			</c:if>
 			<h2>カート</h2>
 			<br>
@@ -75,8 +77,8 @@
 									<td
 										onclick="location.href='detail?goodsName=${fn:escapeXml(goods.goodsName)}'"><h5>${fn:escapeXml(goods.taxPrice)}</h5></td>
 									<td
-										onclick="location.href='detail?goodsName=${fn:escapeXml(goods.goodsName)}'"><font
-										color="black"><h5>${fn:escapeXml(goods.category)}</h5></font></td>
+										onclick="location.href='detail?goodsName=${fn:escapeXml(goods.goodsName)}'"><h5>${fn:escapeXml(goods.category)}</h5>
+									</td>
 									<td><button type="submit" name="id"
 											class="return btn-outline-dark" value="${goods.goodsNumber}"
 											style="width: 120px; padding: 0px 5px; margin: 0px;">

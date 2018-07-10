@@ -55,7 +55,6 @@
 	</section>
 	<div class="text-center">
 		<h4>更新が完了しました</h4>
-		/div>
 		<div class="text-center">
 			<div>
 				<a href="managerMenu"><button type="button"
