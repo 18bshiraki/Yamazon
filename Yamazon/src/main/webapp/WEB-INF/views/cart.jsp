@@ -48,6 +48,9 @@
 
 	<section id="hero" class="section ">
 		<div class="hero text-center">
+			<c:if test="${null ne msg}">
+				<h4><span class="text-danger">${msg}</span></h4>
+			</c:if>
 			<h2>カート</h2>
 			<br>
 			<h4>合計￥50,000以上で5％引きとなります</h4>

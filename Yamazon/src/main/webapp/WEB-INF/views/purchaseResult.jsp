@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +26,9 @@
 				<a class="logo" href="menu.html"><img src="ロゴ.jpg"></a>
 				<nav class="navigation" role="navigation">
 					<ul class="primary-nav">
+					<c:if test="${null ne sessionScope.user.userName}">
+							<li><c:out value="${sessionScope.user.userName}" />さん</li>
+						</c:if>
 						<li><a href="account">Mypage</a></li>
 						<li><a href="cart">Cart</a></li>
 						<li><a href="login">Login</a></li>
