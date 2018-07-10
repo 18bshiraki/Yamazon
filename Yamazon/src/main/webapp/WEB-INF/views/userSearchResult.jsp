@@ -32,13 +32,6 @@ p {
 }
 </style>
 <script type="text/javascript">
-function MoveChecks() {
-	document.userOp.submit();
-	document.userOp.action = "purchaseHistory";
-}
-
-</script>
-<script type="text/javascript">
 function MoveChecked() {
 	document.userOp.submit();
 	document.userOp.action = "userUpdateConfirm";
@@ -77,7 +70,7 @@ function MoveCheck() {
 			<h2>ユーザー情報検索結果</h2>
 		</div>
 	</section>
-	<form:form action="userDeleteResult" name="userOp"
+	<form:form action="purchaseHistory" name="userOp"
 		modelAttribute="yamazon" method="POST">
 		<table class="table" style="color: black">
 			<thead>
@@ -100,8 +93,7 @@ function MoveCheck() {
 						<td>${userList.userName}</td>
 						<td>${userList.address}</td>
 						<td>${userList.password}</td>
-						<td><button type="submit" value="${userList.userId}" name="id"
-								onclick="MoveChecks();">購入履歴</button></td>
+						<td><button type="submit" value="${userList.userId}" name="id">購入履歴</button></td>
 						<td><button type="submit" value="${userList.userId}" name="id"onclick="MoveChecked();">更新</button></td>
 						<td><button type="submit"value="${userList.userId}" name="id"onclick="return MoveCheck();">削除</button></td>
 					</tr>
