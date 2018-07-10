@@ -2,9 +2,6 @@ package yamazon.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -17,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import yamazon.dao.impl.GoodsDaoImpl;
@@ -34,7 +32,8 @@ public class GoodsInsertController {
 	ServletContext context;
 
 	@PostMapping(value = "/goodsInsertConfirm")
-	public String goodsInsert(HttpSession session, @ModelAttribute("yamazon") GoodsForm form, Model model)
+	public String goodsInsert(HttpSession session, @ModelAttribute("yamazon") GoodsForm form,
+			@RequestParam("file") MultipartFile file, Model model)
 			throws IllegalStateException, IOException {
 
 		String name = form.getName();
@@ -42,9 +41,6 @@ public class GoodsInsertController {
 		String category = form.getCategory();
 		String stock = form.getStock();
 		String price = form.getPrice();
-
-		MultipartFile file = form.getFile();
-
 		String filename;
 
 		if ((name == null || file == null || explain == null || category == null || stock == null || price == null)
@@ -89,11 +85,9 @@ public class GoodsInsertController {
 						File imageDir = new File(context.getRealPath("/") + "/images");
 						imageDir.mkdir();
 					}
-					Path sourcePath = Paths.get(file.getOriginalFilename());
-					Path targetPath = Paths.get(context.getRealPath("/") + "/images", image.getName());
-					Files.copy(sourcePath, targetPath);
+					file.transferTo(imageFile);
 				}
-				String filePath = (context.getRealPath("/") + "images/" + image.getName());
+				String filePath = ("images/" + image.getName());
 
 				//次画面へ渡す値のセット
 				Goods goods = new Goods(name, explain, category, Integer.parseInt(stock), unitPrice, postTaxPrice);

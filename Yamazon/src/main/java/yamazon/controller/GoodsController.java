@@ -2,9 +2,6 @@ package yamazon.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.text.NumberFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -19,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import yamazon.dao.impl.GoodsDaoImpl;
@@ -111,12 +109,12 @@ public class GoodsController {
 	}
 
 	@PostMapping(value = "/goodsUpdateResult")
-	public String updateResult(HttpSession session, @ModelAttribute("yamazon") GoodsForm form, Model model)
-			throws IllegalStateException, IOException {//未実装
+	public String updateResult(HttpSession session, @ModelAttribute("yamazon") GoodsForm form,
+			@RequestParam("file") MultipartFile file, Model model)
+			throws IllegalStateException, IOException {
 		String number = form.getNumber();
 
 		String name = form.getName();
-		MultipartFile file = form.getFile();
 		String explain = form.getExplain();
 		String category = form.getCategory();
 		String stock = form.getStock();
@@ -152,13 +150,15 @@ public class GoodsController {
 
 				if (file.getOriginalFilename() == null || file.isEmpty() == true) {
 					if (name.equals(goodsOld.getGoodsName()) && explain.equals(goodsOld.getGoodsExplain())
-							&& category.equals(goodsOld.getCategory()) && stock.equals(String.valueOf(goodsOld.getStock()))
+							&& category.equals(goodsOld.getCategory())
+							&& stock.equals(String.valueOf(goodsOld.getStock()))
 							&& price.equals(String.valueOf(goodsOld.getPrice()))) {
 						model.addAttribute("msg", "一か所以上変更してください");
 						model.addAttribute("goods", list.get(0));
 						return "goodsUpdateConfirm";
 					} else {
-						Goods goods = new Goods(Integer.parseInt(number), name, goodsOld.getGoodsImage(), explain, category,
+						Goods goods = new Goods(Integer.parseInt(number), name, goodsOld.getGoodsImage(), explain,
+								category,
 								Integer.parseInt(stock), unitPrice, postTaxPrice);
 						goodsDao.update(goods);
 						return "goodsUpdateResult";
@@ -183,11 +183,9 @@ public class GoodsController {
 							File imageDir = new File(context.getRealPath("/") + "/images");
 							imageDir.mkdir();
 						}
-						Path sourcePath = Paths.get(file.getOriginalFilename());
-						Path targetPath = Paths.get(context.getRealPath("/") + "/images", image.getName());
-						Files.copy(sourcePath, targetPath);
+						file.transferTo(imageFile);
 					}
-					String filePath = (context.getRealPath("/") + "images/" + image.getName());
+					String filePath = ("images/" + image.getName());
 					Goods goods = new Goods(Integer.parseInt(number), name, filePath, explain, category,
 							Integer.parseInt(stock), unitPrice, postTaxPrice);
 					goodsDao.update(goods);
