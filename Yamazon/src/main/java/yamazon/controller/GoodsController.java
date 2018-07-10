@@ -46,7 +46,7 @@ public class GoodsController {
 			String cGoodsPriceTax = null;
 
 			//値段に円とカンマ表示
-			for(int i = 0; i < list.size(); i++) {
+			for (int i = 0; i < list.size(); i++) {
 				Goods goods = list.get(i);
 				int goodsPrice = goods.getPrice();
 				int goodsTaxPrice = goods.getTaxPrice();
@@ -95,7 +95,14 @@ public class GoodsController {
 	public String delete(@ModelAttribute("yamazon") GoodsForm form, Model model) {
 		String number = form.getNumber();
 		Goods goods = new Goods(Integer.parseInt(number));
+		List<Goods> list = goodsDao.findIdGetPass(Integer.parseInt(number));
+		//ファイルの削除
+		File file = new File(context.getRealPath("/") + list.get(0).getGoodsImage());
+		file.delete();
+		System.out.println(context.getRealPath("/") + list.get(0).getGoodsImage());
+		//データの削除
 		goodsDao.delete(goods);
+
 		return "goodsDeleteResult";
 
 	}

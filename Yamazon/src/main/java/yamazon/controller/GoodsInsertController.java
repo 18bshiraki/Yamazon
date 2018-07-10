@@ -132,7 +132,7 @@ public class GoodsInsertController {
 		String filePath = (String) session.getAttribute("filePath");
 
 		//ファイルの削除
-		File file = new File(filePath);
+		File file = new File(context.getRealPath("/") + filePath);
 		file.delete();
 
 		model.addAttribute("msg", "再入力してください");
