@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.text.NumberFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -45,24 +44,17 @@ public class GoodsController {
 
 			String cGoodsPrice = null;
 			String cGoodsPriceTax = null;
-			List<String> price = new ArrayList<String>();
-			List<String> taxPrice = new ArrayList<String>();
-
 			//値段に円とカンマ表示
 			for (int i = 0; i < list.size(); i++) {
-				//Goods goods = list.get(i);
 				NumberFormat nfCur = NumberFormat.getCurrencyInstance();
 				cGoodsPrice = nfCur.format(list.get(i).getPrice());
 				cGoodsPriceTax = nfCur.format(list.get(i).getTaxPrice());
-				//int asd=Integer.valueOf(cGoodsPrice);
-					list.get(i).setCPrice(cGoodsPrice);
-					list.get(i).setCTaxPrice(cGoodsPriceTax);
+				list.get(i).setCPrice(cGoodsPrice);
+				list.get(i).setCTaxPrice(cGoodsPriceTax);
 			}
 
 			//スコープにセット
 			model.addAttribute("goods", list);
-			//model.addAttribute("goodsP", cGoodsPrice);
-			//model.addAttribute("goodsPT", cGoodsPriceTax);
 			model.addAttribute("keyWord", keyWord);
 
 			return "goodsSearchResult";
@@ -98,7 +90,14 @@ public class GoodsController {
 	public String delete(@ModelAttribute("yamazon") GoodsForm form, Model model) {
 		String number = form.getNumber();
 		Goods goods = new Goods(Integer.parseInt(number));
+		List<Goods> list = goodsDao.findIdGetPass(Integer.parseInt(number));
+		//ファイルの削除
+		File file = new File(context.getRealPath("/") + list.get(0).getGoodsImage());
+		file.delete();
+		System.out.println(context.getRealPath("/") + list.get(0).getGoodsImage());
+		//データの削除
 		goodsDao.delete(goods);
+
 		return "goodsDeleteResult";
 
 	}
