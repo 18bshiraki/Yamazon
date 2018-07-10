@@ -62,7 +62,8 @@
 					<h5>管理者番号(変更はできません)</h5>
 					<div class="form-inline" style="padding: 8px;">
 						<input type="text" class="form-control input-sm" id="name"
-							placeholder="管理者ID" size="45" value="${sessionScope.manager.managerId}" readonly>
+							placeholder="管理者ID" size="45"
+							value="${sessionScope.manager.managerId}" readonly>
 					</div>
 				</div>
 
@@ -70,14 +71,16 @@
 					<h5>名前</h5>
 					<div class="form-inline" style="padding: 8px;">
 						<input type="text" class="form-control input-sm" id="name"
-							placeholder="名前" size="45" value="${sessionScope.manager.managerName}" readonly>
+							placeholder="名前" size="45"
+							value="${sessionScope.manager.managerName}" readonly>
 					</div>
 
 					<div class="row">
 						<h5>パスワード</h5>
 						<div class="form-inline" style="padding: 8px;">
 							<input type="text" class="form-control input-sm" id="Password"
-								placeholder="Password" size="45" value="${sessionScope.manager.managerPassword}" readonly>
+								placeholder="Password" size="45"
+								value="${sessionScope.manager.managerPassword}" readonly>
 						</div>
 					</div>
 				</div>
@@ -88,42 +91,45 @@
 				<br>
 				<h3>更新内容を入力してください</h3>
 				<c:if test="${not empty msg}">
-		<h4><span class="text-danger">${msg}</span></h4>
-	</c:if>
+					<h4>
+						<span class="text-danger">${msg}</span>
+					</h4>
+				</c:if>
 
-				<form:form action="managerUpdateConfirm" method="post" modelAttribute="yamazon">
-				<div class="row">
-					<h5>名前</h5>
-					<div class="form-inline" style="padding: 8px;">
-						<form:input class="form-control input-sm" id="name"
-							placeholder="名前" size="45" path="managerName" />
+				<form:form action="managerUpdateConfirm" method="post"
+					modelAttribute="yamazon">
+					<div class="row">
+						<h5>名前</h5>
+						<div class="form-inline" style="padding: 8px;">
+							<form:input class="form-control input-sm" id="name"
+								placeholder="名前" size="45" path="managerName" />
+						</div>
 					</div>
-				</div>
 
-				<div class="row">
-					<h5>パスワード</h5>
-					<div class="form-inline" style="padding: 8px;">
-						<form:input class="form-control input-sm" id="email"
-							placeholder="Password" size="45" path="managerPassword"/>
+					<div class="row">
+						<h5>パスワード</h5>
+						<div class="form-inline" style="padding: 8px;">
+							<form:input class="form-control input-sm" id="email"
+								placeholder="Password" size="45" path="managerPassword" />
+						</div>
 					</div>
-				</div>
 
-				<div class="row">
-					<h5>パスワード(再入力)</h5>
-					<div class="form-inline" style="padding: 8px;">
-						<form:input class="form-control input-sm" id="email"
-							placeholder="Password" size="45" path="rePassword"/>
+					<div class="row">
+						<h5>パスワード(再入力)</h5>
+						<div class="form-inline" style="padding: 8px;">
+							<form:input class="form-control input-sm" id="email"
+								placeholder="Password" size="45" path="rePassword" />
+						</div>
 					</div>
-				</div>
 
 
 
 
-				<div class="text-center">
-					<button type="submit" class="btn btn-success btn-xs">
-						変更確認<span class="glyphicon glyphicon-chevron-right"></span>
-					</button>
-				</div>
+					<div class="text-center">
+						<button type="submit" class="btn btn-success btn-xs">
+							変更確認<span class="glyphicon glyphicon-chevron-right"></span>
+						</button>
+					</div>
 				</form:form>
 			</div>
 
