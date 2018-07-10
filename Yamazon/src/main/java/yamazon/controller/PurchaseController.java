@@ -68,7 +68,20 @@ public class PurchaseController {
 		List<Goods> good = new ArrayList<Goods>();
 		List<String> errMsg = new ArrayList<String>();
 		int sum = 0;
-		int sum5=0;
+		int sum5 = 0;
+		if (!form.getWord().equals("")) {
+			cart = new ArrayList<String>();
+			if (session.getAttribute("cart") != null) {
+				cart = (List<String>) session.getAttribute("cart");
+			}
+			good = new ArrayList<Goods>();
+			for (int i = 0; i < cart.size(); i++) {
+				Integer id = Integer.valueOf(cart.get(i));
+				good.addAll(goods.cart(id));
+			}
+			model.addAttribute("goods", good);
+			return "cart";
+		}
 		for (int i = 0; i < cart.size(); i++) {
 			Integer id = Integer.valueOf(cart.get(i));
 			good.addAll(goods.cart(id));
@@ -94,6 +107,7 @@ public class PurchaseController {
 		if (!errMsg.isEmpty()) {
 			//model.addAttribute("errMsg", errMsg);
 			session.setAttribute("cart", cart);
+			model.addAttribute("word", "word");
 			model.addAttribute("sum5", sum5);
 			model.addAttribute("sum", sum);
 			model.addAttribute("goods", good);

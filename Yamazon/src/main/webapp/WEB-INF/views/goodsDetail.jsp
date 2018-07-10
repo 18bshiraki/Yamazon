@@ -71,14 +71,14 @@
 							<div class="caption">
 								<div class="caption-content">
 									<table class="table" style="color: black">
-										<h3 class="text-left">コーヒーメーカー</h3>
+										<h3 class="text-left">${name}</h3>
 										<tr>
 											<th>分類</th>
 											<th>値段</th>
 											<th>在庫</th>
 										</tr>
 										<tr>
-											<td><h5>${name}</h5></td>
+											<td><h5>${category}</h5></td>
 											<td><h5>${price}</h5></td>
 											<td><h5>${stock}</h5></td>
 										</tr>
@@ -97,8 +97,8 @@
 				<form:form modelAttribute="yamazon" action="Incart">
 					<div class="text-center">
 
-						<form:button class="btn btn-success btn-xs"
-							value="${id}" name="id">
+						<form:button class="btn btn-success btn-xs" value="${id}"
+							name="id">
 							カートへ入れる<span class="glyphicon glyphicon-chevron-right"></span>
 						</form:button>
 

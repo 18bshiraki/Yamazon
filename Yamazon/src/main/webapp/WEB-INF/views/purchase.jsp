@@ -62,6 +62,7 @@
 						<c:out value="${sessionScope.user.address}" />
 					</h5>
 					<br> <br>
+					<form:hidden path="word" value="${word}"/>
 				</div>
 				<div class="col-sm-9">
 					<table class="table table-striped" style="color: black">
