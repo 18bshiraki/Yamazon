@@ -57,9 +57,9 @@
 			modelAttribute="yamazon">
 			<div class="row">
 				<c:if test="${null ne msg}">
-					<h6>
-						<font color="red">${msg}</font>
-					</h6>
+					<h4>
+						<span class="text-danger">${msg}</span>
+					</h4>
 				</c:if>
 				<h5>新しい電話番号</h5>
 				<h6>
