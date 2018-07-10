@@ -49,8 +49,8 @@ public class GoodsController {
 				NumberFormat nfCur = NumberFormat.getCurrencyInstance();
 				cGoodsPrice = nfCur.format(list.get(i).getPrice());
 				cGoodsPriceTax = nfCur.format(list.get(i).getTaxPrice());
-					list.get(i).setCPrice(cGoodsPrice);
-					list.get(i).setCTaxPrice(cGoodsPriceTax);
+				list.get(i).setCPrice(cGoodsPrice);
+				list.get(i).setCTaxPrice(cGoodsPriceTax);
 			}
 
 			//スコープにセット
@@ -90,7 +90,14 @@ public class GoodsController {
 	public String delete(@ModelAttribute("yamazon") GoodsForm form, Model model) {
 		String number = form.getNumber();
 		Goods goods = new Goods(Integer.parseInt(number));
+		List<Goods> list = goodsDao.findIdGetPass(Integer.parseInt(number));
+		//ファイルの削除
+		File file = new File(context.getRealPath("/") + list.get(0).getGoodsImage());
+		file.delete();
+		System.out.println(context.getRealPath("/") + list.get(0).getGoodsImage());
+		//データの削除
 		goodsDao.delete(goods);
+
 		return "goodsDeleteResult";
 
 	}
