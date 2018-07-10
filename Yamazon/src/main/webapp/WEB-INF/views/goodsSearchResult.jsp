@@ -70,7 +70,7 @@
 	</section>
 	<div class="text-center" style="margin: 0px 0px 20px 0px">
 		<form:form action="goodsUpdateConfirm" name="submitInfo" modelAttribute="yamazon" method="get">
-		<input type="hidden" name="keyWord" value="${fn:escapeXml(keyWord)}">
+		<input type="hidden" name="keyWord" value="${keyWord}">
 			<table class="table table-hover"
 				style="color: black; width: 90%; margin: auto;">
 				<thead>
@@ -88,20 +88,20 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="goods" items="${fn:escapeXml(goods)}">
+					<c:forEach var="goods" items="${goods}">
 						<tr>
-							<td>${fn:escapeXml(goods.goodsNumber)}</td>
-							<td><img src="${fn:escapeXml(goods.goodsImage)}" width="100" height="120"></td>
-							<td style="width: 120px; height: auto;">${fn:escapeXml(goods.goodsName)}</td>
-							<td>${fn:escapeXml(goods.category)}</td>
-							<td>${fn:escapeXml(goodsP)}</td>
-							<td>${fn:escapeXml(goodsPT)}</td>
-							<td>${fn:escapeXml(goods.stock)}点</td>
-							<td style="width: 350px; height: auto;">${fn:escapeXml(goods.goodsExplain)}</td>
+							<td>${goods.goodsNumber}</td>
+							<td><img src="${goods.goodsImage}" width="100" height="120"></td>
+							<td style="width: 120px; height: auto;">${goods.goodsName}</td>
+							<td>${goods.category}</td>
+							<td>${goodsP}</td>
+							<td>${goodsPT}</td>
+							<td>${goods.stock}点</td>
+							<td style="width: 350px; height: auto;">${goods.goodsExplain}</td>
 							<td><button type="submit" name="number"
-									value="${fn:escapeXml(goods.goodsNumber)}">更新</button></td>
+									value="${goods.goodsNumber}">更新</button></td>
 							<td><button type="submit" name="number"
-									value="${fn:escapeXml(goods.goodsNumber)}" onclick="return MoveCheck();">削除</button></td>
+									value="${goods.goodsNumber}" onclick="return MoveCheck();">削除</button></td>
 						</tr>
 					</c:forEach>
 				</tbody>

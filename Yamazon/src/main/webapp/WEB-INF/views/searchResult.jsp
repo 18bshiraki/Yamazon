@@ -69,14 +69,11 @@
 					<c:forEach var="goods" items="${search}">
 						<tr>
 							<td
-								onclick="location.href='detail?goodsName=${fn:escapeXml(goods.goodsName)}'"><font
-								color="black"><h5>${fn:escapeXml(goods.goodsName)}</h5></font></td>
+								onclick="location.href='detail?goodsName=${fn:escapeXml(goods.goodsName)}'"><h5>${fn:escapeXml(goods.goodsName)}</h5></td>
 							<td
-								onclick="location.href='detail?goodsName=${fn:escapeXml(goods.goodsName)}'"><font
-								color="black"><h5>${fn:escapeXml(goods.taxPrice)}</h5></font></td>
+								onclick="location.href='detail?goodsName=${fn:escapeXml(goods.goodsName)}'"><h5>${fn:escapeXml(searchs)}</h5></td>
 							<td
-								onclick="location.href='detail?goodsName=${fn:escapeXml(goods.goodsName)}'"><font
-								color="black"><h5>${fn:escapeXml(goods.category)}</h5></font></td>
+								onclick="location.href='detail?goodsName=${fn:escapeXml(goods.goodsName)}'"><h5>${fn:escapeXml(goods.category)}</h5></td>
 							<td><form:button value="${goods.goodsNumber}" name="id"
 									class="btn btn-success"
 									style="display: inline-block; padding: 0px 5px; margin: 0px 0px 0px 0px;">
