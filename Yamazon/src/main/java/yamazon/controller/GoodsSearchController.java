@@ -32,11 +32,13 @@ public class GoodsSearchController {
 			model.addAttribute("msg", "一致する商品がありませんでした");
 			return "searchResult";
 		}
-		int goodsTaxPrice = good.get(0).getTaxPrice();
-		NumberFormat nfCur = NumberFormat.getCurrencyInstance();
-		String cGoodsPriceTax = nfCur.format(goodsTaxPrice);
+		for (int i = 0; i < good.size(); i++) {
+			NumberFormat nfCur = NumberFormat.getCurrencyInstance();
+			//good.get(i).setCPrice(nfCur.format(good.get(i).getPrice()));
+			good.get(i).setCTaxPrice(nfCur.format(good.get(i).getTaxPrice()));
+		}
 		model.addAttribute("search", good);
-		model.addAttribute("searchs", cGoodsPriceTax);
+		//model.addAttribute("searchs", cGoodsPriceTax);
 
 		return "searchResult";
 
@@ -46,8 +48,10 @@ public class GoodsSearchController {
 	public String detail(@RequestParam("goodsName") String name, HttpServletRequest request,
 			@ModelAttribute("yamazon") Search form, Model model) {
 		goods.detail(name);
+		NumberFormat nfCur = NumberFormat.getCurrencyInstance();
+		String price=nfCur.format(Integer.valueOf(goods.detail(name).get(0).getTaxPrice()));
 		model.addAttribute("name", goods.detail(name).get(0).getGoodsName());
-		model.addAttribute("price", goods.detail(name).get(0).getTaxPrice());
+		model.addAttribute("price",price);
 		model.addAttribute("category", goods.detail(name).get(0).getCategory());
 		model.addAttribute("explain", goods.detail(name).get(0).getGoodsExplain());
 		model.addAttribute("image", goods.detail(name).get(0).getGoodsImage());

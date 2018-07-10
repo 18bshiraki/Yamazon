@@ -1,5 +1,6 @@
 package yamazon.controller;
 
+import java.text.NumberFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -50,12 +51,20 @@ public class PurchaseController {
 			int price = good.get(i).getTaxPrice();
 			sum = sum + price;
 		}
+		for (int i = 0; i < good.size(); i++) {
+			NumberFormat nfCur = NumberFormat.getCurrencyInstance();
+			//good.get(i).setCPrice(nfCur.format(good.get(i).getPrice()));
+			good.get(i).setCTaxPrice(nfCur.format(good.get(i).getTaxPrice()));
+		}
 		if (sum >= 50000) {
 			int sum5 = (int) (sum * 0.95);
-			model.addAttribute("sum5", sum5);
+			NumberFormat nfCur = NumberFormat.getCurrencyInstance();
+
+			model.addAttribute("sum5", nfCur.format(sum5));
 		}
+		NumberFormat nfCur = NumberFormat.getCurrencyInstance();
 		model.addAttribute("goods", good);
-		model.addAttribute("sum", sum);
+		model.addAttribute("sum", nfCur.format(sum));
 
 		return "purchase";
 	}
@@ -78,6 +87,11 @@ public class PurchaseController {
 			for (int i = 0; i < cart.size(); i++) {
 				Integer id = Integer.valueOf(cart.get(i));
 				good.addAll(goods.cart(id));
+			}
+			for (int i = 0; i < good.size(); i++) {
+				NumberFormat nfCur = NumberFormat.getCurrencyInstance();
+				//good.get(i).setCPrice(nfCur.format(good.get(i).getPrice()));
+				good.get(i).setCTaxPrice(nfCur.format(good.get(i).getTaxPrice()));
 			}
 			model.addAttribute("goods", good);
 			return "cart";
@@ -109,11 +123,17 @@ public class PurchaseController {
 			sum5 = (int) (sum * 0.95);
 		}
 		if (!errMsg.isEmpty()) {
+			NumberFormat nfCur = NumberFormat.getCurrencyInstance();
+			for (int i = 0; i < good.size(); i++) {
+				//NumberFormat nfCur = NumberFormat.getCurrencyInstance();
+				//good.get(i).setCPrice(nfCur.format(good.get(i).getPrice()));
+				good.get(i).setCTaxPrice(nfCur.format(good.get(i).getTaxPrice()));
+			}
 			//model.addAttribute("errMsg", errMsg);
 			session.setAttribute("cart", cart);
 			model.addAttribute("word", "word");
-			model.addAttribute("sum5", sum5);
-			model.addAttribute("sum", sum);
+			model.addAttribute("sum5", nfCur.format(sum5));
+			model.addAttribute("sum", nfCur.format(sum));
 			model.addAttribute("goods", good);
 			return "purchase";
 		}

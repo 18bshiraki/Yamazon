@@ -74,7 +74,7 @@
 						<c:forEach var="goods" items="${goods}">
 							<tr>
 								<td><h5>${fn:escapeXml(goods.goodsName)}</h5></td>
-								<td><h5>${fn:escapeXml(goods.taxPrice)}</h5></td>
+								<td><h5>${fn:escapeXml(goods.CTaxPrice)}</h5></td>
 							</tr>
 						</c:forEach>
 						<tr>

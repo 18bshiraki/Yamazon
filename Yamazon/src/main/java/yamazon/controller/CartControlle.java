@@ -1,5 +1,6 @@
 package yamazon.controller;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,8 +37,6 @@ public class CartControlle {
 			cart = (List<String>) session.getAttribute("cart");
 		}
 		List<Goods> good = new ArrayList<Goods>();
-		//cart = (List<String>) session.getAttribute("cart");
-		//String id = req.getParameter("getButtonValue");
 		cart.add(search.getId());
 		session.setAttribute("cart", cart);
 		cart = (List<String>) session.getAttribute("cart");
@@ -45,6 +44,12 @@ public class CartControlle {
 			Integer id = Integer.valueOf(cart.get(i));
 			good.addAll(goods.cart(id));
 		}
+		for (int i = 0; i < good.size(); i++) {
+			NumberFormat nfCur = NumberFormat.getCurrencyInstance();
+			//good.get(i).setCPrice(nfCur.format(good.get(i).getPrice()));
+			good.get(i).setCTaxPrice(nfCur.format(good.get(i).getTaxPrice()));
+		}
+
 		model.addAttribute("goods", good);
 
 		return "cart";
@@ -68,6 +73,12 @@ public class CartControlle {
 			Integer id = Integer.valueOf(cart.get(i));
 			good.addAll(goods.cart(id));
 		}
+		for (int i = 0; i < good.size(); i++) {
+			NumberFormat nfCur = NumberFormat.getCurrencyInstance();
+			//good.get(i).setCPrice(nfCur.format(good.get(i).getPrice()));
+			good.get(i).setCTaxPrice(nfCur.format(good.get(i).getTaxPrice()));
+		}
+
 		model.addAttribute("goods", good);
 		return "cart";
 	}
@@ -89,6 +100,11 @@ public class CartControlle {
 		for (int i = 0; i < cart.size(); i++) {
 			Integer iD = Integer.valueOf(cart.get(i));
 			good.addAll(goods.cart(iD));
+		}
+		for (int i = 0; i < good.size(); i++) {
+			NumberFormat nfCur = NumberFormat.getCurrencyInstance();
+			//good.get(i).setCPrice(nfCur.format(good.get(i).getPrice()));
+			good.get(i).setCTaxPrice(nfCur.format(good.get(i).getTaxPrice()));
 		}
 		model.addAttribute("goods", good);
 		return "cart";

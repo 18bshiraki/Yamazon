@@ -71,7 +71,7 @@
 							<td
 								onclick="location.href='detail?goodsName=${fn:escapeXml(goods.goodsName)}'"><h5>${fn:escapeXml(goods.goodsName)}</h5></td>
 							<td
-								onclick="location.href='detail?goodsName=${fn:escapeXml(goods.goodsName)}'"><h5>${fn:escapeXml(searchs)}</h5></td>
+								onclick="location.href='detail?goodsName=${fn:escapeXml(goods.goodsName)}'"><h5>${fn:escapeXml(goods.CTaxPrice)}</h5></td>
 							<td
 								onclick="location.href='detail?goodsName=${fn:escapeXml(goods.goodsName)}'"><h5>${fn:escapeXml(goods.category)}</h5></td>
 							<td><form:button value="${goods.goodsNumber}" name="id"
