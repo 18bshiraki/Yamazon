@@ -40,7 +40,7 @@ public class AccountUpdateController {
 			return "accountUpdate";
 		}
 
-		if(newPass==null||newPass.equals("")||pass==null||pass.equals("")) {
+		if(pass==null||pass.equals("")) {
 			model.addAttribute("msg", "※パスワードを入力してください");
 			return "accountUpdate";
 		}
