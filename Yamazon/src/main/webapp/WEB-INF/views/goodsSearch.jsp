@@ -67,7 +67,7 @@
 					</span>
 				</div>
 				<c:if test="${not empty msg}">
-					<h4><span style="color: red;">${fn:escapeXml(msg)}</span></h4>
+					<h4><span style="color: red;">${msg}</span></h4>
 				</c:if>
 			</div>
 		</div>
