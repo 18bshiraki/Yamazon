@@ -65,7 +65,7 @@
 				</form:button>
 			</div>
 		</form:form>
-		<c:if test="${null ne sessionScope.user.userName}">
+		<c:if test="${empty sessionScope.user.userName}">
 			<div class="text-center">
 				<a href="userInsert"><button type="button"
 						class="btn btn-success">
