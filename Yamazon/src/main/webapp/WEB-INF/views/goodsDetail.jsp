@@ -26,10 +26,15 @@
 				<a class="logo" href="menu"><img src="ロゴ.jpg"></a>
 				<nav class="navigation" role="navigation">
 					<ul class="primary-nav">
-						<li><a href="account">Mypage</a></li>
+						<c:if test="${null eq sessionScope.user.userName}">
+							<li><a href="account">Mypage</a></li>
+						</c:if>
 						<li><a href="cart">Cart</a></li>
+
 						<li><a href="login">Login</a></li>
-						<li><a href="logout">Logout</a></li>
+						<c:if test="${null eq sessionScope.user.userName}">
+							<li><a href="logout">Logout</a></li>
+						</c:if>
 					</ul>
 				</nav>
 				<a href="#" class="nav-toggle">Menu<span></span></a>

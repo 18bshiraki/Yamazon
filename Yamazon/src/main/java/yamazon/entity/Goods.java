@@ -9,6 +9,8 @@ public class Goods {
 	private int taxPrice;
 	private String category;
 	private int stock;
+	private String CPrice;
+	private String CTaxPrice;
 
 	public Goods() {
 	}
@@ -144,6 +146,22 @@ public class Goods {
 
 	public void setStock(int stock) {
 		this.stock = stock;
+	}
+
+	public String getCPrice() {
+		return CPrice;
+	}
+
+	public void setCPrice(String cPrice) {
+		CPrice = cPrice;
+	}
+
+	public String getCTaxPrice() {
+		return CTaxPrice;
+	}
+
+	public void setCTaxPrice(String cTaxPrice) {
+		CTaxPrice = cTaxPrice;
 	}
 
 }
