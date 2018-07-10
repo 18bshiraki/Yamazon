@@ -59,7 +59,7 @@ public class GoodsInsertController {
 				bool = false;
 			}
 
-			if (bool == true) {
+			if (bool == true && Integer.parseInt(stock) > 0 && Integer.parseInt(price) > 0) {
 
 				//税金計算
 				int unitPrice = Integer.parseInt(price);
@@ -98,7 +98,7 @@ public class GoodsInsertController {
 			} else {
 				Goods goods = new Goods(name, explain, category);
 				model.addAttribute("goods", goods);
-				model.addAttribute("msg", "値段と在庫は数字で入力してください");
+				model.addAttribute("msg", "値段と在庫は1以上で数字のみを入力してください");
 				model.addAttribute("select", "再選択してください");
 				return "goodsInsert";
 			}
