@@ -5,6 +5,8 @@ public class Purchase {
 	private String goodsName;
 	private int taxPrice;
 	private String purchaseHistory;
+	private String CPrice;
+	private String CTaxPrice;
 
 	public int getUserId() {
 		return userId;
@@ -36,5 +38,21 @@ public class Purchase {
 
 	public void setPurchaseHistory(String purchaseHistory) {
 		this.purchaseHistory = purchaseHistory;
+	}
+
+	public String getCPrice() {
+		return CPrice;
+	}
+
+	public void setCPrice(String cPrice) {
+		this.CPrice = cPrice;
+	}
+
+	public String getCTaxPrice() {
+		return CTaxPrice;
+	}
+
+	public void setCTaxPrice(String cTaxPrice) {
+		this.CTaxPrice = cTaxPrice;
 	}
 }

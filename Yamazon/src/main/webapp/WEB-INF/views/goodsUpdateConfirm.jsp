@@ -37,7 +37,7 @@
 				<a class="logo" href="menu"><img src="ロゴ.jpg"></a>
 				<nav class="navigation" role="navigation">
 					<ul class="primary-nav">
-						<li><a href="logout.html">Logout</a></li>
+						<li><a href="logout">Logout</a></li>
 					</ul>
 				</nav>
 				<a href="#" class="nav-toggle">Menu<span></span></a>

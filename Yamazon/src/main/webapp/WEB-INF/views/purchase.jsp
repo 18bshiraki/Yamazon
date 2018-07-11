@@ -29,7 +29,7 @@
 					<c:if test="${null ne sessionScope.user.userName}">
 							<li><c:out value="${sessionScope.user.userName}" />さん</li>
 						</c:if>
-						<li><a href="menu">Mypage</a></li>
+						<li><a href="account">Mypage</a></li>
 						<li><a href="cart">Cart</a></li>
 						<li><a href="login">Login</a></li>
 						<li><a href="logout">Logout</a></li>

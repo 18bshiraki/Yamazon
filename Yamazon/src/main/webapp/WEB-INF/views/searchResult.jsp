@@ -26,7 +26,7 @@
 				<a class="logo" href="menu"><img src="ロゴ.jpg"></a>
 				<nav class="navigation" role="navigation">
 					<ul class="primary-nav">
-						<li><a href="menu">Mypage</a></li>
+						<li><a href="account">Mypage</a></li>
 						<li><a href="cart">Cart</a></li>
 						<li><a href="login">Login</a></li>
 						<li><a href="logout">Logout</a></li>
