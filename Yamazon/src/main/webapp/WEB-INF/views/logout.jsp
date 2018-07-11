@@ -4,7 +4,7 @@
 <html class="no-js" lang="">
 <head>
 <meta charset="UTF-8">
-<title>ログアウト完了画面</title>
+<title>Yamazon</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/flexslider.css">
 <link rel="stylesheet" href="css/jquery.fancybox.css">

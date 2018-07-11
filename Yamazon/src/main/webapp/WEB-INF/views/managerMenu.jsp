@@ -28,7 +28,7 @@ h4 {
 }
 
 </style>
-<title>管理者メニュー</title>
+<title>Yamazon</title>
 </head>
 <body>
 	<!-- header top section -->
