@@ -26,13 +26,13 @@
 				<a class="logo" href="menu"><img src="ロゴ.jpg"></a>
 				<nav class="navigation" role="navigation">
 					<ul class="primary-nav">
-						<c:if test="${null eq sessionScope.user.userName}">
+						<c:if test="${null ne sessionScope.user.userName}">
 							<li><a href="account">Mypage</a></li>
 						</c:if>
 						<li><a href="cart">Cart</a></li>
 
 						<li><a href="login">Login</a></li>
-						<c:if test="${null eq sessionScope.user.userName}">
+						<c:if test="${null ne sessionScope.user.userName}">
 							<li><a href="logout">Logout</a></li>
 						</c:if>
 					</ul>

@@ -32,7 +32,7 @@
 	<section class="banner" role="banner">
 		<header id="header">
 			<div class="header-content clearfix">
-				<a class="logo" href="menu.html"><img src="ロゴ.jpg"></a>
+				<a class="logo" href="menu"><img src="ロゴ.jpg"></a>
 				<nav class="navigation" role="navigation">
 					<ul class="primary-nav">
 						<li><a href="logout">Logout</a></li>
@@ -101,10 +101,11 @@
 
 			<br>
 			<h3>編集する情報を入力してください</h3>
-
+			<c:if test="${not empty msg}">
 			<h4>
 				<span class="text-danger">${msg}</span>
 			</h4>
+			</c:if>
 			<form:form action="userUpdateResult" modelAttribute="yamazon"
 				method="POST">
 

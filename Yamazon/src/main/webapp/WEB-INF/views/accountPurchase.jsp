@@ -72,7 +72,7 @@
         <tr>
         <td>${fn:escapeXml(good.purchaseHistory)}</td>
         <td>${fn:escapeXml(good.goodsName)}</td>
-        <td>${fn:escapeXml(good.taxPrice)}</td>
+        <td>${fn:escapeXml(good.CTaxPrice)}</td>
         </tr>
         </c:forEach>
         </table>

@@ -82,7 +82,7 @@ public class UserSearchController {
 
 			//IDに該当する管理者がいない＝リストの中身が空の場合
 			if (userList2.isEmpty()) {
-				model.addAttribute("msg", "指定したIDの管理者は登録されていません。");
+				model.addAttribute("msg", "指定したIDのユーザーは登録されていません。");
 				return "userSearch";
 
 				//IDに該当する管理者がいる＝リストの中身がある場合
