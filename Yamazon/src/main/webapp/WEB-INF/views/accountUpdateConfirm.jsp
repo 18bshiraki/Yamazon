@@ -116,7 +116,7 @@
 		</form:form>
 	</div>
 	<div class="text-center">
-		<a href="account"><button type="button"
+		<a href="accountUpdate"><button type="button"
 				class="return btn-outline-dark">
 				<span class="glyphicon glyphicon-chevron-left"></span>戻る
 			</button> </a>

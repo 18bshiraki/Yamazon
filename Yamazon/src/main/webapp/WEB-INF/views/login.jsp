@@ -46,7 +46,7 @@
 
 				<div class="row">
 					<h5>電話番号</h5>
-					<div class="col-sm-1">ユーザーID</div>
+					<div class="col-sm-1"></div>
 					<div class="col-sm-10 form-inline" style="padding: 3px;">
 						<form:input class="form-control input-sm" id="name"
 							placeholder="電話番号" size="45" path="phoneNumber" />
@@ -54,7 +54,7 @@
 				</div>
 				<div class="row">
 					<h5>パスワード</h5>
-					<div class="col-sm-1">パスワード</div>
+					<div class="col-sm-1"></div>
 					<div class="col-sm-10 form-inline" style="padding: 3px;">
 						<form:password class="form-control input-sm" placeholder="パスワード"
 							size="45" path="password" />
