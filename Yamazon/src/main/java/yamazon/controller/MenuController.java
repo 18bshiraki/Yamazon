@@ -1,5 +1,6 @@
 package yamazon.controller;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +52,12 @@ public class MenuController {
 		for (int i = 0; i < cart.size(); i++) {
 			Integer id = Integer.valueOf(cart.get(i));
 			good.addAll(goodsDao.cart(id));
+		}
+		NumberFormat nfCur = NumberFormat.getCurrencyInstance();
+		for (int i = 0; i < good.size(); i++) {
+			//NumberFormat nfCur = NumberFormat.getCurrencyInstance();
+			//good.get(i).setCPrice(nfCur.format(good.get(i).getPrice()));
+			good.get(i).setCTaxPrice(nfCur.format(good.get(i).getTaxPrice()));
 		}
 		model.addAttribute("goods", good);
 		return "cart";

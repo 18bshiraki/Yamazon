@@ -46,7 +46,7 @@ public class CartControlle {
 		}
 		for (int i = 0; i < good.size(); i++) {
 			NumberFormat nfCur = NumberFormat.getCurrencyInstance();
-			//good.get(i).setCPrice(nfCur.format(good.get(i).getPrice()));
+
 			good.get(i).setCTaxPrice(nfCur.format(good.get(i).getTaxPrice()));
 		}
 
