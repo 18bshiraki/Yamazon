@@ -44,7 +44,7 @@ public class GoodsInsertController {
 		String filename;
 
 		if ((name == null || file == null || explain == null || category == null || stock == null || price == null)
-				|| (("".equals(name) || ("".equals(file.getName())) || ("".equals(explain)) || ("".equals(category))
+				|| (("".equals(name) || file.isEmpty() || ("".equals(explain)) || ("".equals(category))
 						|| ("".equals(stock)) || ("".equals(price))))) {
 			model.addAttribute("msg", "すべての項目に入力してください");
 			return "goodsInsert";
