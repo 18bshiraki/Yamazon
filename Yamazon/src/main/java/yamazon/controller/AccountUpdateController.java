@@ -30,7 +30,7 @@ public class AccountUpdateController {
 		String newPass = form.getNewpass();
 		User user = (User) session.getAttribute("user");
 		if (11 < form.getTel().length() || form.getTel().length() < 10) {
-			model.addAttribute("msg", "※電話番号で入力してください");
+			model.addAttribute("msg", "※電話番号を入力してください");
 			return "accountUpdate";
 		}
 		try {
@@ -41,7 +41,7 @@ public class AccountUpdateController {
 		}
 
 		if(pass==null||pass.equals("")) {
-			model.addAttribute("msg", "※パスワードを入力してください");
+			model.addAttribute("msg", "※今までのパスワードを入力してください");
 			return "accountUpdate";
 		}
 		if (pass.equals(upd.findByUserId(user.getUserId()).get(0).getPassword())) {
